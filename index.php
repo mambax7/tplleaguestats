@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include __DIR__ . '/../../mainfile.php';
-include(XOOPS_ROOT_PATH . '/header.php');
+include XOOPS_ROOT_PATH . '/header.php';
 //
 //Includes preferences
 //
@@ -1974,4 +1974,4 @@ if (!isset($sort)) {
     </form>
 
 <?php
-include(XOOPS_ROOT_PATH . '/footer.php');
+include XOOPS_ROOT_PATH . '/footer.php';

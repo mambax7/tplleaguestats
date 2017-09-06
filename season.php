@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include __DIR__ . '/../../mainfile.php';
-include(XOOPS_ROOT_PATH . '/header.php');
+include XOOPS_ROOT_PATH . '/header.php';
 
 //
 //Preferences
@@ -225,9 +225,9 @@ $get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_season
                                         $away_win_percent = round(100 * ($away_wins / $played), 2);
                                         $draw_percent     = round(100 * ($draws / $played), 2);
 
-                                        $home_goal_average = round(($home_goals / $played), 2);
-                                        $away_goal_average = round(($away_goals / $played), 2);
-                                        $goal_average      = round(($goals / $played), 2);
+                                        $home_goal_average = round($home_goals / $played, 2);
+                                        $away_goal_average = round($away_goals / $played, 2);
+                                        $goal_average      = round($goals / $played, 2);
 
                                         $home_win_percent_  = number_format($home_win_percent, 2, '.', '');
                                         $away_win_percent_  = number_format($away_win_percent, 2, '.', '');
@@ -607,4 +607,4 @@ $get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_season
     </form>
 
 <?php
-include(XOOPS_ROOT_PATH . '/footer.php');
+include XOOPS_ROOT_PATH . '/footer.php';

@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include __DIR__ . '/../../mainfile.php';
-include(XOOPS_ROOT_PATH . '/header.php');
+include XOOPS_ROOT_PATH . '/header.php';
 //
 
 $sql             = 'SELECT SeasonID FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
@@ -1759,4 +1759,4 @@ $namedata = $xoopsDB->fetchArray($get_names);
     </form>
 
 <?php
-include(XOOPS_ROOT_PATH . '/footer.php');
+include XOOPS_ROOT_PATH . '/footer.php';
