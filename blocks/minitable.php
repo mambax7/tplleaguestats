@@ -27,7 +27,7 @@ function b_minitable_show()
 
     //Season id
     //
-    $sql        = "SELECT SeasonID, SeasonName FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+    $sql        = 'SELECT SeasonID, SeasonName FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
     $seasonname = $xoopsDB->query($sql);
     $seasonname = $xoopsDB->fetchArray($seasonname);
     $season_id  = $seasonname['SeasonID'];
@@ -43,10 +43,10 @@ function b_minitable_show()
     //
     //Query to get teams from selected season
     //
-    $get_teams = $xoopsDB->query("SELECT DISTINCT
+    $get_teams = $xoopsDB->query('SELECT DISTINCT
                         O.OpponentName AS name,
                         O.OpponentID AS id
-                        FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                        FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                         WHERE LM.LeagueMatchSeasonID = '$season_id' AND
                         (O.OpponentID = LM.LeagueMatchHomeID OR
                         O.OpponentID = LM.LeagueMatchAwayID)
@@ -72,14 +72,14 @@ function b_minitable_show()
     }
 
     //Match data
-    $query = $xoopsDB->query("SELECT
+    $query = $xoopsDB->query('SELECT
                                 LM.LeagueMatchID AS mid,
                                 LM.LeagueMatchHomeID as homeid,
                                 LM.LeagueMatchAwayID as awayid,
                                 LM.LeagueMatchHomeGoals as homegoals,
                                 LM.LeagueMatchAwayGoals as awaygoals
                                 FROM
-                                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                                 WHERE
                                 LM.LeagueMatchSeasonID = '$season_id' AND LM.LeagueMatchHomeGoals IS NOT NULL");
     while ($matchdata = $xoopsDB->fetchArray($query)) {
@@ -106,9 +106,9 @@ function b_minitable_show()
             $team[$awayteam]['awaywins'] = $team[$awayteam]['awaywins'] + 1;
         }
     }
-    $get_deduct = $xoopsDB->query("SELECT points, teamid FROM " . $xoopsDB->prefix("tplls_deductedpoints") . " WHERE seasonid = '$season_id'");
+    $get_deduct = $xoopsDB->query('SELECT points, teamid FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . " WHERE seasonid = '$season_id'");
     while ($d_points = $xoopsDB->fetchArray($get_deduct)) {
-        $team[$d_points["teamid"]]['d_points'] = $d_points['points'];
+        $team[$d_points['teamid']]['d_points'] = $d_points['points'];
     }
     foreach ($team as $teamid => $thisteam) {
         $temp_points           = isset($thisteam['d_points']) ? $thisteam['d_points'] : 0;
@@ -132,10 +132,10 @@ function b_minitable_show()
         $block['content'] .= "<tr>
         <td width='50%' align='left'>" . $thisteam['name'] . "</td>
         <td width='20%' align='center'>" . $points[$teamid] . "</td>
-        <td width='30%' align='center'>" . $goalsfor[$teamid] . "-" . $goalsagainst[$teamid] . "</td>
-        </tr>";
+        <td width='30%' align='center'>" . $goalsfor[$teamid] . '-' . $goalsagainst[$teamid] . '</td>
+        </tr>';
     }
-    $block['content'] .= "</table><br><div align=\"center\"><a href=\"" . XOOPS_URL . "/modules/tplleaguestats/index.php\">" . _BL_GOTOMAIN . "</a></div></marquee>";
+    $block['content'] .= '</table><br><div align="center"><a href="' . XOOPS_URL . '/modules/tplleaguestats/index.php">' . _BL_GOTOMAIN . '</a></div></marquee>';
 
     return $block;
 }

@@ -24,7 +24,7 @@ if ($submit) {
     //New value for session variable
     $_SESSION['defaultshow'] = $change;
 
-    header("Location: index.php?sort=pts");
+    header('Location: index.php?sort=pts');
 } elseif ($submit3) {
     $change = intval($_POST['change_table']);
 
@@ -51,6 +51,6 @@ if ($submit) {
 
     header("Location: $moveto");
 } else {
-    header("Location: index.php?sort=pts");
+    header('Location: index.php?sort=pts');
 }
 exit();

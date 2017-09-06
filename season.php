@@ -37,7 +37,7 @@ include(XOOPS_ROOT_PATH . '/header.php');
 //
 //Preferences
 //
-$sql             = "SELECT SeasonID FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+$sql             = 'SELECT SeasonID FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
 $season          = $xoopsDB->query($sql);
 $season          = $xoopsDB->fetchArray($season);
 $d_season_id     = $season['SeasonID'];
@@ -73,7 +73,7 @@ if ($defaultseasonid == 0) {
 //
 //Gets seasons and match types for dropdowns
 //
-$get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
+$get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
 
 ?>
 
@@ -121,7 +121,7 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                                 while ($data = $xoopsDB->fetchArray($get_seasons)) {
                                                     if ($data['SeasonID'] == $defaultseasonid) {
                                                         echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
-                                                        $draw_line = explode(",", $data['SeasonLine']);
+                                                        $draw_line = explode(',', $data['SeasonLine']);
                                                     } else {
                                                         echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
                                                     }
@@ -139,11 +139,11 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                     //
                                     //query to get data from the matches
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
@@ -296,7 +296,7 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                         </td>
 
                                         <td align="left" valign="middle" width="60%">
-                                            <?= "$goals (" . _LS_AVERAGE . " $goal_average " . _LS_PERMATCH . ")" ?>
+                                            <?= "$goals (" . _LS_AVERAGE . " $goal_average " . _LS_PERMATCH . ')' ?>
                                         </td>
 
                                     </tr>
@@ -308,7 +308,7 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                         </td>
 
                                         <td align="left" valign="middle" width="60%">
-                                            <?= "$home_goals (" . _LS_AVERAGE . " $home_goal_average " . _LS_PERMATCH . ")" ?>
+                                            <?= "$home_goals (" . _LS_AVERAGE . " $home_goal_average " . _LS_PERMATCH . ')' ?>
                                         </td>
 
                                     </tr>
@@ -320,7 +320,7 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                         </td>
 
                                         <td align="left" valign="middle" width="60%">
-                                            <?= "$away_goals (" . _LS_AVERAGE . " $away_goal_average " . _LS_PERMATCH . ")" ?>
+                                            <?= "$away_goals (" . _LS_AVERAGE . " $away_goal_average " . _LS_PERMATCH . ')' ?>
                                         </td>
 
                                     </tr>
@@ -353,9 +353,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                     //
                                     //Max home win
                                     //
-                                    $maxhomewin = $xoopsDB->query("SELECT
+                                    $maxhomewin = $xoopsDB->query('SELECT
     MAX(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS ero
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -375,9 +375,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " AS LM,
-    " . $xoopsDB->prefix("tplls_opponents") . " O,
-    " . $xoopsDB->prefix("tplls_opponents") . " OP
+    " . $xoopsDB->prefix('tplls_leaguematches') . ' AS LM,
+    ' . $xoopsDB->prefix('tplls_opponents') . ' O,
+    ' . $xoopsDB->prefix('tplls_opponents') . " OP
     WHERE
     O.OpponentID = LM.LeagueMatchHomeID AND
     OP.OpponentID = LM.LeagueMatchAwayID AND
@@ -439,9 +439,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                     //
                                     //Max away win
                                     //
-                                    $maxawaywin = $xoopsDB->query("SELECT
+                                    $maxawaywin = $xoopsDB->query('SELECT
     MIN(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS ero
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -461,9 +461,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " AS LM,
-    " . $xoopsDB->prefix("tplls_opponents") . " O,
-    " . $xoopsDB->prefix("tplls_opponents") . " OP
+    " . $xoopsDB->prefix('tplls_leaguematches') . ' AS LM,
+    ' . $xoopsDB->prefix('tplls_opponents') . ' O,
+    ' . $xoopsDB->prefix('tplls_opponents') . " OP
     WHERE
     O.OpponentID = LM.LeagueMatchHomeID AND
     OP.OpponentID = LM.LeagueMatchAwayID AND
@@ -524,9 +524,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
                                     //
                                     //Most goals scored in one match
                                     //
-                                    $maxgoals = $xoopsDB->query("SELECT
+                                    $maxgoals = $xoopsDB->query('SELECT
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS summa
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -546,9 +546,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_season
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " AS LM,
-    " . $xoopsDB->prefix("tplls_opponents") . " O,
-    " . $xoopsDB->prefix("tplls_opponents") . " OP
+    " . $xoopsDB->prefix('tplls_leaguematches') . ' AS LM,
+    ' . $xoopsDB->prefix('tplls_opponents') . ' O,
+    ' . $xoopsDB->prefix('tplls_opponents') . " OP
     WHERE
     O.OpponentID = LM.LeagueMatchHomeID AND
     OP.OpponentID = LM.LeagueMatchAwayID AND

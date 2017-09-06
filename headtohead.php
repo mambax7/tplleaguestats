@@ -35,7 +35,7 @@ include __DIR__ . '/../../mainfile.php';
 include(XOOPS_ROOT_PATH . '/header.php');
 //
 
-$sql             = "SELECT SeasonID FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+$sql             = 'SELECT SeasonID FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
 $season          = $xoopsDB->query($sql);
 $season          = $xoopsDB->fetchArray($season);
 $d_season_id     = $season['SeasonID'];
@@ -52,7 +52,7 @@ $inside_c        = $xoopsModuleConfig['inside'];
 $border_c        = $xoopsModuleConfig['bordercolour'];
 $tb_width        = $xoopsModuleConfig['tablewidth'];
 if (!isset($_SESSION['defaulthomeid'])) {
-    $sql                       = "SELECT OpponentID FROM " . $xoopsDB->prefix("tplls_opponents") . " LIMIT 0,2";
+    $sql                       = 'SELECT OpponentID FROM ' . $xoopsDB->prefix('tplls_opponents') . ' LIMIT 0,2';
     $teamresults               = $xoopsDB->query($sql);
     $teams                     = $xoopsDB->fetchArray($teamresults);
     $_SESSION['defaulthomeid'] = $teams['OpponentID'];
@@ -78,15 +78,15 @@ if ($defaultseasonid == 0) {
 //
 //Gets seasons and match types for dropdowns
 //
-$get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
+$get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
 
 //
 //query to get teams from choosed season
 //
-$get_teams = $xoopsDB->query("SELECT DISTINCT
+$get_teams = $xoopsDB->query('SELECT DISTINCT
 O.OpponentName AS name,
 O.OpponentID AS id
-FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
 WHERE LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
 (O.OpponentID = LM.LeagueMatchHomeID OR
 O.OpponentID = LM.LeagueMatchAwayID)
@@ -105,14 +105,14 @@ $templine_width = $tb_width - 25;
 //
 //query to get team names
 //
-$get_names = $xoopsDB->query("SELECT O.OpponentName AS homename,
+$get_names = $xoopsDB->query('SELECT O.OpponentName AS homename,
 OP.OpponentName AS awayname
-FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . ' OP
 WHERE
-O.OpponentID = " . intval($defaulthomeid) . " AND
-OP.OpponentID = " . intval($defaultawayid) . "
+O.OpponentID = ' . intval($defaulthomeid) . ' AND
+OP.OpponentID = ' . intval($defaultawayid) . '
 LIMIT 1
-");
+');
 
 $namedata = $xoopsDB->fetchArray($get_names);
 
@@ -140,7 +140,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     while ($data = $xoopsDB->fetchArray($get_seasons)) {
                                         if ($data['SeasonID'] == $defaultseasonid) {
                                             echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
-                                            $draw_line = explode(",", $data['SeasonLine']);
+                                            $draw_line = explode(',', $data['SeasonLine']);
                                         } else {
                                             echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
                                         }
@@ -221,16 +221,16 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //query to get hometeam data
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     LM.LeagueMatchHomeID AS homeid,
     LM.LeagueMatchAwayID AS awayid,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    ' . $xoopsDB->prefix('tplls_leaguematches') . ' LM
     WHERE
-    (LM.LeagueMatchHomeID = " . intval($defaulthomeid) . " OR
-    LM.LeagueMatchAwayID = " . intval($defaulthomeid) . ") AND
+    (LM.LeagueMatchHomeID = ' . intval($defaulthomeid) . ' OR
+    LM.LeagueMatchAwayID = ' . intval($defaulthomeid) . ") AND
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL
@@ -239,16 +239,16 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //query to get away team data
                                     //
-                                    $query2 = $xoopsDB->query("SELECT
+                                    $query2 = $xoopsDB->query('SELECT
     LM.LeagueMatchHomeID AS homeid,
     LM.LeagueMatchAwayID AS awayid,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    ' . $xoopsDB->prefix('tplls_leaguematches') . ' LM
     WHERE
-    (LM.LeagueMatchHomeID = " . intval($defaultawayid) . " OR
-    LM.LeagueMatchAwayID = " . intval($defaultawayid) . ") AND
+    (LM.LeagueMatchHomeID = ' . intval($defaultawayid) . ' OR
+    LM.LeagueMatchAwayID = ' . intval($defaultawayid) . ") AND
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL
@@ -471,19 +471,19 @@ $namedata = $xoopsDB->fetchArray($get_names);
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
     FROM
-    " . $xoopsDB->prefix("tplls_leaguematches") . " AS LM,
-    " . $xoopsDB->prefix("tplls_opponents") . " O,
-    " . $xoopsDB->prefix("tplls_opponents") . " OP
+    " . $xoopsDB->prefix('tplls_leaguematches') . ' AS LM,
+    ' . $xoopsDB->prefix('tplls_opponents') . ' O,
+    ' . $xoopsDB->prefix('tplls_opponents') . " OP
     WHERE
     O.OpponentID = LM.LeagueMatchHomeID AND
     OP.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL AND
-    ((LM.LeagueMatchHomeID = " . intval($defaulthomeid) . " AND LM.LeagueMatchAwayID = " . intval($defaultawayid) . ") OR
-    (LM.LeagueMatchHomeID = " . intval($defaultawayid) . " AND LM.LeagueMatchAwayID = " . intval($defaulthomeid) . "))
+    ((LM.LeagueMatchHomeID = " . intval($defaulthomeid) . ' AND LM.LeagueMatchAwayID = ' . intval($defaultawayid) . ') OR
+    (LM.LeagueMatchHomeID = ' . intval($defaultawayid) . ' AND LM.LeagueMatchAwayID = ' . intval($defaulthomeid) . '))
     ORDER BY LM.LeagueMatchDate DESC
-    ");
+    ');
 
                                     //
                                     //Sets zero for head-to-head variables
@@ -511,7 +511,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             $hth_matches_date[$i]  = $data['date'];
                                             $hth_matches_home[$i]  = $data['hometeam'];
                                             $hth_matches_away[$i]  = $data['awayteam'];
-                                            $hth_matches_score[$i] = $data['homegoals'] . " - " . $data['awaygoals'];
+                                            $hth_matches_score[$i] = $data['homegoals'] . ' - ' . $data['awaygoals'];
 
                                             ++$i;
                                         }
@@ -1216,12 +1216,12 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //query to get biggest home win/lost/aggr for hometeam
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     MAX(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS maxhomewin,
     MAX(LeagueMatchAwayGoals - LeagueMatchHomeGoals) AS maxhomelost,
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS maxhomeaggregate
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
-    WHERE LeagueMatchHomeID = " . intval($defaulthomeid) . " AND
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . '
+    WHERE LeagueMatchHomeID = ' . intval($defaulthomeid) . " AND
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
 
@@ -1232,11 +1232,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //query to get biggest away win/lost/aggr for hometeam
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     MAX(LeagueMatchAwayGoals - LeagueMatchHomeGoals) AS maxawaywin,
     MAX(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS maxawaylost,
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS maxawayaggregate
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE LeagueMatchAwayID = '$defaulthomeid' AND
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -1248,11 +1248,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //query to get biggest home win/lost/aggr for awayteam
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     MAX(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS maxhomewin,
     MAX(LeagueMatchAwayGoals - LeagueMatchHomeGoals) AS maxhomelost,
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS maxhomeaggregate
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE LeagueMatchHomeID = '$defaultawayid' AND
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -1264,11 +1264,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //querF to get biggest away win/lost/aggr for awayteam
                                     //
-                                    $query = $xoopsDB->query("SELECT
+                                    $query = $xoopsDB->query('SELECT
     MAX(LeagueMatchAwayGoals - LeagueMatchHomeGoals) AS maxawaywin,
     MAX(LeagueMatchHomeGoals - LeagueMatchAwayGoals) AS maxawaylost,
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS maxawayaggregate
-    FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
     WHERE LeagueMatchAwayID = '$defaultawayid' AND
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
@@ -1309,11 +1309,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home wins: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaulthomeid' AND
     (LM.LeagueMatchHomeGoals - LM.LeagueMatchAwayGoals) = '$maxhomewin_home' AND
@@ -1346,11 +1346,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home wins: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaultawayid' AND
     (LM.LeagueMatchHomeGoals - LM.LeagueMatchAwayGoals) = '$maxhomewin_away' AND
@@ -1389,11 +1389,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home losses: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaulthomeid' AND
     (LM.LeagueMatchAwayGoals - LM.LeagueMatchHomeGoals) = '$maxhomelost_home' AND
@@ -1426,11 +1426,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home loses: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaultawayid' AND
     (LM.LeagueMatchAwayGoals - LM.LeagueMatchHomeGoals) = '$maxhomelost_away' AND
@@ -1469,11 +1469,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home aggregate: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaulthomeid' AND
     (LM.LeagueMatchHomeGoals + LM.LeagueMatchAwayGoals) = '$maxhomeaggregate_home' AND
@@ -1498,11 +1498,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest home aggregate: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchAwayID AND
     LM.LeagueMatchHomeID = '$defaultawayid' AND
     (LM.LeagueMatchHomeGoals + LM.LeagueMatchAwayGoals) = '$maxhomeaggregate_away' AND
@@ -1533,11 +1533,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away wins: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaulthomeid' AND
     (LM.LeagueMatchAwayGoals - LM.LeagueMatchHomeGoals) = '$maxawaywin_home' AND
@@ -1570,11 +1570,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away wins: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaultawayid' AND
     (LM.LeagueMatchAwayGoals - LM.LeagueMatchHomeGoals) = '$maxawaywin_away' AND
@@ -1613,11 +1613,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away loses: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaulthomeid' AND
     (LM.LeagueMatchHomeGoals - LM.LeagueMatchAwayGoals) = '$maxawaylost_home' AND
@@ -1650,11 +1650,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away loses: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaultawayid' AND
     (LM.LeagueMatchHomeGoals - LM.LeagueMatchAwayGoals) = '$maxawaylost_away' AND
@@ -1693,11 +1693,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away aggregate: home
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaulthomeid' AND
     (LM.LeagueMatchAwayGoals + LM.LeagueMatchHomeGoals) = '$maxawayaggregate_home' AND
@@ -1722,11 +1722,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //query to get all the biggest away aggregate: away
                                             //
-                                            $query = $xoopsDB->query("SELECT
+                                            $query = $xoopsDB->query('SELECT
     O.OpponentName AS name,
     LM.LeagueMatchHomeGoals AS homegoals,
     LM.LeagueMatchAwayGoals AS awaygoals
-    FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+    FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
     WHERE O.OpponentID = LM.LeagueMatchHomeID AND
     LM.LeagueMatchAwayID = '$defaultawayid' AND
     (LM.LeagueMatchAwayGoals + LM.LeagueMatchHomeGoals) = '$maxawayaggregate_away' AND

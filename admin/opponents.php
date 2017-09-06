@@ -34,11 +34,11 @@ include_once __DIR__ . '/admin_header.php';
 include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
 if (isset($_POST['season_select'])) {
-    $season = explode("____", $_POST['season_select']);
+    $season = explode('____', $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
     $season = [intval($_POST['seasonid']), $_POST['seasonname']];
 } elseif (!isset($_SESSION['season_id'])) {
-    $sql        = "SELECT SeasonID, SeasonName FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+    $sql        = 'SELECT SeasonID, SeasonName FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
     $seasonname = $xoopsDB->query($sql);
     $seasonname = $xoopsDB->fetchArray($seasonname);
     $season     = [$seasonname['SeasonID'], $seasonname['SeasonName']];
@@ -73,15 +73,15 @@ if ($add_submit) {
     $opponent = trim($_POST['opponent']);
     $opponent = $xoopsDB->quoteString($opponent);
     //query to check if there are already a team with submitted name
-    $query = $xoopsDB->query("SELECT OpponentName FROM " . $xoopsDB->prefix("tplls_opponents") . " WHERE OpponentName = $opponent");
+    $query = $xoopsDB->query('SELECT OpponentName FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentName = $opponent");
 
     if ($xoopsDB->getRowsNum($query) > 0) {
-        echo "<font color='red'><b>" . _AM_TEAMDUPLICATE . "</b></font><br><br>";
+        echo "<font color='red'><b>" . _AM_TEAMDUPLICATE . '</b></font><br><br>';
         exit();
     }
 
     if ($opponent != '') {
-        $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_opponents") . " SET OpponentName = $opponent");
+        $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_opponents') . " SET OpponentName = $opponent");
 
         header("Location: $PHP_SELF");
     }
@@ -105,13 +105,13 @@ elseif ($modify_submit) {
         //If own team->delete the own status from the previous one
         //
         if ($own == 1) {
-            $xoopsDB->query("UPDATE " . $xoopsDB->prefix("tplls_opponents") . " SET
+            $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_opponents') . " SET
                 OpponentOwn = '0'
                 WHERE OpponentOwn = '1'
                 ");
         }
 
-        $xoopsDB->query("UPDATE " . $xoopsDB->prefix("tplls_opponents") . " SET
+        $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_opponents') . " SET
             OpponentName = $opponent,
             OpponentOwn = '$own'
             WHERE OpponentID = $opponentid");
@@ -128,16 +128,16 @@ elseif ($delete_submit) {
     //
     //query to check, if team already exists in the leaguetables
     //
-    $query = $xoopsDB->query("SELECT LeagueMatchID
-        FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    $query = $xoopsDB->query('SELECT LeagueMatchID
+        FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
         WHERE LeagueMatchHomeID = $opponentid OR LeagueMatchAwayID = $opponentid");
 
     if ($xoopsDB->getRowsNum($query) == 0) {
-        $xoopsDB->query("DELETE FROM " . $xoopsDB->prefix("tplls_opponents") . " WHERE OpponentID = $opponentid");
+        $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentID = $opponentid");
 
         header("Location: $PHP_SELF");
     } else {
-        echo "<font color='red'><b>" . _AM_TEAMISINUSE . "</b></font><br><br>";
+        echo "<font color='red'><b>" . _AM_TEAMISINUSE . '</b></font><br><br>';
         exit();
     }
 }
@@ -153,7 +153,7 @@ elseif ($d_points_add) {
         //
         //Adds
         //
-        $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_deductedpoints") . " SET
+        $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_deductedpoints') . " SET
             seasonid = $seasonid,
             teamid = $teamid,
             points = $d_points");
@@ -173,14 +173,14 @@ elseif ($d_points_modify) {
         //Delete deducted points if zero is written
         //
         if ($d_points == 0) {
-            $xoopsDB->query("DELETE FROM " . $xoopsDB->prefix("tplls_deductedpoints") . "
+            $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
                 WHERE id = $id");
         }
         //
         //Modify if some other number
         //
         else {
-            $xoopsDB->query("UPDATE " . $xoopsDB->prefix("tplls_deductedpoints") . " SET
+            $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_deductedpoints') . " SET
                 points = $d_points
                 WHERE id = $id");
         }
@@ -217,7 +217,7 @@ include __DIR__ . '/head.php';
                     <?php
                 } elseif ($action == 'modify') {
                     $opponentid   = intval($_REQUEST['opponent']);
-                    $get_opponent = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_opponents") . " WHERE OpponentID = $opponentid LIMIT 1");
+                    $get_opponent = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentID = $opponentid LIMIT 1");
                     $data         = $xoopsDB->fetchArray($get_opponent); ?>
 
                     <form method="post" action="<?php echo "$PHP_SELF" ?>">
@@ -264,8 +264,8 @@ include __DIR__ . '/head.php';
 
                     echo "<b>$seasonname</b><br><br>";
 
-                    $get_deduct = $xoopsDB->query("SELECT points, id
-        FROM " . $xoopsDB->prefix("tplls_deductedpoints") . "
+                    $get_deduct = $xoopsDB->query('SELECT points, id
+        FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
         WHERE seasonid = $seasonid AND teamid = $opponentid
         LIMIT 1
         ");
@@ -275,18 +275,18 @@ include __DIR__ . '/head.php';
             <form method=\"POST\" action=\"$PHP_SELF\">" . _AM_ADDDEDPTS . "<input type=\"text\" size=\"2\" name=\"d_points\">
             <input type=\"hidden\" value=\"$opponentid\" name=\"teamid\">
             <input type=\"hidden\" value=\"$seasonid\" name=\"seasonid\">
-            <input type=\"submit\" value=" . _AM_ADEDPTS . " name=\"d_points_add\">
+            <input type=\"submit\" value=" . _AM_ADEDPTS . ' name="d_points_add">
             </form>
-            ";
+            ';
                     } else {
                         $data = $xoopsDB->fetchArray($get_deduct);
 
                         echo "
             <form method=\"POST\" action=\"$PHP_SELF\">" . _AM_MODDEDPTS . "<input type=\"text\" size=\"2\" name=\"d_points\" value=\"$data[points]\">
             <input type=\"hidden\" value=\"$data[id]\" name=\"id\">
-            <input type=\"submit\" value=" . _AM_MDEDPTS . " name=\"d_points_modify\">
+            <input type=\"submit\" value=" . _AM_MDEDPTS . ' name="d_points_modify">
             </form>
-            ";
+            ';
                     }
 
                     $GLOBALS['xoopsDB']->freeRecordSet($get_deduct); ?>
@@ -299,18 +299,18 @@ include __DIR__ . '/head.php';
 
             <td align="left" valign="top">
                 <?php
-                $get_opponents = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_opponents") . " ORDER BY OpponentName");
+                $get_opponents = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_opponents') . ' ORDER BY OpponentName');
 
                 if ($xoopsDB->getRowsNum($get_opponents) < 1) {
-                    echo "<b>" . _AM_NOTEAMSAVAILABLE . "</b><br><br>";
+                    echo '<b>' . _AM_NOTEAMSAVAILABLE . '</b><br><br>';
                 } else {
-                    echo "<b>" . _AM_TEAMSAVAILABLE . "</b><br><br>";
+                    echo '<b>' . _AM_TEAMSAVAILABLE . '</b><br><br>';
 
                     while ($data = $xoopsDB->fetchArray($get_opponents)) {
                         echo "<a href=\"$PHP_SELF?action=modify&amp;opponent=$data[OpponentID]\">$data[OpponentName]</a>";
 
                         if ($data['OpponentOwn'] == 1) {
-                            echo "&nbsp;" . _AM_YT . "<br>\n";
+                            echo '&nbsp;' . _AM_YT . "<br>\n";
                         } else {
                             echo "<br>\n";
                         }

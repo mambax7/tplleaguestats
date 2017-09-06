@@ -36,7 +36,7 @@ include(XOOPS_ROOT_PATH . '/header.php');
 //
 //Includes preferences
 //
-$sql             = "SELECT SeasonID FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+$sql             = 'SELECT SeasonID FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
 $season          = $xoopsDB->query($sql);
 $season          = $xoopsDB->fetchArray($season);
 $d_season_id     = $season['SeasonID'];
@@ -60,7 +60,7 @@ $tb_width        = $xoopsModuleConfig['tablewidth'];
 //to return date format that fits to your site
 //
 
-$updated_query = $xoopsDB->query("SELECT MAX(LeagueMatchCreated) AS last_updated FROM " . $xoopsDB->prefix("tplls_leaguematches"));
+$updated_query = $xoopsDB->query('SELECT MAX(LeagueMatchCreated) AS last_updated FROM ' . $xoopsDB->prefix('tplls_leaguematches'));
 $ludata        = $xoopsDB->fetchArray($updated_query);
 $last_update   = date('d.m.Y @ H:i', $ludata['last_updated']);
 //$GLOBALS['xoopsDB']->freeRecordSet($updated_query);
@@ -87,7 +87,7 @@ if (!isset($_SESSION['defaultseasonid']) || !isset($_SESSION['defaultshow']) || 
 //
 //Gets seasons and match types for dropdowns
 //
-$get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
+$get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
 
 //
 //Sort by points, sort variable is not set
@@ -125,7 +125,7 @@ if (!isset($sort)) {
                                     while ($data = $xoopsDB->fetchArray($get_seasons)) {
                                         if ($data['SeasonID'] == $defaultseasonid) {
                                             echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
-                                            $draw_line = explode(",", $data['SeasonLine']);
+                                            $draw_line = explode(',', $data['SeasonLine']);
                                         } else {
                                             echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
                                         }
@@ -148,17 +148,17 @@ if (!isset($sort)) {
                                     <?php
 
                                     if ($defaultshow == 1) {
-                                        echo "<option value=\"1\" SELECTED>" . _LS_CALENDARALL . "</option>
-    <option value=\"2\">" . _LS_CALENDAROWN . " </option>
-    <option value=\"3\">" . _LS_CALENDARNONE . "</option>";
+                                        echo '<option value="1" SELECTED>' . _LS_CALENDARALL . '</option>
+    <option value="2">' . _LS_CALENDAROWN . ' </option>
+    <option value="3">' . _LS_CALENDARNONE . '</option>';
                                     } elseif ($defaultshow == 2) {
-                                        echo "<option value=\"1\">" . _LS_CALENDARALL . "</option>
-    <option value=\"2\" SELECTED>" . _LS_CALENDAROWN . "</option>
-    <option value=\"3\">" . _LS_CALENDARNONE . "</option>";
+                                        echo '<option value="1">' . _LS_CALENDARALL . '</option>
+    <option value="2" SELECTED>' . _LS_CALENDAROWN . '</option>
+    <option value="3">' . _LS_CALENDARNONE . '</option>';
                                     } elseif ($defaultshow == 3) {
-                                        echo "<option value=\"1\">" . _LS_CALENDARALL . "</option>
-    <option value=\"2\">" . _LS_CALENDAROWN . "</option>
-    <option value=\"3\" SELECTED>" . _LS_CALENDARNONE . "</option>";
+                                        echo '<option value="1">' . _LS_CALENDARALL . '</option>
+    <option value="2">' . _LS_CALENDAROWN . '</option>
+    <option value="3" SELECTED>' . _LS_CALENDARNONE . '</option>';
                                     }
 
                                     //
@@ -176,25 +176,25 @@ if (!isset($sort)) {
                                 <select name="change_table">
                                     <?php
                                     if ($defaulttable == 1) {
-                                        echo "<option value=\"4\">" . _LS_MODETABLESIMP . "</option>
-    <option value=\"1\" SELECTED>" . _LS_MODETABLETRA . "</option>
-    <option value=\"2\">" . _LS_MODETABLEMAT . "</option>
-    <option value=\"3\">" . _LS_MODETABLEREC . "</option>";
+                                        echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
+    <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
+    <option value="2">' . _LS_MODETABLEMAT . '</option>
+    <option value="3">' . _LS_MODETABLEREC . '</option>';
                                     } elseif ($defaulttable == 2) {
-                                        echo "<option value=\"4\">" . _LS_MODETABLESIMP . "</option>
-    <option value=\"1\" SELECTED>" . _LS_MODETABLETRA . "</option>
-    <option value=\"2\">" . _LS_MODETABLEMAT . "</option>
-    <option value=\"3\">" . _LS_MODETABLEREC . "</option>";
+                                        echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
+    <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
+    <option value="2">' . _LS_MODETABLEMAT . '</option>
+    <option value="3">' . _LS_MODETABLEREC . '</option>';
                                     } elseif ($defaulttable == 3) {
-                                        echo "<option value=\"4\">" . _LS_MODETABLESIMP . "</option>
-    <option value=\"1\" SELECTED>" . _LS_MODETABLETRA . "</option>
-    <option value=\"2\">" . _LS_MODETABLEMAT . "</option>
-    <option value=\"3\">" . _LS_MODETABLEREC . "</option>";
+                                        echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
+    <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
+    <option value="2">' . _LS_MODETABLEMAT . '</option>
+    <option value="3">' . _LS_MODETABLEREC . '</option>';
                                     } elseif ($defaulttable == 4) {
-                                        echo "<option value=\"4\">" . _LS_MODETABLESIMP . "</option>
-    <option value=\"1\" SELECTED>" . _LS_MODETABLETRA . "</option>
-    <option value=\"2\">" . _LS_MODETABLEMAT . "</option>
-    <option value=\"3\">" . _LS_MODETABLEREC . "</option>";
+                                        echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
+    <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
+    <option value="2">' . _LS_MODETABLEMAT . '</option>
+    <option value="3">' . _LS_MODETABLEREC . '</option>';
                                     }
                                     ?>
                                 </select> <input type="submit" class="button" value=">>" name="submit3">
@@ -444,10 +444,10 @@ if (!isset($sort)) {
                                             //
                                             //query to get teams from selected season
                                             //
-                                            $get_teams = $xoopsDB->query("SELECT DISTINCT
+                                            $get_teams = $xoopsDB->query('SELECT DISTINCT
         O.OpponentName AS name,
         O.OpponentID AS id
-        FROM " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+        FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
         WHERE LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
         (O.OpponentID = LM.LeagueMatchHomeID OR
         O.OpponentID = LM.LeagueMatchAwayID)
@@ -469,10 +469,10 @@ if (!isset($sort)) {
                                                     //
                                                     //Home data
                                                     //
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS homewins
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchHomeWinnerID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -486,10 +486,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS homedraws
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchHomeTieID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -503,10 +503,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS homeloses
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchHomeLoserID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -523,10 +523,10 @@ if (!isset($sort)) {
                                                     //
                                                     //Away data
                                                     //
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS awaywins
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchAwayWinnerID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -540,10 +540,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS awaydraws
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchAwayTieID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -557,10 +557,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 COUNT(DISTINCT LM.LeagueMatchID) AS awayloses
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchAwayLoserID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -578,10 +578,10 @@ if (!isset($sort)) {
                                                     //query to get goals
                                                     //
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 SUM( LM.LeagueMatchHomeGoals) AS homegoals
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchHomeID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -599,10 +599,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 SUM( LM.LeagueMatchAwayGoals) AS homegoalsagainst
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchHomeID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -620,10 +620,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 SUM( LM.LeagueMatchAwayGoals) AS awaygoals
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchAwayID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -641,10 +641,10 @@ if (!isset($sort)) {
 
                                                     //$xoopsDB->freeRecordSet($query);
 
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 SUM( LM.LeagueMatchHomeGoals) AS awaygoalsagainst
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 LM.LeagueMatchAwayID = '$teamid[$i]' AND
                 LM.LeagueMatchSeasonID LIKE '$defaultseasonid'
@@ -683,7 +683,7 @@ if (!isset($sort)) {
                                                     //
                                                     //query to get latest 6 matches
                                                     //
-                                                    $query = $xoopsDB->query("SELECT
+                                                    $query = $xoopsDB->query('SELECT
                 LM.LeagueMatchHomeID AS homeid,
                 LM.LeagueMatchAwayID AS awayid,
                 LM.LeagueMatchHomewinnerID AS homewinner,
@@ -695,7 +695,7 @@ if (!isset($sort)) {
                 LM.LeagueMatchHomeGoals AS homegoals,
                 LM.LeagueMatchAwayGoals AS awaygoals
                 FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 (LM.LeagueMatchHomeWinnerID = '$teamid[$i]' OR
                 LM.LeagueMatchHomeLoserID = '$teamid[$i]' OR
@@ -794,8 +794,8 @@ if (!isset($sort)) {
                                                     //Lets make change in points if there are data in tplls_deductedpoints-table
                                                     //
                                                     if ($defaulttable == 1 || $defaulttable == 4) {
-                                                        $get_deduct = $xoopsDB->query("SELECT points
-                    FROM " . $xoopsDB->prefix("tplls_deductedpoints") . "
+                                                        $get_deduct = $xoopsDB->query('SELECT points
+                    FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
                     WHERE seasonid LIKE '$defaultseasonid' AND
                     teamid = '$teamid[$i]'
                     LIMIT 1
@@ -831,8 +831,8 @@ if (!isset($sort)) {
                                                     //
                                                     //Lets make change in points if there are data in tplls_deductedpoints-table
                                                     //
-                                                    $get_deduct = $xoopsDB->query("SELECT points
-                FROM " . $xoopsDB->prefix("tplls_deductedpoints") . "
+                                                    $get_deduct = $xoopsDB->query('SELECT points
+                FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
                 WHERE seasonid LIKE '$defaultseasonid' AND
                 teamid = '$teamid[$i]'
                 LIMIT 1
@@ -1318,10 +1318,10 @@ if (!isset($sort)) {
                                                             echo '</b>';
                                                         }
 
-                                                        echo "</td>
+                                                        echo '</td>
 
                     </tr>
-                    ";
+                    ';
 
                                                         ++$i;
                                                         ++$j;
@@ -1460,10 +1460,10 @@ if (!isset($sort)) {
                                                             echo '</b>';
                                                         }
 
-                                                        echo "</td>
+                                                        echo '</td>
 
                     </tr>
-                    ";
+                    ';
 
                                                         ++$i;
                                                         ++$j;
@@ -1690,10 +1690,10 @@ if (!isset($sort)) {
                                                         echo '</b>';
                                                     }
 
-                                                    echo "</td>
+                                                    echo '</td>
 
                 </tr>
-                ";
+                ';
 
                                                     ++$i;
                                                     ++$j;
@@ -1762,7 +1762,7 @@ if (!isset($sort)) {
             LM.LeagueMatchAwayGoals AS goals_away,
             LM.LeagueMatchID AS id,
             DATE_FORMAT(LM.LeagueMatchDate, '$print_date') AS date
-            FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM, " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+            FROM " . $xoopsDB->prefix('tplls_leaguematches') . ' LM, ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . " OP
             WHERE O.OpponentID = LM.LeagueMatchHomeID AND
             OP.OpponentID = LM.LeagueMatchAwayID AND
                         LM.LeagueMatchDate < CURDATE()  AND
@@ -1779,7 +1779,7 @@ if (!isset($sort)) {
             LM.LeagueMatchAwayGoals AS goals_away,
             LM.LeagueMatchID AS id,
             DATE_FORMAT(LM.LeagueMatchDate, '$print_date') AS date
-            FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM, " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+            FROM " . $xoopsDB->prefix('tplls_leaguematches') . ' LM, ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . " OP
             WHERE O.OpponentID = LM.LeagueMatchHomeID AND
             OP.OpponentID = LM.LeagueMatchAwayID AND
                         LM.LeagueMatchDate < CURDATE()  AND
@@ -1789,7 +1789,7 @@ if (!isset($sort)) {
                                                             }
 
                                                             if ($xoopsDB->getRowsNum($get_matches) < 1) {
-                                                                echo "&nbsp;<b>" . _LS_NOMATCHES . "</b>";
+                                                                echo '&nbsp;<b>' . _LS_NOMATCHES . '</b>';
                                                             } else {
                                                                 $i    = 0;
                                                                 $temp = '';
@@ -1829,9 +1829,9 @@ if (!isset($sort)) {
                                                                         echo '&nbsp;';
                                                                     }
 
-                                                                    echo "
+                                                                    echo '
                 </td>
-                </tr>";
+                </tr>';
 
                                                                     $temp = "$data[date]";
 
@@ -1871,7 +1871,7 @@ if (!isset($sort)) {
             LM.LeagueMatchAwayGoals AS goals_away,
             LM.LeagueMatchID AS id,
             DATE_FORMAT(LM.LeagueMatchDate, '$print_date') AS date
-            FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM, " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+            FROM " . $xoopsDB->prefix('tplls_leaguematches') . ' LM, ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . " OP
             WHERE O.OpponentID = LM.LeagueMatchHomeID AND
             OP.OpponentID = LM.LeagueMatchAwayID AND
                         LM.LeagueMatchDate > CURDATE()  AND
@@ -1888,7 +1888,7 @@ if (!isset($sort)) {
             LM.LeagueMatchAwayGoals AS goals_away,
             LM.LeagueMatchID AS id,
             DATE_FORMAT(LM.LeagueMatchDate, '$print_date') AS date
-            FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM, " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+            FROM " . $xoopsDB->prefix('tplls_leaguematches') . ' LM, ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . " OP
             WHERE O.OpponentID = LM.LeagueMatchHomeID AND
             OP.OpponentID = LM.LeagueMatchAwayID AND
                         LM.LeagueMatchDate > CURDATE()  AND
@@ -1898,7 +1898,7 @@ if (!isset($sort)) {
                                                             }
 
                                                             if ($xoopsDB->getRowsNum($get_matches) < 1) {
-                                                                echo "&nbsp;<b>" . _LS_NOMATCHES . "</b>";
+                                                                echo '&nbsp;<b>' . _LS_NOMATCHES . '</b>';
                                                             } else {
                                                                 $i    = 0;
                                                                 $temp = '';
@@ -1938,9 +1938,9 @@ if (!isset($sort)) {
                                                                         echo '&nbsp;';
                                                                     }
 
-                                                                    echo "
+                                                                    echo '
                 </td>
-                </tr>";
+                </tr>';
 
                                                                     $temp = "$data[date]";
 

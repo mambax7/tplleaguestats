@@ -33,11 +33,11 @@ ralf57 http://www.madeinbanzi.it
 include_once __DIR__ . '/admin_header.php';
 include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 if (isset($_POST['season_select'])) {
-    $season = explode("____", $_POST['season_select']);
+    $season = explode('____', $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
     $season = [$_POST['seasonid'], $_POST['seasonname']];
 } elseif (!isset($_SESSION['season_id'])) {
-    $sql        = "SELECT SeasonID, SeasonName FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonDefault=1";
+    $sql        = 'SELECT SeasonID, SeasonName FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
     $seasonname = $xoopsDB->query($sql);
     $seasonname = $xoopsDB->fetchArray($seasonname);
     $season     = [$seasonname['SeasonID'], $seasonname['SeasonName']];
@@ -66,20 +66,20 @@ echo $indexAdmin->displayNavigation('leaguematches.php');
 //
 //Exit check, if there are less than 2 teams in database
 //
-$query = $xoopsDB->query("SELECT OpponentID FROM " . $xoopsDB->prefix("tplls_opponents"));
+$query = $xoopsDB->query('SELECT OpponentID FROM ' . $xoopsDB->prefix('tplls_opponents'));
 
 if ($xoopsDB->getRowsNum($query) < 2) {
     //    echo "<br><br>"._AM_ADDTWOTEAMS."<br><br>
     //      <a href=\"opponents.php\">" ._AM_ADDTEAMS. "</a>";
     //    exit();
-    redirect_header("opponents.php", 1, _AM_ADDTWOTEAMS);
+    redirect_header('opponents.php', 1, _AM_ADDTWOTEAMS);
 }
 
 if ($add_submit) {
     $year        = intval($_POST['year']);
     $month       = intval($_POST['month']);
     $day         = intval($_POST['day']);
-    $dateandtime = $year . "-" . $month . "-" . $day;
+    $dateandtime = $year . '-' . $month . '-' . $day;
 
     //
     //Check the data of the submitted form
@@ -137,8 +137,8 @@ if ($add_submit) {
             //
             //query to check if homea or away team already exists in the current day
             //
-            $query = $xoopsDB->query("SELECT LM.LeagueMatchID FROM
-                " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+            $query = $xoopsDB->query('SELECT LM.LeagueMatchID FROM
+                ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
                 WHERE
                 (LM.LeagueMatchHomeID = '$home[$i]' OR
                 LM.LeagueMatchAwayID = '$home[$i]' OR
@@ -149,7 +149,7 @@ if ($add_submit) {
 
             if ($xoopsDB->getRowsNum($query) == 0) {
                 if (($home_goals[$i] !== null) && ($home_goals[$i] !== null)) {
-                    $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+                    $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                         LeagueMatchSeasonID = '$seasonid',
                         LeagueMatchDate = '$dateandtime',
                         LeagueMatchHomeID = '$home[$i]',
@@ -162,10 +162,10 @@ if ($add_submit) {
                         LeagueMatchAwayTieID = '$away_tie',
                         LeagueMatchHomeGoals = '$home_goals[$i]',
                         LeagueMatchAwayGoals = '$away_goals[$i]',
-                        LeagueMatchCreated = " . time() . "
-                        ");
+                        LeagueMatchCreated = " . time() . '
+                        ');
                 } else {
-                    $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+                    $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                         LeagueMatchSeasonID = '$seasonid',
                         LeagueMatchDate = '$dateandtime',
                         LeagueMatchHomeID = '$home[$i]',
@@ -176,8 +176,8 @@ if ($add_submit) {
                         LeagueMatchAwayLoserID = '-1',
                         LeagueMatchHomeTieID = '-1',
                         LeagueMatchAwayTieID = '-1',
-                        LeagueMatchCreated = " . time() . "
-                        ");
+                        LeagueMatchCreated = " . time() . '
+                        ');
                 }
             }
         }
@@ -187,13 +187,13 @@ if ($add_submit) {
     $year        = intval($_POST['year']);
     $month       = intval($_POST['month']);
     $day         = intval($_POST['day']);
-    $dateandtime = $year . "-" . $month . "-" . $day;
+    $dateandtime = $year . '-' . $month . '-' . $day;
     $qty         = intval($_POST['qty']);
 
     //
     //Delete old data from selected date
     //
-    $xoopsDB->query("DELETE FROM " . $xoopsDB->prefix("tplls_leaguematches") . "
+    $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
         WHERE LeagueMatchDate = '$dateandtime'
         ");
 
@@ -242,7 +242,7 @@ if ($add_submit) {
             $away_tie = $away[$i];
         }
         if (($home_goals[$i] !== null) && ($away_goals[$i] !== null)) {
-            $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+            $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                 LeagueMatchSeasonID = '$seasonid',
                 LeagueMatchDate = '$dateandtime',
                 LeagueMatchHomeID = '$home[$i]',
@@ -255,10 +255,10 @@ if ($add_submit) {
                 LeagueMatchAwayTieID = '$away_tie',
                 LeagueMatchHomeGoals = '$home_goals[$i]',
                 LeagueMatchAwayGoals = '$away_goals[$i]',
-                LeagueMatchCreated = " . time() . "
-                ");
+                LeagueMatchCreated = " . time() . '
+                ');
         } else {
-            $xoopsDB->query("INSERT INTO " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+            $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                         LeagueMatchSeasonID = '$seasonid',
                         LeagueMatchDate = '$dateandtime',
                         LeagueMatchHomeID = '$home[$i]',
@@ -269,8 +269,8 @@ if ($add_submit) {
                         LeagueMatchAwayLoserID = '-1',
                         LeagueMatchHomeTieID = '-1',
                         LeagueMatchAwayTieID = '-1',
-                        LeagueMatchCreated = " . time() . "
-                        ");
+                        LeagueMatchCreated = " . time() . '
+                        ');
         }
         ++$i;
     }
@@ -281,7 +281,7 @@ if ($add_submit) {
     $year        = intval($_POST['year']);
     $month       = intval($_POST['month']);
     $day         = intval($_POST['day']);
-    $dateandtime = $year . "-" . $month . "-" . $day;
+    $dateandtime = $year . '-' . $month . '-' . $day;
 
     $home       = intval($_POST['home']); //kotijoukkueen id
     $away       = intval($_POST['away']); //vierasjoukkueen id
@@ -329,8 +329,8 @@ if ($add_submit) {
         //
         //query to check if home or away team already exists in the current day
         //
-        $query = $xoopsDB->query("SELECT LM.LeagueMatchID FROM
-            " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+        $query = $xoopsDB->query('SELECT LM.LeagueMatchID FROM
+            ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
             WHERE
             (LM.LeagueMatchHomeID = '$home' OR
             LM.LeagueMatchAwayID = '$home' OR
@@ -345,7 +345,7 @@ if ($add_submit) {
 
         if ($xoopsDB->getRowsNum($query) < 2) {
             if (($home_goals !== null) && ($away_goals !== null)) {
-                $xoopsDB->query("UPDATE " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+                $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                     LeagueMatchDate = '$dateandtime',
                     LeagueMatchHomeID = '$home',
                     LeagueMatchAwayID = '$away',
@@ -362,7 +362,7 @@ if ($add_submit) {
                     LIMIT 1
                     ");
             } else {
-                $xoopsDB->query("UPDATE " . $xoopsDB->prefix("tplls_leaguematches") . " SET
+                $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                     LeagueMatchDate = '$dateandtime',
                     LeagueMatchHomeID = '$home',
                     LeagueMatchAwayID = '$away',
@@ -383,7 +383,7 @@ if ($add_submit) {
     }
 } elseif ($delete_submit) {
     $mid = intval($_POST['mid']);
-    $xoopsDB->query("DELETE FROM " . $xoopsDB->prefix("tplls_leaguematches") . " WHERE LeagueMatchID = '$mid' LIMIT 1");
+    $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " WHERE LeagueMatchID = '$mid' LIMIT 1");
 }
 
 ?>
@@ -408,9 +408,9 @@ include __DIR__ . '/head.php';
                         //print the days
                         for ($i = 1; $i < 32; ++$i) {
                             if ($i < 10) {
-                                $i = "0" . $i;
+                                $i = '0' . $i;
                             }
-                            if ($i == "01") {
+                            if ($i == '01') {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -423,9 +423,9 @@ include __DIR__ . '/head.php';
                         //print the months
                         for ($i = 1; $i < 13; ++$i) {
                             if ($i < 10) {
-                                $i = "0" . $i;
+                                $i = '0' . $i;
                             }
-                            if ($i == "01") {
+                            if ($i == '01') {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -438,9 +438,9 @@ include __DIR__ . '/head.php';
                         //print the years
                         for ($i = 1950; $i < 2010; ++$i) {
                             if ($i < 10) {
-                                $i = "0" . $i;
+                                $i = '0' . $i;
                             }
-                            if ($i == "2003") {
+                            if ($i == '2003') {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -464,10 +464,10 @@ include __DIR__ . '/head.php';
                         //
                         //query to get all the teams
                         //
-                        $get_opponents = $xoopsDB->query("SELECT OpponentID AS id,
+                        $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
         OpponentName AS name
-        FROM " . $xoopsDB->prefix("tplls_opponents") . "
-        ORDER BY OpponentName");
+        FROM ' . $xoopsDB->prefix('tplls_opponents') . '
+        ORDER BY OpponentName');
 
                         //
                         //Prints 15 forms
@@ -532,24 +532,24 @@ include __DIR__ . '/head.php';
                 } elseif ($action == 'modifyall') {
                     $date = $_REQUEST['date'];
 
-                    $get_matches = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                    $get_matches = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
         LM.LeagueMatchAwayID AS awayid,
         LM.LeagueMatchHomeGoals AS homegoals,
         LM.LeagueMatchAwayGoals AS awaygoals
-        FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+        FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
         WHERE LM.LeaguematchDate = '$date'
         ");
 
                     //
                     //query to get date
                     //
-                    $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                    $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year
-        FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+        FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
         WHERE LM.LeaguematchDate = '$date'
         LIMIT 1
         ");
@@ -558,11 +558,11 @@ include __DIR__ . '/head.php';
 
                     //$xoopsDB->freeRecordSet($get_match);
 
-                    $get_opponents = $xoopsDB->query("SELECT OpponentID AS id,
+                    $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
         OpponentName AS name
-        FROM " . $xoopsDB->prefix("tplls_opponents") . "
+        FROM ' . $xoopsDB->prefix('tplls_opponents') . '
         ORDER BY OpponentName
-        "); ?>
+        '); ?>
 
                     <form method="post" action="<?php echo "$PHP_SELF" ?>">
                         <h3><?php echo _AM_MODMATCHES; ?></h3>
@@ -580,7 +580,7 @@ include __DIR__ . '/head.php';
                                         //Print the days
                                         for ($i = 1; $i < 32; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($datedata['dayofmonth'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -595,7 +595,7 @@ include __DIR__ . '/head.php';
                                         //Print the months
                                         for ($i = 1; $i < 13; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($datedata['month'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -610,7 +610,7 @@ include __DIR__ . '/head.php';
                                         //Print the years
                                         for ($i = 1950; $i < 2010; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($datedata['year'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -704,23 +704,23 @@ include __DIR__ . '/head.php';
                 } elseif ($action == 'modify') {
                     $id = intval($_REQUEST['id']);
 
-                    $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                    $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
         LM.LeagueMatchAwayID AS awayid,
         LM.LeagueMatchHomeGoals AS homegoals,
         LM.LeagueMatchAwayGoals AS awaygoals
-        FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM
+        FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
         WHERE LM.LeaguematchID = '$id'
         LIMIT 1
         ");
 
-                    $get_opponents = $xoopsDB->query("SELECT OpponentID AS id,
+                    $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
         OpponentName AS name
-        FROM " . $xoopsDB->prefix("tplls_opponents") . "
+        FROM ' . $xoopsDB->prefix('tplls_opponents') . '
         ORDER BY OpponentName
-        ");
+        ');
 
                     $matchdata = $xoopsDB->fetchArray($get_match);
 
@@ -741,7 +741,7 @@ include __DIR__ . '/head.php';
                                         //Print the days
                                         for ($i = 1; $i < 32; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($matchdata['dayofmonth'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -756,7 +756,7 @@ include __DIR__ . '/head.php';
                                         //Print the months
                                         for ($i = 1; $i < 13; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($matchdata['month'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -772,7 +772,7 @@ include __DIR__ . '/head.php';
                                         //TODO: make this variable depending on actual year
                                         for ($i = 1950; $i < 2015; ++$i) {
                                             if ($i < 10) {
-                                                $i = "0" . $i;
+                                                $i = '0' . $i;
                                             }
                                             if ($matchdata['year'] == $i) {
                                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
@@ -860,16 +860,16 @@ include __DIR__ . '/head.php';
         LM.LeagueMatchID AS id,
         LM.LeagueMatchDate AS defaultdate,
         DATE_FORMAT(LM.LeagueMatchDate, '%b %D %Y') AS date
-        FROM " . $xoopsDB->prefix("tplls_leaguematches") . " LM, " . $xoopsDB->prefix("tplls_opponents") . " O, " . $xoopsDB->prefix("tplls_opponents") . " OP
+        FROM " . $xoopsDB->prefix('tplls_leaguematches') . ' LM, ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . " OP
         WHERE O.OpponentID = LM.LeagueMatchHomeID AND
         OP.OpponentID = LM.LeagueMatchAwayID AND
         LeagueMatchSeasonID = '$seasonid'
         ORDER BY LM.LeagueMatchDate DESC");
 
                     if ($xoopsDB->getRowsNum($get_matches) < 1) {
-                        echo "<b>  " . _AM_NOMATCHESYET . " <br><u> $seasonname</u> </b>";
+                        echo '<b>  ' . _AM_NOMATCHESYET . " <br><u> $seasonname</u> </b>";
                     } else {
-                        echo "<b> " . _AM_MATCHESYET . " <br> <u>$seasonname</u></b><br><br>";
+                        echo '<b> ' . _AM_MATCHESYET . " <br> <u>$seasonname</u></b><br><br>";
 
                         $i    = 0;
                         $temp = '';
@@ -909,9 +909,9 @@ include __DIR__ . '/head.php';
                                 echo '&nbsp;';
                             }
 
-                            echo "
+                            echo '
                 </td>
-                </tr>";
+                </tr>';
 
                             $temp = "$data[date]";
 
