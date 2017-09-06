@@ -729,7 +729,7 @@ if ($add_submit) {
 
             $matchdata = $xoopsDB->fetchArray($get_match);
 
-            //$xoopsDB->freeRecordSet($get_match); ?>
+            //$xoopsDB->freeRecordSet($get_match);?>
         <form method="post" action="<?php echo "$PHP_SELF"?>">
         <h3><?php echo _AM_MODMATCH; ?></h3>
 

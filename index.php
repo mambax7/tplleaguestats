@@ -1830,7 +1830,7 @@ if ($defaulttable == 1) {
                 }
             }
 
-            //$xoopsDB->freeRecordSet($get_matches); ?>
+            //$xoopsDB->freeRecordSet($get_matches);?>
 
         </table>
               </td>
