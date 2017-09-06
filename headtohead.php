@@ -31,7 +31,7 @@ ralf57 http://www.madeinbanzi.it
 ************************************************************
 */
 
-include '../../mainfile.php';
+include __DIR__ . '/../../mainfile.php';
 include(XOOPS_ROOT_PATH.'/header.php');
 //
 
@@ -176,7 +176,7 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
 <select name="away_id">
 <?php
 
-if (mysql_num_rows($get_teams) >=1) {
+if ($GLOBALS['xoopsDB']->getRowsNum($get_teams) >=1) {
     mysql_data_seek($get_teams, 0);
 
     //mysql_data_seek($get_teams, 0);
@@ -1776,7 +1776,7 @@ if (mysql_num_rows($get_teams) >=1) {
 </table>
 
 <?php
-include 'bottom.txt';
+include __DIR__ . '/bottom.txt';
 ?>
 </form>
 

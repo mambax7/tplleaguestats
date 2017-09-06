@@ -30,14 +30,14 @@ ralf57 http://www.madeinbanzi.it
 
 ************************************************************
 */
-include_once 'admin_header.php';
-include '../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
+include_once __DIR__ . '/admin_header.php';
+include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
 $seasonid = isset($_GET['season_id']) ? intval($_GET['season_id']) : 0;
 $seasonname = isset($_GET['season_name']) ? $_GET['season_name'] : "";
 
 $PHP_SELF = $_SERVER['PHP_SELF'];
-$HTTP_REFERER = $_SERVER['HTTP_REFERER'];
+$HTTP_REFERER = Request::getString('HTTP_REFERER', '', 'SERVER');
 $action = isset($_GET['action']) ? $_GET['action'] : null;
 $action = isset($_POST['action']) ? $_POST['action'] : $action;
 
@@ -47,8 +47,8 @@ $delete_submit = isset($_POST['delete_submit']) ? $_POST['delete_submit'] : fals
 
 xoops_cp_header();
 
-$indexAdmin = new ModuleAdmin();
-echo $indexAdmin->addNavigation('seasons.php');
+$indexAdmin = \Xmf\Module\Admin::getInstance();
+echo $indexAdmin->displayNavigation('seasons.php');
 if ($add_submit) {
     $name = $xoopsDB->quoteString(trim($_POST['name']));
     $drawline = trim($_POST['drawline']);
@@ -61,7 +61,7 @@ if ($add_submit) {
         exit();
     }
 
-    mysql_free_result($query);
+    $GLOBALS['xoopsDB']->freeRecordSet($query);
 
     if ($name != '') {
         $xoopsDB->query("INSERT INTO ".$xoopsDB->prefix("tplls_seasonnames")." SET
@@ -129,7 +129,7 @@ if ($add_submit) {
 ?>
 
     <?php
-    include 'head.php';
+    include __DIR__ . '/head.php';
     ?>
     <table align="center" width="600">
         <tr>
@@ -226,7 +226,7 @@ if ($add_submit) {
         <a href="<?php echo "$PHP_SELF"?>"><?php echo _AM_ADDSEASON; ?></a>
 
         <?php
-        mysql_free_result($get_season);
+        $GLOBALS['xoopsDB']->freeRecordSet($get_season);
         }
         ?>
         </td>

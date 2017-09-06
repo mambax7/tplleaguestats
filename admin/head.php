@@ -42,7 +42,7 @@ if (!isset($_SESSION['season_name']) || !isset($_SESSION['season_id'])) {
     }
     echo "</select> <input type=\"submit\" name=\"submit\" value=" ._AM_SEASONGO. "></form>";
 
-    mysql_free_result($get_seasons);
+    $GLOBALS['xoopsDB']->freeRecordSet($get_seasons);
 } else {
     $season_name = $_SESSION['season_name'];
     echo "<form method=\"post\" action=\"leaguematches.php\">";
@@ -61,7 +61,7 @@ if (!isset($_SESSION['season_name']) || !isset($_SESSION['season_id'])) {
     }
     echo "</select> <input type=\"submit\" name=\"submit\" value=" ._AM_SEASONGO. "></form>";
 
-    mysql_free_result($get_seasons);
+    $GLOBALS['xoopsDB']->freeRecordSet($get_seasons);
 }
 ?>
 

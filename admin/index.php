@@ -23,9 +23,9 @@ include_once __DIR__ . '/admin_header.php';
 
 xoops_cp_header();
 
-    $indexAdmin = new ModuleAdmin();
+    $indexAdmin = \Xmf\Module\Admin::getInstance();
 
-    echo $indexAdmin->addNavigation('index.php');
-    echo $indexAdmin->renderIndex();
+    echo $indexAdmin->displayNavigation('index.php');
+    echo $indexAdmin->displayIndex();
 
-include 'admin_footer.php';
+include __DIR__ . '/admin_footer.php';

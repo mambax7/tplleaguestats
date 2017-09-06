@@ -30,8 +30,8 @@ ralf57 http://www.madeinbanzi.it
 
 ************************************************************
 */
-include_once 'admin_header.php';
-include '../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
+include_once __DIR__ . '/admin_header.php';
+include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
 if (isset($_POST['season_select'])) {
     $season = explode("____", $_POST['season_select']);
@@ -63,8 +63,8 @@ $d_points_modify = isset($_POST['d_points_modify']) ? $_POST['d_points_modify'] 
 
 xoops_cp_header();
 
-$indexAdmin = new ModuleAdmin();
-echo $indexAdmin->addNavigation('opponents.php');
+$indexAdmin = \Xmf\Module\Admin::getInstance();
+echo $indexAdmin->displayNavigation('opponents.php');
 
 //
 //Add
@@ -192,7 +192,7 @@ elseif ($d_points_modify) {
 ?>
 
     <?php
-    include 'head.php';
+    include __DIR__ . '/head.php';
     ?>
     <table align="center" width="600">
         <tr>
@@ -293,10 +293,10 @@ elseif ($d_points_modify) {
             ";
             }
 
-            mysql_free_result($get_deduct); ?>
+            $GLOBALS['xoopsDB']->freeRecordSet($get_deduct); ?>
 
         <?php
-        mysql_free_result($get_opponent);
+        $GLOBALS['xoopsDB']->freeRecordSet($get_opponent);
         }
         ?>
         </td>

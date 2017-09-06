@@ -17,12 +17,12 @@ FEEL FREE TO MODIFY!!
 function b_minitable_show()
 {
     global $xoopsDB;
-    $module_handler =& xoops_gethandler('module');
-    $module =& $module_handler->getByDirname('tplleaguestats');
+    $moduleHandler = xoops_getHandler('module');
+    $module = $moduleHandler->getByDirname('tplleaguestats');
     //Get config for News module
-    $config_handler =& xoops_gethandler('config');
+    $configHandler = xoops_getHandler('config');
     if ($module) {
-        $moduleConfig =& $config_handler->getConfigsByCat(0, $module->getVar('mid'));
+        $moduleConfig = $configHandler->getConfigsByCat(0, $module->getVar('mid'));
     }
 
     //Season id

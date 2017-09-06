@@ -31,7 +31,7 @@ ralf57 http://www.madeinbanzi.it
 ************************************************************
 */
 
-include '../../mainfile.php';
+include __DIR__ . '/../../mainfile.php';
 include(XOOPS_ROOT_PATH.'/header.php');
 
 //
@@ -609,7 +609,7 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
 </table>
 
 <?php
-include 'bottom.txt';
+include __DIR__ . '/bottom.txt';
 ?>
 </form>
 

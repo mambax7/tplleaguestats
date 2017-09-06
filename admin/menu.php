@@ -1,12 +1,12 @@
 <?php
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
+defined("XOOPS_ROOT_PATH") || exit("XOOPS root path not defined");
 
 $path = dirname(dirname(dirname(__DIR__)));
 include_once $path . '/mainfile.php';
 
 $dirname         = basename(dirname(__DIR__));
-$module_handler  = xoops_gethandler('module');
-$module          = $module_handler->getByDirname($dirname);
+$moduleHandler  = xoops_getHandler('module');
+$module          = $moduleHandler->getByDirname($dirname);
 $pathIcon32      = $module->getInfo('icons32');
 $pathModuleAdmin = $module->getInfo('dirmoduleadmin');
 $pathLanguage    = $path . $pathModuleAdmin;

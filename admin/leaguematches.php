@@ -30,8 +30,8 @@ ralf57 http://www.madeinbanzi.it
 
 ************************************************************
 */
-include_once 'admin_header.php';
-include '../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
+include_once __DIR__ . '/admin_header.php';
+include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 if (isset($_POST['season_select'])) {
     $season = explode("____", $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
@@ -60,8 +60,8 @@ $modifyall_submit = isset($_POST['modifyall_submit']) ? $_POST['modifyall_submit
 
 xoops_cp_header();
 
-$indexAdmin = new ModuleAdmin();
-echo $indexAdmin->addNavigation('leaguematches.php');
+$indexAdmin = \Xmf\Module\Admin::getInstance();
+echo $indexAdmin->displayNavigation('leaguematches.php');
 
 //
 //Exit check, if there are less than 2 teams in database
@@ -390,7 +390,7 @@ if ($add_submit) {
     ?>
 
         <?php
-    include 'head.php';
+    include __DIR__ . '/head.php';
     ?>
 
     <table align="center" width="700">

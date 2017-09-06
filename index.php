@@ -31,7 +31,7 @@ ralf57 http://www.madeinbanzi.it
 ************************************************************
 */
 
-include '../../mainfile.php';
+include __DIR__ . '/../../mainfile.php';
 include(XOOPS_ROOT_PATH.'/header.php');
 //
 //Includes preferences
@@ -63,7 +63,7 @@ $tb_width = $xoopsModuleConfig['tablewidth'];
 $updated_query = $xoopsDB->query("SELECT MAX(LeagueMatchCreated) AS last_updated FROM ".$xoopsDB->prefix("tplls_leaguematches"));
 $ludata = $xoopsDB->fetchArray($updated_query);
 $last_update = date('d.m.Y @ H:i', $ludata['last_updated']);
-//mysql_free_result($updated_query);
+//$GLOBALS['xoopsDB']->freeRecordSet($updated_query);
 //$xoopsDB->freeRecordSet($updated_query);
 
 //
@@ -1708,7 +1708,7 @@ if ($defaulttable == 1) {
                </div>
 
                 <?php
-                include 'notes.txt'; ?>
+                include __DIR__ . '/notes.txt'; ?>
 
                 <div align="center" valign="top">
         <h3><?php echo _LS_CALENDARFIXED; ?></h3>
@@ -1962,7 +1962,7 @@ if ($defaulttable == 1) {
 </table>
 
 <?php
-include 'bottom.txt';
+include __DIR__ . '/bottom.txt';
 ?>
 </form>
 

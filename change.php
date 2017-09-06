@@ -1,8 +1,8 @@
 <?php
 
-include '../../mainfile.php';
+include __DIR__ . '/../../mainfile.php';
 
-$HTTP_REFERER = $_SERVER['HTTP_REFERER'];
+$HTTP_REFERER = Request::getString('HTTP_REFERER', '', 'SERVER');
 
 $submit = $_POST['submit'];
 $submit2 = $_POST['submit2'];
