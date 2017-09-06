@@ -35,14 +35,14 @@ include __DIR__ . '/../../../include/cp_header.php'; //Include file, which check
 if (isset($_POST['season_select'])) {
     $season = explode("____", $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
-    $season = array($_POST['seasonid'], $_POST['seasonname']);
+    $season = [$_POST['seasonid'], $_POST['seasonname']];
 } elseif (!isset($_SESSION['season_id'])) {
     $sql = "SELECT SeasonID, SeasonName FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonDefault=1";
     $seasonname = $xoopsDB->query($sql);
     $seasonname = $xoopsDB->fetchArray($seasonname);
-    $season = array($seasonname['SeasonID'], $seasonname['SeasonName']);
+    $season = [$seasonname['SeasonID'], $seasonname['SeasonName']];
 } else {
-    $season = array($_SESSION['season_id'], $_SESSION['season_name']);
+    $season = [$_SESSION['season_id'], $_SESSION['season_name']];
 }
 $_SESSION['season_id'] = $season[0];
 $_SESSION['season_name'] = $season[1];

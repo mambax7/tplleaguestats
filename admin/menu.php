@@ -17,7 +17,7 @@ if (!file_exists($fileinc = $pathLanguage . '/language/' . $GLOBALS['xoopsConfig
 
 include_once $fileinc;
 
-$adminmenu = array();
+$adminmenu = [];
 $i=0;
 $adminmenu[$i]["title"] = _AM_MODULEADMIN_HOME;
 $adminmenu[$i]['link'] = "admin/index.php";
