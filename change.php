@@ -51,6 +51,6 @@ if ($submit) {
 
     header("Location: $moveto");
 } else {
-header("Location: index.php?sort=pts");
+    header("Location: index.php?sort=pts");
 }
 exit();

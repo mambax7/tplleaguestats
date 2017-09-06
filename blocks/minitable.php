@@ -14,7 +14,7 @@ FEEL FREE TO MODIFY!!
 * Author: Mithrandir/TPL Design
 * Licence: GNU
 */
-function b_minitable_show( )
+function b_minitable_show()
 {
     global $xoopsDB;
     $module_handler =& xoops_gethandler('module');
@@ -69,7 +69,6 @@ function b_minitable_show( )
         $team[$data['id']]['awaygoalsfor'] = 0;
         $team[$data['id']]['awaygoalsagainst'] = 0;
         $team[$data['id']]['matches'] = 0;
-
     }
 
     //Match data

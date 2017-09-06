@@ -136,13 +136,13 @@ if ($add_submit) {
         <td>
         <?php
         if (!isset($action)) {
-        ?>
+            ?>
         <form method="post" action="<?php echo "$PHP_SELF" ?>">
-        <h3><?php echo _AM_ADDSEASON;?></h3>
+        <h3><?php echo _AM_ADDSEASON; ?></h3>
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_SEASONNAMEYEARS;?>
+            <?php echo _AM_SEASONNAMEYEARS; ?>
             </td>
             <td align="left" valign="top">
             <input type="text" name="name">
@@ -151,28 +151,27 @@ if ($add_submit) {
 
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_SEASONDRAWLINE;?>
+            <?php echo _AM_SEASONDRAWLINE; ?>
             </td>
             <td align="left" valign="top">
             <input type="text" name="drawline" value="" size="10">
             </td>
         </tr>
         </table>
-        <input type="submit" name="add_submit" value="<?php echo _AM_SEASONADD;?>">
+        <input type="submit" name="add_submit" value="<?php echo _AM_SEASONADD; ?>">
         </form>
         <?php
         } elseif ($action == 'modify') {
             $seasonid = intval($_REQUEST['season']);
             $get_season = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonID = '$seasonid' LIMIT 1");
-            $data = $xoopsDB->fetchArray($get_season);
-        ?>
+            $data = $xoopsDB->fetchArray($get_season); ?>
 
         <form method="post" action="<?php echo "$PHP_SELF"?>">
-        <h3><?php echo _AM_SEASONMODIFYDELETE;?></h3>
+        <h3><?php echo _AM_SEASONMODIFYDELETE; ?></h3>
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_SEASONNAMEYEARS;?>
+            <?php echo _AM_SEASONNAMEYEARS; ?>
                         </td>
                         <td>
                         <input type="text" name="name" value="<?php echo $data['SeasonName'] ?>">
@@ -181,23 +180,22 @@ if ($add_submit) {
        </tr>
        <tr>
             <td align="left" valign="top">
-            <?php echo _AM_DEFAULTSEASON;?>
+            <?php echo _AM_DEFAULTSEASON; ?>
             </td>
             <td align="left" valign="top">
             <?php
 
-            if($data['SeasonDefault'] == 1)
-            echo"<input type=\"checkbox\" name=\"defseason\" value=\"1\" CHECKED>\n";
-            else
-            echo"<input type=\"checkbox\" name=\"defseason\" value=\"1\">\n";
-
-            ?>
+            if ($data['SeasonDefault'] == 1) {
+                echo"<input type=\"checkbox\" name=\"defseason\" value=\"1\" CHECKED>\n";
+            } else {
+                echo"<input type=\"checkbox\" name=\"defseason\" value=\"1\">\n";
+            } ?>
             </td>
         </tr>
 
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_SEASONDRAWLINE;?>
+            <?php echo _AM_SEASONDRAWLINE; ?>
             </td>
             <td align="left" valign="top">
             <input type="text" name="drawline" value="<?= $data['SeasonLine'] ?>" size="10">
@@ -206,30 +204,29 @@ if ($add_submit) {
 
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_SEASONPUBLISHED;?>
+            <?php echo _AM_SEASONPUBLISHED; ?>
             </td>
             <td align="left" valign="top">
             <?php
             //
             //If season is published
             //
-            if($data['SeasonPublish'] == 1)
-            echo'<input type="checkbox" name="publish" value="1" CHECKED>';
-            else
-            echo'<input type="checkbox" name="publish" value="1">';
-
-            ?>
+            if ($data['SeasonPublish'] == 1) {
+                echo'<input type="checkbox" name="publish" value="1" CHECKED>';
+            } else {
+                echo'<input type="checkbox" name="publish" value="1">';
+            } ?>
             </td>
         </tr>
 
         </table>
-        <input type="submit" name="modify_submit" value="<?php echo _AM_SEASONMODIFY;?>"> <input type="submit" name="delete_submit" value="<?php echo _AM_SEASONDELETE;?>">
+        <input type="submit" name="modify_submit" value="<?php echo _AM_SEASONMODIFY; ?>"> <input type="submit" name="delete_submit" value="<?php echo _AM_SEASONDELETE; ?>">
         </form>
 
-        <a href="<?php echo "$PHP_SELF"?>"><?php echo _AM_ADDSEASON;?></a>
+        <a href="<?php echo "$PHP_SELF"?>"><?php echo _AM_ADDSEASON; ?></a>
 
         <?php
-        mysql_free_result($get_season );
+        mysql_free_result($get_season);
         }
         ?>
         </td>
@@ -249,10 +246,11 @@ if ($add_submit) {
                 //
                 //Season published?
                 //
-                if($data['SeasonPublish'] == 0)
-                echo "&nbsp;" ._AM_SEASONNP."<br>\n";
-                else
-                echo"<br>\n";
+                if ($data['SeasonPublish'] == 0) {
+                    echo "&nbsp;" ._AM_SEASONNP."<br>\n";
+                } else {
+                    echo"<br>\n";
+                }
             }
         }
 

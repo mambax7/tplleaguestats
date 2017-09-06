@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include '../../mainfile.php';
-include (XOOPS_ROOT_PATH.'/header.php');
+include(XOOPS_ROOT_PATH.'/header.php');
 //
 
 $sql = "SELECT SeasonID FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonDefault=1";
@@ -63,9 +63,7 @@ $defaulthomeid = intval($_SESSION['defaulthomeid']);
 $defaultawayid = intval($_SESSION['defaultawayid']);
 
 //if(!session_is_registered || !session_is_registered('defaultseasonid'))
-if ( !isset( $_SESSION ) || !isset( $_SESSION['defaultseasonid'] ) )
-
-{
+if (!isset($_SESSION) || !isset($_SESSION['defaultseasonid'])) {
     $_SESSION['defaultseasonid'] = $d_season_id;
 }
 $defaultseasonid = intval($_SESSION['defaultseasonid']);
@@ -73,8 +71,9 @@ $defaultseasonid = intval($_SESSION['defaultseasonid']);
 //
 //If All is chosen from season, lets set default value for %
 //
-if($defaultseasonid == 0)
+if ($defaultseasonid == 0) {
     $defaultseasonid = '%';
+}
 
 //
 //Gets seasons and match types for dropdowns
@@ -145,8 +144,9 @@ while ($data = $xoopsDB->fetchArray($get_seasons)) {
     if ($data['SeasonID'] == $defaultseasonid) {
         echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
         $draw_line = explode(",", $data['SeasonLine']);
-    } else
+    } else {
         echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
+    }
 }
 //$xoopsDB->freeRecordSet($get_seasons);
 
@@ -163,10 +163,11 @@ while ($data = $xoopsDB->fetchArray($get_seasons)) {
 <select name="home_id">
 <?php
 while ($data = $xoopsDB->fetchArray($get_teams)) {
-    if($data['id'] == $defaulthomeid)
+    if ($data['id'] == $defaulthomeid) {
         echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-    else
+    } else {
         echo"<option value=\"$data[id]\">$data[name]</option>\n";
+    }
 }
 ?>
 </select> <input type="submit" class="button" value=">>" name="submit4">
@@ -175,16 +176,17 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
 <select name="away_id">
 <?php
 
-if ( mysql_num_rows($get_teams) >=1 ) {
-mysql_data_seek($get_teams, 0);
+if (mysql_num_rows($get_teams) >=1) {
+    mysql_data_seek($get_teams, 0);
 
-//mysql_data_seek($get_teams, 0);
-while ($data = $xoopsDB->fetchArray($get_teams)) {
-    if($data['id'] == $defaultawayid)
-        echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-    else
-        echo"<option value=\"$data[id]\">$data[name]</option>\n";
-}
+    //mysql_data_seek($get_teams, 0);
+    while ($data = $xoopsDB->fetchArray($get_teams)) {
+        if ($data['id'] == $defaultawayid) {
+            echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+        } else {
+            echo"<option value=\"$data[id]\">$data[name]</option>\n";
+        }
+    }
 }
 //$xoopsDB->freeRecordSet($get_teams);
 ?>
@@ -539,7 +541,6 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
             $hth_home_goals_against = $hth_home_goals_against + $data['awaygoals'];
             $hth_away_goals = $hth_away_goals + $data['awaygoals'];
             $hth_away_goals_against = $hth_away_goals_against + $data['homegoals'];
-
         } elseif ($data['homeid'] == $defaultawayid) {
             if ($data['homegoals'] > $data['awaygoals']) {
                 ++$hth_away_wins;
@@ -1126,8 +1127,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($total_gd[0] >= 0)
+    if ($total_gd[0] >= 0) {
         echo'+';
+    }
 
     echo"$total_gd[0]</b> ($total_goals[0] - $total_goalsagainst[0])";
 
@@ -1141,8 +1143,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($total_gd[1] >= 0)
+    if ($total_gd[1] >= 0) {
         echo'+';
+    }
 
     echo"$total_gd[1]</b> ($total_goals[1] - $total_goalsagainst[1])";
 
@@ -1156,8 +1159,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($home_gd[0] >= 0)
+    if ($home_gd[0] >= 0) {
         echo'+';
+    }
 
     echo"$home_gd[0]</b> ($home_goals[0] - $home_goalsagainst[0])";
 
@@ -1171,8 +1175,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($home_gd[1] >= 0)
+    if ($home_gd[1] >= 0) {
         echo'+';
+    }
 
     echo"$home_gd[1]</b> ($home_goals[1] - $home_goalsagainst[1])";
 
@@ -1186,8 +1191,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($away_gd[0] >= 0)
+    if ($away_gd[0] >= 0) {
         echo'+';
+    }
 
     echo"$away_gd[0]</b> ($away_goals[0] - $away_goalsagainst[0])";
 
@@ -1201,8 +1207,9 @@ while ($data = $xoopsDB->fetchArray($get_teams)) {
     <td align="center" valign="middle">
     <b><?php
 
-    if($away_gd[1] >= 0)
+    if ($away_gd[1] >= 0) {
         echo'+';
+    }
 
     echo"$away_gd[1]</b> ($away_goals[1] - $away_goalsagainst[1])";
 

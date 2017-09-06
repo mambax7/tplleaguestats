@@ -31,7 +31,7 @@ ralf57 http://www.madeinbanzi.it
 ************************************************************
 */
 //if(!session_is_registered('season_name') || !session_is_registered('season_id'))
-if ( !isset( $_SESSION['season_name'] ) || !isset( $_SESSION['season_id'] ) ) {
+if (!isset($_SESSION['season_name']) || !isset($_SESSION['season_id'])) {
     echo "<form method=\"post\" action=\"leaguematches.php\">";
     echo '<b><?php echo _AM_CHOSEASON;?></b>';
     echo '<select name="season_select">';
@@ -53,10 +53,11 @@ if ( !isset( $_SESSION['season_name'] ) || !isset( $_SESSION['season_id'] ) ) {
     $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonnames")." ORDER BY SeasonName");
 
     while ($sdata = $xoopsDB->fetchArray($get_seasons)) {
-        if($sdata['SeasonID'] == $seasonid)
+        if ($sdata['SeasonID'] == $seasonid) {
             echo "<option value=\"$sdata[SeasonID]____$sdata[SeasonName]\" SELECTED>$sdata[SeasonName]</option>\n";
-        else
+        } else {
             echo "<option value=\"$sdata[SeasonID]____$sdata[SeasonName]\">$sdata[SeasonName]</option>\n";
+        }
     }
     echo "</select> <input type=\"submit\" name=\"submit\" value=" ._AM_SEASONGO. "></form>";
 

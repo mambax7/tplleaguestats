@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include '../../mainfile.php';
-include (XOOPS_ROOT_PATH.'/header.php');
+include(XOOPS_ROOT_PATH.'/header.php');
 //
 //Includes preferences
 //
@@ -71,7 +71,7 @@ $last_update = date('d.m.Y @ H:i', $ludata['last_updated']);
 //
 
 //if(!session_is_registered('defaultseasonid') || !session_is_registered('defaultshow') || !session_is_registered('defaulttable'))
-if ( !isset( $_SESSION['defaultseasonid'] ) || !isset( $_SESSION['defaultshow'] ) || !isset( $_SESSION['defaulttable'] )) {
+if (!isset($_SESSION['defaultseasonid']) || !isset($_SESSION['defaultshow']) || !isset($_SESSION['defaulttable'])) {
     $_SESSION['defaultseasonid'] = $d_season_id;
     $_SESSION['defaultshow'] = $show_all_or_one;
     $_SESSION['defaulttable'] = $show_table;
@@ -79,7 +79,6 @@ if ( !isset( $_SESSION['defaultseasonid'] ) || !isset( $_SESSION['defaultshow'] 
     $defaultshow = $_SESSION['defaultshow'];
     $defaulttable = $_SESSION['defaulttable'];
 } else {
-
     $defaultseasonid = intval($_SESSION['defaultseasonid']);
     $defaultshow = $_SESSION['defaultshow'];
     $defaulttable = $_SESSION['defaulttable'];
@@ -127,8 +126,9 @@ while ($data = $xoopsDB->fetchArray($get_seasons)) {
     if ($data['SeasonID'] == $defaultseasonid) {
         echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
         $draw_line = explode(",", $data['SeasonLine']);
-    } else
-    echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
+    } else {
+        echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
+    }
 }
 //$xoopsDB->freeRecordSet($get_seasons);
 
@@ -164,8 +164,9 @@ if ($defaultshow == 1) {
 //
 //If all is chosen from season selector, set default to %
 //
-if($defaultseasonid == 0)
-$defaultseasonid = '%';
+if ($defaultseasonid == 0) {
+    $defaultseasonid = '%';
+}
 
 ?>
 </select>
@@ -227,7 +228,7 @@ if ($defaulttable == 1) {
         //Tarkastetaan, mikä taulukko tulostetaan
         //
         if ($defaulttable == 1 || $defaulttable == 3) {
-        ?>
+            ?>
 
         <table width="100%" cellspacing="1" cellpadding="2" border="0">
 
@@ -238,15 +239,15 @@ if ($defaulttable == 1) {
         </td>
 
         <td align="center" valign="middle" colspan="5" bgcolor="<?php echo $top_bg ?>">
-        <b><i><?php echo _LS_COLOVERALL;?></i></b>
+        <b><i><?php echo _LS_COLOVERALL; ?></i></b>
         </td>
 
         <td align="center" valign="middle" colspan="5" bgcolor="<?php echo $top_bg ?>">
-        <b><i><?php echo _LS_COLHOME;?></i></b>
+        <b><i><?php echo _LS_COLHOME; ?></i></b>
         </td>
 
         <td align="center" valign="middle" colspan="5" bgcolor="<?php echo $top_bg ?>">
-        <b><i><?php echo _LS_COLAWAY;?></i></b>
+        <b><i><?php echo _LS_COLAWAY; ?></i></b>
         </td>
 
         <td align="center" valign="middle" colspan="2">
@@ -258,75 +259,75 @@ if ($defaulttable == 1) {
         <tr>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_POSSHORT;?></b>
+        &nbsp;<b><?php echo _LS_POSSHORT; ?></b>
         </td>
 
         <td align="left" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_TEAM;?></b>
+        &nbsp;<b><?php echo _LS_TEAM; ?></b>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pts"><?php echo _LS_PTSSHORT;?></a>
+        <a href="?sort=pts"><?php echo _LS_PTSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tw"><?php echo _LS_WINSSHORT;?></a>
+        <a href="?sort=tw"><?php echo _LS_WINSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=td"><?php echo _LS_DRAWSSHORT;?></a>
+        <a href="?sort=td"><?php echo _LS_DRAWSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tl"><?php echo _LS_LOSESSHORT;?></a>
+        <a href="?sort=tl"><?php echo _LS_LOSESSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tf"><?php echo _LS_GOALSSHORT;?></a>
+        <a href="?sort=tf"><?php echo _LS_GOALSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=ta"><?php echo _LS_GOALSAGSHORT;?></a>
+        <a href="?sort=ta"><?php echo _LS_GOALSAGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=hw"><?php echo _LS_WINSSHORT;?></a>
+        <a href="?sort=hw"><?php echo _LS_WINSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=hd"><?php echo _LS_DRAWSSHORT;?></a>
+        <a href="?sort=hd"><?php echo _LS_DRAWSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=hl"><?php echo _LS_LOSESSHORT;?></a>
+        <a href="?sort=hl"><?php echo _LS_LOSESSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=hf"><?php echo _LS_GOALSSHORT;?></a>
+        <a href="?sort=hf"><?php echo _LS_GOALSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=ha"><?php echo _LS_GOALSAGSHORT;?></a>
+        <a href="?sort=ha"><?php echo _LS_GOALSAGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=aw"><?php echo _LS_WINSSHORT;?></a>
+        <a href="?sort=aw"><?php echo _LS_WINSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=ad"><?php echo _LS_DRAWSSHORT;?></a>
+        <a href="?sort=ad"><?php echo _LS_DRAWSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=al"><?php echo _LS_LOSESSHORT;?></a>
+        <a href="?sort=al"><?php echo _LS_LOSESSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=af"><?php echo _LS_GOALSSHORT;?></a>
+        <a href="?sort=af"><?php echo _LS_GOALSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=aa"><?php echo _LS_GOALSAGSHORT;?></a>
+        <a href="?sort=aa"><?php echo _LS_GOALSAGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
@@ -334,103 +335,103 @@ if ($defaulttable == 1) {
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT;?></a>
+        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT; ?></a>
         </td>
         </tr>
         <?php
         } elseif ($defaulttable == 2) {
-        ?>
+            ?>
         <table width="100%" cellspacing="1" cellpadding="2" border="0">
 
         <tr>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_POSSHORT;?></b>
+        &nbsp;<b><?php echo _LS_POSSHORT; ?></b>
         </td>
 
         <td align="left" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_TEAM;?></b>
+        &nbsp;<b><?php echo _LS_TEAM; ?></b>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pts"><?php echo _LS_PTSSHORT;?></a>
+        <a href="?sort=pts"><?php echo _LS_PTSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=a_pts"><?php echo _LS_AVGPTS;?></a>
+        <a href="?sort=a_pts"><?php echo _LS_AVGPTS; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=w"><?php echo _LS_WINSPERC;?></a>
+        <a href="?sort=w"><?php echo _LS_WINSPERC; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=d"><?php echo _LS_DRAWSPERC;?></a>
+        <a href="?sort=d"><?php echo _LS_DRAWSPERC; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=l"><?php echo _LS_LOSSPERC;?></a>
+        <a href="?sort=l"><?php echo _LS_LOSSPERC; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=af"><?php echo _LS_AVGGSHORT;?></a>
+        <a href="?sort=af"><?php echo _LS_AVGGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=aa"><?php echo _LS_AVGGAGSHORT;?></a>
+        <a href="?sort=aa"><?php echo _LS_AVGGAGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=agd"><?php echo _LS_AVGDIFF;?></a>
+        <a href="?sort=agd"><?php echo _LS_AVGDIFF; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT;?></a>
+        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT; ?></a>
         </td>
 
         </tr>
 
         <?php
         } elseif ($defaulttable == 4) {
-        ?>
+            ?>
         <table width="100%" cellspacing="1" cellpadding="2" border="0">
 
         <tr>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_POSSHORT;?></b>
+        &nbsp;<b><?php echo _LS_POSSHORT; ?></b>
         </td>
 
         <td align="left" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        &nbsp;<b><?php echo _LS_TEAM;?></b>
+        &nbsp;<b><?php echo _LS_TEAM; ?></b>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pts"><?php echo _LS_PTSSHORT;?></a>
+        <a href="?sort=pts"><?php echo _LS_PTSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tw"><?php echo _LS_WINSSHORT;?></a>
+        <a href="?sort=tw"><?php echo _LS_WINSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=td"><?php echo _LS_DRAWSSHORT;?></a>
+        <a href="?sort=td"><?php echo _LS_DRAWSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tl"><?php echo _LS_LOSESSHORT;?></a>
+        <a href="?sort=tl"><?php echo _LS_LOSESSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=tf"><?php echo _LS_GOALSSHORT;?></a>
+        <a href="?sort=tf"><?php echo _LS_GOALSSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=ta"><?php echo _LS_GOALSAGSHORT;?></a>
+        <a href="?sort=ta"><?php echo _LS_GOALSAGSHORT; ?></a>
         </td>
 
         <td align="center" valign="middle" bgcolor="<?php echo $top_bg ?>">
-        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT;?></a>
+        <a href="?sort=pld"><?php echo _LS_PLAYEDSHORT; ?></a>
         </td>
 
         </tr>
@@ -598,10 +599,11 @@ if ($defaulttable == 1) {
                 //Goals scored in hom
                 //
                 $mdata = $xoopsDB->fetchArray($query);
-                if(is_null($mdata['homegoals']))
-                $homegoals[$i] = 0;
-                else
-                $homegoals[$i] = $mdata['homegoals'];
+                if (is_null($mdata['homegoals'])) {
+                    $homegoals[$i] = 0;
+                } else {
+                    $homegoals[$i] = $mdata['homegoals'];
+                }
 
                 //$xoopsDB->freeRecordSet($query);
 
@@ -619,10 +621,11 @@ if ($defaulttable == 1) {
                 //Goals against in home
                 //
                 $mdata = $xoopsDB->fetchArray($query);
-                if(is_null($mdata['homegoalsagainst']))
-                $homegoalsagainst[$i] = 0;
-                else
-                $homegoalsagainst[$i] = $mdata['homegoalsagainst'];
+                if (is_null($mdata['homegoalsagainst'])) {
+                    $homegoalsagainst[$i] = 0;
+                } else {
+                    $homegoalsagainst[$i] = $mdata['homegoalsagainst'];
+                }
 
                 //$xoopsDB->freeRecordSet($query);
 
@@ -640,10 +643,11 @@ if ($defaulttable == 1) {
                 //Goals scored in away
                 //
                 $mdata = $xoopsDB->fetchArray($query);
-                if(is_null($mdata['awaygoals']))
-                $awaygoals[$i] = 0;
-                else
-                $awaygoals[$i] = $mdata['awaygoals'];
+                if (is_null($mdata['awaygoals'])) {
+                    $awaygoals[$i] = 0;
+                } else {
+                    $awaygoals[$i] = $mdata['awaygoals'];
+                }
 
                 //$xoopsDB->freeRecordSet($query);
 
@@ -661,10 +665,11 @@ if ($defaulttable == 1) {
                 //Goals against in away
                 //
                 $mdata = $xoopsDB->fetchArray($query);
-                if(is_null($mdata['awaygoalsagainst']))
-                $awaygoalsagainst[$i] = 0;
-                else
-                $awaygoalsagainst[$i] = $mdata['awaygoalsagainst'];
+                if (is_null($mdata['awaygoalsagainst'])) {
+                    $awaygoalsagainst[$i] = 0;
+                } else {
+                    $awaygoalsagainst[$i] = $mdata['awaygoalsagainst'];
+                }
 
                 //$xoopsDB->freeRecordSet($query);
             }
@@ -722,11 +727,13 @@ if ($defaulttable == 1) {
                     //
                     //If goals are null
                     //
-                    if(is_null($row['homegoals']))
-                    $row['homegoals'] = 0;
+                    if (is_null($row['homegoals'])) {
+                        $row['homegoals'] = 0;
+                    }
 
-                    if(is_null($row['awaygoals']))
-                    $row['awaygoals'] = 0;
+                    if (is_null($row['awaygoals'])) {
+                        $row['awaygoals'] = 0;
+                    }
 
                     //
                     //Home win
@@ -775,11 +782,9 @@ if ($defaulttable == 1) {
                         $awaygoals[$i] = $awaygoals[$i] + $row['awaygoals'];
                         $awaygoalsagainst[$i] = $awaygoalsagainst[$i] + $row['homegoals'];
                     }
-
                 }
 
                 //$xoopsDB->freeRecordSet($query);
-
             }
 
             //
@@ -829,7 +834,6 @@ if ($defaulttable == 1) {
                 //Calculates goal difference
                 //
                 $diff[$i] = ($homegoals[$i] + $awaygoals[$i]) - ($homegoalsagainst[$i] + $awaygoalsagainst[$i]);
-
             } elseif ($defaulttable == 2) {
                 $wins[$i] = ($homewins[$i]+$awaywins[$i]);
                 $draws[$i] = ($homedraws[$i]+$awaydraws[$i]);
@@ -885,7 +889,6 @@ if ($defaulttable == 1) {
                 }
 
                 $av_diff[$i] = $av_for[$i] - $av_against[$i];
-
             }
 
             ++$i;
@@ -1059,219 +1062,256 @@ if ($defaulttable == 1) {
                     </td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
-                    if($sort == 'pts')
-                    echo'<b>';
+                    if ($sort == 'pts') {
+                        echo'<b>';
+                    }
 
                     echo"$points[$i]";
 
-                    if($sort == 'pts')
-                    echo'</b>';
+                    if ($sort == 'pts') {
+                        echo'</b>';
+                    }
                     echo"</td>
 
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tw')
-                    echo'<b>';
+                    if ($sort == 'tw') {
+                        echo'<b>';
+                    }
 
                     echo"$wins[$i]";
 
-                    if($sort == 'tw')
-                    echo'</b>';
+                    if ($sort == 'tw') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'td')
-                    echo'<b>';
+                    if ($sort == 'td') {
+                        echo'<b>';
+                    }
 
                     echo"$draws[$i]";
 
-                    if($sort == 'td')
-                    echo'</b>';
+                    if ($sort == 'td') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tl')
-                    echo'<b>';
+                    if ($sort == 'tl') {
+                        echo'<b>';
+                    }
 
                     echo"$loses[$i]";
 
-                    if($sort == 'tl')
-                    echo'</b>';
+                    if ($sort == 'tl') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tf')
-                    echo'<b>';
+                    if ($sort == 'tf') {
+                        echo'<b>';
+                    }
 
                     echo"$goals_for[$i]";
 
-                    if($sort == 'tf')
-                    echo'</b>';
+                    if ($sort == 'tf') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'ta')
-                    echo'<b>';
+                    if ($sort == 'ta') {
+                        echo'<b>';
+                    }
 
                     echo"$goals_against[$i]";
 
-                    if($sort == 'ta')
-                    echo'</b>';
+                    if ($sort == 'ta') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'hw')
-                    echo'<b>';
+                    if ($sort == 'hw') {
+                        echo'<b>';
+                    }
 
                     echo"$homewins[$i]";
 
-                    if($sort == 'hw')
-                    echo'</b>';
+                    if ($sort == 'hw') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'hd')
-                    echo'<b>';
+                    if ($sort == 'hd') {
+                        echo'<b>';
+                    }
 
                     echo"$homedraws[$i]";
 
-                    if($sort == 'hd')
-                    echo'</b>';
+                    if ($sort == 'hd') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'hl')
-                    echo'<b>';
+                    if ($sort == 'hl') {
+                        echo'<b>';
+                    }
 
                     echo"$homeloses[$i]";
 
-                    if($sort == 'hl')
-                    echo'</b>';
+                    if ($sort == 'hl') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'hf')
-                    echo'<b>';
+                    if ($sort == 'hf') {
+                        echo'<b>';
+                    }
 
                     echo"$homegoals[$i]";
 
-                    if($sort == 'hf')
-                    echo'</b>';
+                    if ($sort == 'hf') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'ha')
-                    echo'<b>';
+                    if ($sort == 'ha') {
+                        echo'<b>';
+                    }
 
                     echo"$homegoalsagainst[$i]";
 
-                    if($sort == 'ha')
-                    echo'</b>';
+                    if ($sort == 'ha') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'aw')
-                    echo'<b>';
+                    if ($sort == 'aw') {
+                        echo'<b>';
+                    }
 
                     echo"$awaywins[$i]";
 
-                    if($sort == 'aw')
-                    echo'</b>';
+                    if ($sort == 'aw') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'ad')
-                    echo'<b>';
+                    if ($sort == 'ad') {
+                        echo'<b>';
+                    }
 
                     echo"$awaydraws[$i]";
 
-                    if($sort == 'ad')
-                    echo'</b>';
+                    if ($sort == 'ad') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'al')
-                    echo'<b>';
+                    if ($sort == 'al') {
+                        echo'<b>';
+                    }
 
                     echo"$awayloses[$i]";
 
-                    if($sort == 'al')
-                    echo'</b>';
+                    if ($sort == 'al') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'af')
-                    echo'<b>';
+                    if ($sort == 'af') {
+                        echo'<b>';
+                    }
 
                     echo"$awaygoals[$i]";
 
-                    if($sort == 'af')
-                    echo'</b>';
+                    if ($sort == 'af') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'aa')
-                    echo'<b>';
+                    if ($sort == 'aa') {
+                        echo'<b>';
+                    }
 
                     echo"$awaygoalsagainst[$i]";
 
-                    if($sort == 'aa')
-                    echo'</b>';
+                    if ($sort == 'aa') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
-                    if($sort == 'd')
-                    echo'<b>';
+                    if ($sort == 'd') {
+                        echo'<b>';
+                    }
 
-                    if($diff[$i] > 0)
-                    echo'+';
+                    if ($diff[$i] > 0) {
+                        echo'+';
+                    }
 
                     echo"$diff[$i]";
 
-                    if($sort == 'd')
-                    echo'</b>';
+                    if ($sort == 'd') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                    if($sort == 'pld')
-                    echo'<b>';
+                    if ($sort == 'pld') {
+                        echo'<b>';
+                    }
 
                     echo"$pld[$i]";
 
-                    if($sort == 'pld')
-                    echo'</b>';
+                    if ($sort == 'pld') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
@@ -1322,84 +1362,98 @@ if ($defaulttable == 1) {
                     </td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
-                    if($sort == 'pts')
-                    echo'<b>';
+                    if ($sort == 'pts') {
+                        echo'<b>';
+                    }
 
                     echo"$points[$i]";
 
-                    if($sort == 'pts')
-                    echo'</b>';
+                    if ($sort == 'pts') {
+                        echo'</b>';
+                    }
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tw')
-                    echo'<b>';
+                    if ($sort == 'tw') {
+                        echo'<b>';
+                    }
 
                     echo"$wins[$i]";
 
-                    if($sort == 'tw')
-                    echo'</b>';
+                    if ($sort == 'tw') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'td')
-                    echo'<b>';
+                    if ($sort == 'td') {
+                        echo'<b>';
+                    }
 
                     echo"$draws[$i]";
 
-                    if($sort == 'td')
-                    echo'</b>';
+                    if ($sort == 'td') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tl')
-                    echo'<b>';
+                    if ($sort == 'tl') {
+                        echo'<b>';
+                    }
 
                     echo"$loses[$i]";
 
-                    if($sort == 'tl')
-                    echo'</b>';
+                    if ($sort == 'tl') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'tf')
-                    echo'<b>';
+                    if ($sort == 'tf') {
+                        echo'<b>';
+                    }
 
                     echo"$goals_for[$i]";
 
-                    if($sort == 'tf')
-                    echo'</b>';
+                    if ($sort == 'tf') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                    if($sort == 'ta')
-                    echo'<b>';
+                    if ($sort == 'ta') {
+                        echo'<b>';
+                    }
 
                     echo"$goals_against[$i]";
 
-                    if($sort == 'ta')
-                    echo'</b>';
+                    if ($sort == 'ta') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                    if($sort == 'pld')
-                    echo'<b>';
+                    if ($sort == 'pld') {
+                        echo'<b>';
+                    }
 
                     echo"$pld[$i]";
 
-                    if($sort == 'pld')
-                    echo'</b>';
+                    if ($sort == 'pld') {
+                        echo'</b>';
+                    }
 
                     echo"</td>
 
@@ -1501,112 +1555,131 @@ if ($defaulttable == 1) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                if($sort == 'pts')
-                echo'<b>';
+                if ($sort == 'pts') {
+                    echo'<b>';
+                }
 
                 echo"$points[$i]";
 
-                if($sort == 'pts')
-                echo'</b>';
+                if ($sort == 'pts') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'a_pts')
-                echo'<b>';
+                if ($sort == 'a_pts') {
+                    echo'<b>';
+                }
 
                 echo"$av_points[$i]";
 
-                if($sort == 'a_pts')
-                echo'</b>';
+                if ($sort == 'a_pts') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'w')
-                echo'<b>';
+                if ($sort == 'w') {
+                    echo'<b>';
+                }
 
                 echo"$win_pros[$i]";
 
-                if($sort == 'w')
-                echo'</b>';
+                if ($sort == 'w') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'd')
-                echo'<b>';
+                if ($sort == 'd') {
+                    echo'<b>';
+                }
 
                 echo"$draw_pros[$i]";
 
-                if($sort == 'd')
-                echo'</b>';
+                if ($sort == 'd') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'l')
-                echo'<b>';
+                if ($sort == 'l') {
+                    echo'<b>';
+                }
 
                 echo"$loss_pros[$i]";
 
-                if($sort == 'l')
-                echo'</b>';
+                if ($sort == 'l') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'af')
-                echo'<b>';
+                if ($sort == 'af') {
+                    echo'<b>';
+                }
 
                 echo"$av_for[$i]";
 
-                if($sort == 'af')
-                echo'</b>';
+                if ($sort == 'af') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'aa')
-                echo'<b>';
+                if ($sort == 'aa') {
+                    echo'<b>';
+                }
 
                 echo"$av_against[$i]";
 
-                if($sort == 'aa')
-                echo'</b>';
+                if ($sort == 'aa') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                if($sort == 'agd')
-                echo'<b>';
+                if ($sort == 'agd') {
+                    echo'<b>';
+                }
 
-                if($av_diff[$i] >= 0)
-                echo'+';
+                if ($av_diff[$i] >= 0) {
+                    echo'+';
+                }
 
                 echo"$av_temp";
 
-                if($sort == 'agd')
-                echo'</b>';
+                if ($sort == 'agd') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                if($sort == 'pld')
-                echo'<b>';
+                if ($sort == 'pld') {
+                    echo'<b>';
+                }
 
                 echo"$pld[$i]";
 
-                if($sort == 'pld')
-                echo'</b>';
+                if ($sort == 'pld') {
+                    echo'</b>';
+                }
 
                 echo"</td>
 
@@ -1616,7 +1689,6 @@ if ($defaulttable == 1) {
                 ++$i;
                 ++$j;
             }
-
         }
 
         ?>
@@ -1628,25 +1700,24 @@ if ($defaulttable == 1) {
         //Check if match calendar want to be shown
         //
         if ($defaultshow != 3) {
-        ?>
+            ?>
 
         <!-- Sitten ottelukalenteri -->
                <div height="15" align="left" valign="top">
-               <h6><?php echo _LS_LASTUPDT;?><?= "$last_update" ?></h6>
+               <h6><?php echo _LS_LASTUPDT; ?><?= "$last_update" ?></h6>
                </div>
 
                 <?php
-                include 'notes.txt';
-        ?>
+                include 'notes.txt'; ?>
 
                 <div align="center" valign="top">
-        <h3><?php echo _LS_CALENDARFIXED;?></h3>
+        <h3><?php echo _LS_CALENDARFIXED; ?></h3>
         </div>
 
                 <div  align="center" width="100%">
                 <table width="100%"><tr>
-                <td align="center" width="50%" bgcolor="#E6E6FF"><?php echo _LS_MATPLD;?></td>
-                <td align="center" width="50%" bgcolor="#E6E6FF"><?php echo _LS_MATUPC;?></td>
+                <td align="center" width="50%" bgcolor="#E6E6FF"><?php echo _LS_MATPLD; ?></td>
+                <td align="center" width="50%" bgcolor="#E6E6FF"><?php echo _LS_MATUPC; ?></td>
                 </tr></table>
                 </div>
 
@@ -1668,14 +1739,13 @@ if ($defaulttable == 1) {
             $print_date = '%b %D %Y';
         }
 
-        //
-        //Check which matche want to be printed
-        //
-        //All
-        //
-        if ($defaultshow == 1) {
-
-            $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
+            //
+            //Check which matche want to be printed
+            //
+            //All
+            //
+            if ($defaultshow == 1) {
+                $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
             LM.LeagueMatchAwayGoals AS goals_away,
@@ -1688,12 +1758,12 @@ if ($defaulttable == 1) {
             LeagueMatchSeasonID LIKE '$defaultseasonid'
             ORDER BY LM.LeagueMatchDate DESC")
             ;
-        }
-        //
-        //Own only
-        //
-        else {
-            $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
+            }
+            //
+            //Own only
+            //
+            else {
+                $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
             LM.LeagueMatchAwayGoals AS goals_away,
@@ -1707,28 +1777,27 @@ if ($defaulttable == 1) {
             (O.OpponentOwn = '1' OR OP.OpponentOwn = '1')
             ORDER BY LM.LeagueMatchDate DESC")
             ;
-        }
+            }
 
-        if ($xoopsDB->getRowsNum($get_matches) < 1) {
-            echo "&nbsp;<b>"._LS_NOMATCHES."</b>";
-        } else {
+            if ($xoopsDB->getRowsNum($get_matches) < 1) {
+                echo "&nbsp;<b>"._LS_NOMATCHES."</b>";
+            } else {
+                $i = 0;
+                $temp = '';
 
-            $i = 0;
-            $temp = '';
-
-            while ($data = $xoopsDB->fetchArray($get_matches)) {
-                if ($i == 0) {
-                    echo"
+                while ($data = $xoopsDB->fetchArray($get_matches)) {
+                    if ($i == 0) {
+                        echo"
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
                     <u><b>$data[date]</b></u>
                     </td>
                     </tr>
                     ";
-                }
+                    }
 
-                if ($data['date'] != "$temp" && $i > 0) {
-                    echo"
+                    if ($data['date'] != "$temp" && $i > 0) {
+                        echo"
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
                     <br>
@@ -1736,33 +1805,32 @@ if ($defaulttable == 1) {
                     </td>
                     </tr>
                     ";
-                }
+                    }
 
-                echo "
+                    echo "
                 <tr>
                 <td style=\"padding-left:5px;\" align=\"left\" valign=\"top\">
                 $data[hometeam] - $data[awayteam]
                 </td>
                 <td align=\"left\" valign=\"top\">";
 
-                if(!is_null($data['goals_home']))
-                echo"$data[goals_home]-$data[goals_away]";
-                else
-                echo'&nbsp;';
+                    if (!is_null($data['goals_home'])) {
+                        echo"$data[goals_home]-$data[goals_away]";
+                    } else {
+                        echo'&nbsp;';
+                    }
 
-                echo"
+                    echo"
                 </td>
                 </tr>";
 
-                $temp = "$data[date]";
+                    $temp = "$data[date]";
 
-                ++$i;
+                    ++$i;
+                }
             }
-        }
 
-        //$xoopsDB->freeRecordSet($get_matches);
-
-        ?>
+            //$xoopsDB->freeRecordSet($get_matches); ?>
 
         </table>
               </td>
@@ -1782,13 +1850,13 @@ if ($defaulttable == 1) {
             $print_date = '%b %D %Y';
         }
 
-        //
-        //Check which matche want to be printed
-        //
-        //All
-        //
-        if ($defaultshow == 1) {
-            $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
+            //
+            //Check which matche want to be printed
+            //
+            //All
+            //
+            if ($defaultshow == 1) {
+                $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
             LM.LeagueMatchAwayGoals AS goals_away,
@@ -1801,12 +1869,12 @@ if ($defaulttable == 1) {
             LeagueMatchSeasonID LIKE '$defaultseasonid'
             ORDER BY LM.LeagueMatchDate ASC")
             ;
-        }
-        //
-        //Own only
-        //
-        else {
-            $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
+            }
+            //
+            //Own only
+            //
+            else {
+                $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
             LM.LeagueMatchAwayGoals AS goals_away,
@@ -1820,28 +1888,27 @@ if ($defaulttable == 1) {
             (O.OpponentOwn = '1' OR OP.OpponentOwn = '1')
             ORDER BY LM.LeagueMatchDate ASC")
             ;
-        }
+            }
 
-        if ($xoopsDB->getRowsNum($get_matches) < 1) {
-            echo "&nbsp;<b>"._LS_NOMATCHES."</b>";
-        } else {
+            if ($xoopsDB->getRowsNum($get_matches) < 1) {
+                echo "&nbsp;<b>"._LS_NOMATCHES."</b>";
+            } else {
+                $i = 0;
+                $temp = '';
 
-            $i = 0;
-            $temp = '';
-
-            while ($data = $xoopsDB->fetchArray($get_matches)) {
-                if ($i == 0) {
-                    echo"
+                while ($data = $xoopsDB->fetchArray($get_matches)) {
+                    if ($i == 0) {
+                        echo"
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
                     <u><b>$data[date]</b></u>
                     </td>
                     </tr>
                     ";
-                }
+                    }
 
-                if ($data['date'] != "$temp" && $i > 0) {
-                    echo"
+                    if ($data['date'] != "$temp" && $i > 0) {
+                        echo"
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
                     <br>
@@ -1849,31 +1916,32 @@ if ($defaulttable == 1) {
                     </td>
                     </tr>
                     ";
-                }
+                    }
 
-                echo "
+                    echo "
                 <tr>
                 <td style=\"padding-left:5px;\" align=\"left\" valign=\"top\">
                 $data[hometeam] - $data[awayteam]
                 </td>
                 <td align=\"left\" valign=\"top\">";
 
-                if(!is_null($data['goals_home']))
-                echo"$data[goals_home]-$data[goals_away]";
-                else
-                echo'&nbsp;';
+                    if (!is_null($data['goals_home'])) {
+                        echo"$data[goals_home]-$data[goals_away]";
+                    } else {
+                        echo'&nbsp;';
+                    }
 
-                echo"
+                    echo"
                 </td>
                 </tr>";
 
-                $temp = "$data[date]";
+                    $temp = "$data[date]";
 
-                ++$i;
+                    ++$i;
+                }
             }
-        }
 
-        //$xoopsDB->freeRecordSet($get_matches);
+            //$xoopsDB->freeRecordSet($get_matches);
 
         ?>
 

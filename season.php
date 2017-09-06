@@ -32,7 +32,7 @@ ralf57 http://www.madeinbanzi.it
 */
 
 include '../../mainfile.php';
-include (XOOPS_ROOT_PATH.'/header.php');
+include(XOOPS_ROOT_PATH.'/header.php');
 
 //
 //Preferences
@@ -58,16 +58,17 @@ $tb_width = $xoopsModuleConfig['tablewidth'];
 //Check if there are session variables registered
 //
 //if(!session_is_registered('defaultseasonid'))
-    if ( !isset( $_SESSION['defaultseasonid'] ) ) {
-    $_SESSION['defaultseasonid'] = $d_seasonid;
-}
+    if (!isset($_SESSION['defaultseasonid'])) {
+        $_SESSION['defaultseasonid'] = $d_seasonid;
+    }
 $defaultseasonid = intval($_SESSION['defaultseasonid']);
 
 //
 //If All is chosen from season, lets set default value for %
 //
-if($defaultseasonid == 0)
+if ($defaultseasonid == 0) {
     $defaultseasonid = '%';
+}
 
 //
 //Gets seasons and match types for dropdowns
@@ -122,8 +123,9 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
         if ($data['SeasonID'] == $defaultseasonid) {
             echo "<option value=\"$data[SeasonID]\" SELECTED>$data[SeasonName]</option>\n";
             $draw_line = explode(",", $data['SeasonLine']);
-        } else
+        } else {
             echo "<option value=\"$data[SeasonID]\">$data[SeasonName]</option>\n";
+        }
     }
     //$xoopsDB->freeRecordSet($get_seasons);
 
@@ -221,13 +223,13 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
         //
         //Calculates percents and averages
         //
-        $home_win_percent = round(100*($home_wins/$played),2);
-        $away_win_percent = round(100*($away_wins/$played),2);
-        $draw_percent = round(100*($draws/$played),2);
+        $home_win_percent = round(100*($home_wins/$played), 2);
+        $away_win_percent = round(100*($away_wins/$played), 2);
+        $draw_percent = round(100*($draws/$played), 2);
 
-        $home_goal_average = round(($home_goals/$played),2);
-        $away_goal_average = round(($away_goals/$played),2);
-        $goal_average = round(($goals/$played),2);
+        $home_goal_average = round(($home_goals/$played), 2);
+        $away_goal_average = round(($away_goals/$played), 2);
+        $goal_average = round(($goals/$played), 2);
 
         $home_win_percent_ = number_format($home_win_percent, 2, '.', '');
         $away_win_percent_ = number_format($away_win_percent, 2, '.', '');
@@ -393,10 +395,11 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
     //
     $i = 0;
     while ($data = $xoopsDB->fetchArray($maxhomewin)) {
-        if($i = 0)
+        if ($i = 0) {
             $temp_color = $bg1;
-        else
+        } else {
             $temp_color = $bg2;
+        }
 
         echo"
         <tr bgcolor=\"$temp_color\">
@@ -480,10 +483,11 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
     //
     $i = 0;
     while ($data = $xoopsDB->fetchArray($maxawaywin)) {
-        if($i = 0)
+        if ($i = 0) {
             $temp_color = $bg1;
-        else
+        } else {
             $temp_color = $bg2;
+        }
 
         echo"
         <tr bgcolor=\"$temp_color\">
@@ -566,10 +570,11 @@ $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonna
     //
     $i = 0;
     while ($data = $xoopsDB->fetchArray($maxgoals)) {
-        if($i = 0)
+        if ($i = 0) {
             $temp_color = $bg1;
-        else
+        } else {
             $temp_color = $bg2;
+        }
 
         echo"
         <tr bgcolor=\"$temp_color\">

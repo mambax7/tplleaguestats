@@ -33,9 +33,9 @@ ralf57 http://www.madeinbanzi.it
 include_once 'admin_header.php';
 include '../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 if (isset($_POST['season_select'])) {
-    $season = explode("____",$_POST['season_select']);
+    $season = explode("____", $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
-    $season = array ($_POST['seasonid'], $_POST['seasonname']);
+    $season = array($_POST['seasonid'], $_POST['seasonname']);
 } elseif (!isset($_SESSION['season_id'])) {
     $sql = "SELECT SeasonID, SeasonName FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonDefault=1";
     $seasonname = $xoopsDB->query($sql);
@@ -72,7 +72,7 @@ if ($xoopsDB->getRowsNum($query) < 2) {
 //    echo "<br><br>"._AM_ADDTWOTEAMS."<br><br>
 //      <a href=\"opponents.php\">" ._AM_ADDTEAMS. "</a>";
 //    exit();
-    redirect_header("opponents.php",1,_AM_ADDTWOTEAMS);
+    redirect_header("opponents.php", 1, _AM_ADDTWOTEAMS);
 }
 
 if ($add_submit) {
@@ -180,9 +180,7 @@ if ($add_submit) {
                         LeagueMatchCreated = ".time()."
                         ");
                 }
-
             }
-
         }
         ++$i;
     }
@@ -401,11 +399,11 @@ if ($add_submit) {
         <form method="post" action="<?php echo "$PHP_SELF"?>">
         <?php
         if (!isset($action)) {
-        ?>
-        <h3><?php echo _AM_ADDMATCH;?></h3>
-        <?php echo _AM_ADDMATCHNOTE;?><br><br>
+            ?>
+        <h3><?php echo _AM_ADDMATCH; ?></h3>
+        <?php echo _AM_ADDMATCHNOTE; ?><br><br>
 
-        <?php echo _AM_DATE;?>
+        <?php echo _AM_DATE; ?>
         <select name="day">
         <?php
         //print the days
@@ -413,12 +411,12 @@ if ($add_submit) {
             if ($i<10) {
                 $i = "0".$i;
             }
-            if($i == "01")
-            echo "<option value=\"$i\" SELECTED>$i</option>\n";
-            else
-            echo "<option value=\"$i\">$i</option>\n";
-        }
-        ?>
+            if ($i == "01") {
+                echo "<option value=\"$i\" SELECTED>$i</option>\n";
+            } else {
+                echo "<option value=\"$i\">$i</option>\n";
+            }
+        } ?>
         </select>&nbsp;/&nbsp;
 
         <select name="month">
@@ -428,12 +426,12 @@ if ($add_submit) {
             if ($i<10) {
                 $i = "0".$i;
             }
-            if($i == "01")
-            echo "<option value=\"$i\" SELECTED>$i</option>\n";
-            else
-            echo "<option value=\"$i\">$i</option>\n";
-        }
-        ?>
+            if ($i == "01") {
+                echo "<option value=\"$i\" SELECTED>$i</option>\n";
+            } else {
+                echo "<option value=\"$i\">$i</option>\n";
+            }
+        } ?>
         </select>&nbsp;/&nbsp;
 
         <select name="year">
@@ -443,22 +441,22 @@ if ($add_submit) {
             if ($i<10) {
                 $i = "0".$i;
             }
-            if($i == "2003")
-            echo "<option value=\"$i\" SELECTED>$i</option>\n";
-            else
-            echo "<option value=\"$i\">$i</option>\n";
-        }
-        ?>
+            if ($i == "2003") {
+                echo "<option value=\"$i\" SELECTED>$i</option>\n";
+            } else {
+                echo "<option value=\"$i\">$i</option>\n";
+            }
+        } ?>
         </select><br><br>
-        <?php echo _AM_ADDMATCHNOTE2;?><br><br>
+        <?php echo _AM_ADDMATCHNOTE2; ?><br><br>
 
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
 
-        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM;?></b></td>
-        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM;?></b></td>
-        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME;?></b></td>
-        <td align="center" valign="middle"><b><b><?php echo _AM_GOALSAWAY;?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM; ?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM; ?></b></td>
+        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME; ?></b></td>
+        <td align="center" valign="middle"><b><b><?php echo _AM_GOALSAWAY; ?></b></td>
 
         </tr>
 
@@ -472,47 +470,48 @@ if ($add_submit) {
         FROM ".$xoopsDB->prefix("tplls_opponents")."
         ORDER BY OpponentName");
 
-        //
-        //Prints 15 forms
-        //
-        $i=0;
-
-        while ($i < 15) {
             //
-            //query back to row 0 if not the first time in the loop
+            //Prints 15 forms
             //
-            if($i>0)
-            mysql_data_seek($get_opponents, 0);
+            $i=0;
 
-            echo'
+            while ($i < 15) {
+                //
+                //query back to row 0 if not the first time in the loop
+                //
+                if ($i>0) {
+                    mysql_data_seek($get_opponents, 0);
+                }
+
+                echo'
             <tr>
             <td align="left" valign="middle">
             ';
 
-            echo"<select name=\"home[$i]\">";
+                echo"<select name=\"home[$i]\">";
 
-            while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                echo"<option value=\"$data[id]\">$data[name]</option>\n";
-            }
+                while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                    echo"<option value=\"$data[id]\">$data[name]</option>\n";
+                }
 
-            echo'
+                echo'
             </select>
             </td>
             <td align="left" valign="middle">
             ';
 
-            //
-            //Back to line 0in the query
-            //
-            mysql_data_seek($get_opponents, 0);
+                //
+                //Back to line 0in the query
+                //
+                mysql_data_seek($get_opponents, 0);
 
-            echo"<select name=\"away[$i]\">";
+                echo"<select name=\"away[$i]\">";
 
-            while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                echo"<option value=\"$data[id]\">$data[name]</option>\n";
-            }
+                while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                    echo"<option value=\"$data[id]\">$data[name]</option>\n";
+                }
 
-            echo"
+                echo"
             </select>
             </td>
             <td align=\"center\" valign=\"middle\"><input type=\"text\" name=\"home_goals[$i]\" size=\"2\"></td>
@@ -521,21 +520,19 @@ if ($add_submit) {
             </tr>
             ";
 
-            ++$i;
-        }
-
-        ?>
+                ++$i;
+            } ?>
 
         </table><br><br>
         <input type="hidden" name="seasonid" value="<?php echo $seasonid; ?>">
         <input type="hidden" name="seasonname" value="<?php echo $seasonname; ?>">
-        <input type="submit" name="add_submit" value="<?php echo _AM_ADDMATCHES;?>">
+        <input type="submit" name="add_submit" value="<?php echo _AM_ADDMATCHES; ?>">
         </form>
         <?php
         } elseif ($action == 'modifyall') {
             $date = $_REQUEST['date'];
 
-        $get_matches = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+            $get_matches = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
@@ -550,7 +547,7 @@ if ($add_submit) {
             //
             //query to get date
             //
-        $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+            $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year
         FROM ".$xoopsDB->prefix("tplls_leaguematches")." LM
@@ -563,23 +560,21 @@ if ($add_submit) {
 
             //$xoopsDB->freeRecordSet($get_match);
 
-        $get_opponents = $xoopsDB->query("SELECT OpponentID AS id,
+            $get_opponents = $xoopsDB->query("SELECT OpponentID AS id,
         OpponentName AS name
         FROM ".$xoopsDB->prefix("tplls_opponents")."
         ORDER BY OpponentName
         ")
-            ;
-
-        ?>
+            ; ?>
 
         <form method="post" action="<?php echo "$PHP_SELF" ?>">
-        <h3><?php echo _AM_MODMATCHES;?></h3>
+        <h3><?php echo _AM_MODMATCHES; ?></h3>
 
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
 
             <tr>
                 <td align="left" valign="top">
-                <?php echo _AM_DATETIME;?>
+                <?php echo _AM_DATETIME; ?>
                 </td>
                 <td align="left" valign="top">
 
@@ -590,12 +585,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($datedata['dayofmonth'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($datedata['dayofmonth'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
                 </select>&nbsp;/&nbsp;
 
                 <select name="month">
@@ -605,12 +600,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($datedata['month'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($datedata['month'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
                 </select>&nbsp;/&nbsp;
 
                 <select name="year">
@@ -620,12 +615,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($datedata['year'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($datedata['year'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
             </select>
             </td>
         </tr>
@@ -635,10 +630,10 @@ if ($add_submit) {
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
 
-        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM;?></b></td>
-        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM;?></b></td>
-        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME;?></b></td>
-        <td align="center" valign="middle"><b><?php echo _AM_GOALSAWAY;?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM; ?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM; ?></b></td>
+        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME; ?></b></td>
+        <td align="center" valign="middle"><b><?php echo _AM_GOALSAWAY; ?></b></td>
 
         </tr>
 
@@ -648,44 +643,47 @@ if ($add_submit) {
         //Lets get all the matches from selected date to the form
         //
         $i = 0;
-        while ($matchdata = $xoopsDB->fetchArray($get_matches)) {
-            //
-            //Back to line 0 in the query if not the first loop
-            //
-            if($i>0)
-            mysql_data_seek($get_opponents, 0);
+            while ($matchdata = $xoopsDB->fetchArray($get_matches)) {
+                //
+                //Back to line 0 in the query if not the first loop
+                //
+                if ($i>0) {
+                    mysql_data_seek($get_opponents, 0);
+                }
 
-            echo'
+                echo'
             <tr>
             <td align="left" valign="middle">
             ';
 
-            echo"<select name=\"home[$i]\">";
+                echo"<select name=\"home[$i]\">";
 
-            while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                if($matchdata['homeid'] == $data['id'])
-                echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-            }
+                while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                    if ($matchdata['homeid'] == $data['id']) {
+                        echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+                    }
+                }
 
-            echo'
+                echo'
             </select>
             </td>
             <td align="left" valign="middle">
             ';
 
-            //
-            //Back to line 0 in the query
-            //
-            mysql_data_seek($get_opponents, 0);
+                //
+                //Back to line 0 in the query
+                //
+                mysql_data_seek($get_opponents, 0);
 
-            echo"<select name=\"away[$i]\">";
+                echo"<select name=\"away[$i]\">";
 
-            while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                if($matchdata['awayid'] == $data['id'])
-                echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-            }
+                while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                    if ($matchdata['awayid'] == $data['id']) {
+                        echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+                    }
+                }
 
-            echo"
+                echo"
             </select>
             </td>
             <td align=\"center\" valign=\"middle\"><input type=\"text\" name=\"home_goals[$i]\" size=\"2\" value=\"$matchdata[homegoals]\"></td>
@@ -694,24 +692,22 @@ if ($add_submit) {
             </tr>
             ";
 
-            ++$i;
-        }
-
-        ?>
+                ++$i;
+            } ?>
 
         </table>
 
-        <font color="red"><?php echo _AM_MODNOTICE1;?></font><br><br>
+        <font color="red"><?php echo _AM_MODNOTICE1; ?></font><br><br>
         <input type="hidden" name="qty" value="<?= $i ?>">
         <input type="hidden" name="seasonname" value="<?php echo $seasonname; ?>">
-        <br><input type="submit" name="modifyall_submit" value="<?php echo _AM_MODINPUT;?>">
+        <br><input type="submit" name="modifyall_submit" value="<?php echo _AM_MODINPUT; ?>">
         </form>
 
         <?php
         } elseif ($action == 'modify') {
             $id = intval($_REQUEST['id']);
 
-        $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+            $get_match = $xoopsDB->query("SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
@@ -733,17 +729,15 @@ if ($add_submit) {
 
             $matchdata = $xoopsDB->fetchArray($get_match);
 
-            //$xoopsDB->freeRecordSet($get_match);
-
-        ?>
+            //$xoopsDB->freeRecordSet($get_match); ?>
         <form method="post" action="<?php echo "$PHP_SELF"?>">
-        <h3><?php echo _AM_MODMATCH;?></h3>
+        <h3><?php echo _AM_MODMATCH; ?></h3>
 
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
 
             <tr>
                 <td align="left" valign="top">
-                <?php echo _AM_DATETIME;?>
+                <?php echo _AM_DATETIME; ?>
                 </td>
                 <td align="left" valign="top">
 
@@ -754,12 +748,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($matchdata['dayofmonth'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($matchdata['dayofmonth'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
                 </select>&nbsp;/&nbsp;
 
                 <select name="month">
@@ -769,12 +763,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($matchdata['month'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($matchdata['month'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
                 </select>&nbsp;/&nbsp;
 
                 <select name="year">
@@ -785,12 +779,12 @@ if ($add_submit) {
                     if ($i<10) {
                         $i = "0".$i;
                     }
-                    if($matchdata['year'] == $i)
-                    echo "<option value=\"$i\" SELECTED>$i</option>\n";
-                    else
-                    echo "<option value=\"$i\">$i</option>\n";
-                }
-                ?>
+                    if ($matchdata['year'] == $i) {
+                        echo "<option value=\"$i\" SELECTED>$i</option>\n";
+                    } else {
+                        echo "<option value=\"$i\">$i</option>\n";
+                    }
+                } ?>
             </select>
             </td>
         </tr>
@@ -800,10 +794,10 @@ if ($add_submit) {
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
 
-        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM;?></b></td>
-        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM;?></b></td>
-        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME;?></b></td>
-        <td align="center" valign="middle"><b><?php echo _AM_GOALSAWAY;?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_HOMETEAM; ?></b></td>
+        <td align="left" valign="middle"><b><?php echo _AM_AWAYTEAM; ?></b></td>
+        <td align="center" valign="middle"><b><?php echo _AM_GOALSHOME; ?></b></td>
+        <td align="center" valign="middle"><b><?php echo _AM_GOALSAWAY; ?></b></td>
 
         </tr>
 
@@ -814,13 +808,12 @@ if ($add_submit) {
         <?php
 
         while ($data = $xoopsDB->fetchArray($get_opponents)) {
-            if($matchdata['homeid'] == $data['id'])
-            echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-            else
-            echo"<option value=\"$data[id]\">$data[name]</option>\n";
-        }
-
-        ?>
+            if ($matchdata['homeid'] == $data['id']) {
+                echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+            } else {
+                echo"<option value=\"$data[id]\">$data[name]</option>\n";
+            }
+        } ?>
         </select>
         </td>
         <td align="left" valign="middle">
@@ -830,14 +823,13 @@ if ($add_submit) {
 
         mysql_data_seek($get_opponents, 0);
 
-        while ($data = $xoopsDB->fetchArray($get_opponents)) {
-            if($matchdata['awayid'] == $data['id'])
-            echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-            else
-            echo"<option value=\"$data[id]\">$data[name]</option>\n";
-        }
-
-        ?>
+            while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                if ($matchdata['awayid'] == $data['id']) {
+                    echo"<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+                } else {
+                    echo"<option value=\"$data[id]\">$data[name]</option>\n";
+                }
+            } ?>
         </select>
         </td>
         <td align="center" valign="middle"><input type="text" name="home_goals" size="2" value="<?= $matchdata['homegoals'] ?>"></td>
@@ -850,11 +842,11 @@ if ($add_submit) {
         <input type="hidden" name="mid" value="<?= $id ?>">
         <input type="hidden" name="homeid" value="<?= $matchdata['awayid'] ?>">
         <input type="hidden" name="awayid" value="<?= $matchdata['homeid'] ?>">
-        <br><input type="submit" name="modify_submit" value="<?php echo _AM_MODINPUT2;?>">
+        <br><input type="submit" name="modify_submit" value="<?php echo _AM_MODINPUT2; ?>">
         <input type="hidden" name="seasonid" value="<?php echo $seasonid; ?>">
         <input type="hidden" name="seasonname" value="<?php echo $seasonname; ?>">
         <br><br><br><br><br>
-        <input type="submit" name="delete_submit" value="<?php echo _AM_DELINPUT;?>">
+        <input type="submit" name="delete_submit" value="<?php echo _AM_DELINPUT; ?>">
         </form>
 
         <?php
@@ -916,10 +908,11 @@ if ($add_submit) {
                 </td>
                 <td align=\"right\" valign=\"top\" width=\"50\">";
 
-                if(!is_null($data['goals_home']))
-                echo"$data[goals_home]-$data[goals_away]";
-                else
-                echo'&nbsp;';
+                if (!is_null($data['goals_home'])) {
+                    echo"$data[goals_home]-$data[goals_away]";
+                } else {
+                    echo'&nbsp;';
+                }
 
                 echo"
                 </td>

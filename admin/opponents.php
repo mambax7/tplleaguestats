@@ -34,9 +34,9 @@ include_once 'admin_header.php';
 include '../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
 if (isset($_POST['season_select'])) {
-    $season = explode("____",$_POST['season_select']);
+    $season = explode("____", $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
-    $season = array (intval($_POST['seasonid']), $_POST['seasonname']);
+    $season = array(intval($_POST['seasonid']), $_POST['seasonname']);
 } elseif (!isset($_SESSION['season_id'])) {
     $sql = "SELECT SeasonID, SeasonName FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonDefault=1";
     $seasonname = $xoopsDB->query($sql);
@@ -199,34 +199,33 @@ elseif ($d_points_modify) {
         <td align="left" valign="top">
         <?php
         if (!isset($action)) {
-        ?>
+            ?>
         <form method="post" action="<?php echo "$PHP_SELF"?>">
-        <h3><?php echo _AM_ADDNEWTEAM;?></h3>
+        <h3><?php echo _AM_ADDNEWTEAM; ?></h3>
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_TEAMNAME;?>
+            <?php echo _AM_TEAMNAME; ?>
             </td>
             <td align="left" valign="top">
             <input type="text" name="opponent">
             </td>
         </tr>
         </table>
-        <input type="submit" name="add_submit" value="<?php echo _AM_ADDTEAM;?>">
+        <input type="submit" name="add_submit" value="<?php echo _AM_ADDTEAM; ?>">
         </form>
         <?php
         } elseif ($action == 'modify') {
             $opponentid = intval($_REQUEST['opponent']);
             $get_opponent = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_opponents")." WHERE OpponentID = $opponentid LIMIT 1");
-            $data = $xoopsDB->fetchArray($get_opponent);
-        ?>
+            $data = $xoopsDB->fetchArray($get_opponent); ?>
 
         <form method="post" action="<?php echo "$PHP_SELF"?>">
-        <h3><?php echo _AM_TEAMMODIFYDELETE;?></h3>
+        <h3><?php echo _AM_TEAMMODIFYDELETE; ?></h3>
         <table width="100%" cellspacing="3" cellpadding="3" border="0">
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_TEAMNAME;?>
+            <?php echo _AM_TEAMNAME; ?>
             </td>
             <td align="left" valign="top">
             <input type="text" name="opponent" value="<?php echo $data['OpponentName'] ?>">
@@ -236,27 +235,26 @@ elseif ($d_points_modify) {
 
         <tr>
             <td align="left" valign="top">
-            <?php echo _AM_TEAMISYOURS;?>
+            <?php echo _AM_TEAMISYOURS; ?>
             </td>
             <td align="left" valign="top">
             <?php
 
-            if($data['OpponentOwn'] == 1)
-            echo"<input type=\"checkbox\" name=\"own\" value=\"1\" CHECKED>\n";
-            else
-            echo"<input type=\"checkbox\" name=\"own\" value=\"1\">\n";
-
-            ?>
+            if ($data['OpponentOwn'] == 1) {
+                echo"<input type=\"checkbox\" name=\"own\" value=\"1\" CHECKED>\n";
+            } else {
+                echo"<input type=\"checkbox\" name=\"own\" value=\"1\">\n";
+            } ?>
             </td>
         </tr>
 
         </table>
-        <input type="submit" name="modify_submit" value="<?php echo _AM_TEAMMODIFY;?>"> <input type="submit" name="delete_submit" value="<?php echo _AM_TEAMDELETE;?>">
+        <input type="submit" name="modify_submit" value="<?php echo _AM_TEAMMODIFY; ?>"> <input type="submit" name="delete_submit" value="<?php echo _AM_TEAMDELETE; ?>">
         </form>
 
-        <a href="<?php echo "$PHP_SELF" ?>"><?php echo _AM_ADDNEWTEAM;?></a>
+        <a href="<?php echo "$PHP_SELF" ?>"><?php echo _AM_ADDNEWTEAM; ?></a>
 
-        <h3><?php echo _AM_DEDPTS;?></h3>
+        <h3><?php echo _AM_DEDPTS; ?></h3>
 
         <?php
 
@@ -266,14 +264,14 @@ elseif ($d_points_modify) {
 
         echo"<b>$seasonname</b><br><br>";
 
-        $get_deduct = $xoopsDB->query("SELECT points, id
+            $get_deduct = $xoopsDB->query("SELECT points, id
         FROM ".$xoopsDB->prefix("tplls_deductedpoints")."
         WHERE seasonid = $seasonid AND teamid = $opponentid
         LIMIT 1
         ");
 
-        if ($xoopsDB->getRowsNum($get_deduct) == 0) {
-            echo"
+            if ($xoopsDB->getRowsNum($get_deduct) == 0) {
+                echo"
             <form method=\"POST\" action=\"$PHP_SELF\">"
             ._AM_ADDDEDPTS.
             "<input type=\"text\" size=\"2\" name=\"d_points\">
@@ -282,10 +280,10 @@ elseif ($d_points_modify) {
             <input type=\"submit\" value="._AM_ADEDPTS." name=\"d_points_add\">
             </form>
             ";
-        } else {
-            $data = $xoopsDB->fetchArray($get_deduct);
+            } else {
+                $data = $xoopsDB->fetchArray($get_deduct);
 
-            echo"
+                echo"
             <form method=\"POST\" action=\"$PHP_SELF\">"
             ._AM_MODDEDPTS.
             "<input type=\"text\" size=\"2\" name=\"d_points\" value=\"$data[points]\">
@@ -293,11 +291,9 @@ elseif ($d_points_modify) {
             <input type=\"submit\" value="._AM_MDEDPTS." name=\"d_points_modify\">
             </form>
             ";
-        }
+            }
 
-        mysql_free_result($get_deduct);
-
-        ?>
+            mysql_free_result($get_deduct); ?>
 
         <?php
         mysql_free_result($get_opponent);
@@ -317,10 +313,11 @@ elseif ($d_points_modify) {
             while ($data = $xoopsDB->fetchArray($get_opponents)) {
                 echo "<a href=\"$PHP_SELF?action=modify&amp;opponent=$data[OpponentID]\">$data[OpponentName]</a>";
 
-                if($data['OpponentOwn'] == 1)
-                echo "&nbsp;"._AM_YT. "<br>\n";
-                else
-                echo"<br>\n";
+                if ($data['OpponentOwn'] == 1) {
+                    echo "&nbsp;"._AM_YT. "<br>\n";
+                } else {
+                    echo"<br>\n";
+                }
             }
         }
 
