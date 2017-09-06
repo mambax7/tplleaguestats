@@ -1,0 +1,4 @@
+Credits
+===============
+
+Originally developed by by mithrandir & Ralf57, based on TPL League Stats 1.03 (www.tpl-design.com/tplleaguestats)
