@@ -59,14 +59,14 @@ if (!isset($_SESSION['defaulthomeid'])) {
     $teams                     = $xoopsDB->fetchArray($teamresults);
     $_SESSION['defaultawayid'] = $teams['OpponentID'];
 }
-$defaulthomeid = intval($_SESSION['defaulthomeid']);
-$defaultawayid = intval($_SESSION['defaultawayid']);
+$defaulthomeid = (int)$_SESSION['defaulthomeid'];
+$defaultawayid = (int)$_SESSION['defaultawayid'];
 
 //if(!session_is_registered || !session_is_registered('defaultseasonid'))
 if (!isset($_SESSION) || !isset($_SESSION['defaultseasonid'])) {
     $_SESSION['defaultseasonid'] = $d_season_id;
 }
-$defaultseasonid = intval($_SESSION['defaultseasonid']);
+$defaultseasonid = (int)$_SESSION['defaultseasonid'];
 
 //
 //If All is chosen from season, lets set default value for %
@@ -109,8 +109,8 @@ $get_names = $xoopsDB->query('SELECT O.OpponentName AS homename,
 OP.OpponentName AS awayname
 FROM ' . $xoopsDB->prefix('tplls_opponents') . ' O, ' . $xoopsDB->prefix('tplls_opponents') . ' OP
 WHERE
-O.OpponentID = ' . intval($defaulthomeid) . ' AND
-OP.OpponentID = ' . intval($defaultawayid) . '
+O.OpponentID = ' . (int)$defaulthomeid . ' AND
+OP.OpponentID = ' . (int)$defaultawayid . '
 LIMIT 1
 ');
 
@@ -229,8 +229,8 @@ $namedata = $xoopsDB->fetchArray($get_names);
     FROM
     ' . $xoopsDB->prefix('tplls_leaguematches') . ' LM
     WHERE
-    (LM.LeagueMatchHomeID = ' . intval($defaulthomeid) . ' OR
-    LM.LeagueMatchAwayID = ' . intval($defaulthomeid) . ") AND
+    (LM.LeagueMatchHomeID = ' . (int)$defaulthomeid . ' OR
+    LM.LeagueMatchAwayID = ' . (int)$defaulthomeid . ") AND
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL
@@ -247,8 +247,8 @@ $namedata = $xoopsDB->fetchArray($get_names);
     FROM
     ' . $xoopsDB->prefix('tplls_leaguematches') . ' LM
     WHERE
-    (LM.LeagueMatchHomeID = ' . intval($defaultawayid) . ' OR
-    LM.LeagueMatchAwayID = ' . intval($defaultawayid) . ") AND
+    (LM.LeagueMatchHomeID = ' . (int)$defaultawayid . ' OR
+    LM.LeagueMatchAwayID = ' . (int)$defaultawayid . ") AND
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL
@@ -480,8 +480,8 @@ $namedata = $xoopsDB->fetchArray($get_names);
     LM.LeagueMatchSeasonID LIKE '$defaultseasonid' AND
     LM.LeagueMatchHomeGoals IS NOT NULL AND
     LM.LeagueMatchAwayGoals IS NOT NULL AND
-    ((LM.LeagueMatchHomeID = " . intval($defaulthomeid) . ' AND LM.LeagueMatchAwayID = ' . intval($defaultawayid) . ') OR
-    (LM.LeagueMatchHomeID = ' . intval($defaultawayid) . ' AND LM.LeagueMatchAwayID = ' . intval($defaulthomeid) . '))
+    ((LM.LeagueMatchHomeID = " . (int)$defaulthomeid . ' AND LM.LeagueMatchAwayID = ' . (int)$defaultawayid . ') OR
+    (LM.LeagueMatchHomeID = ' . (int)$defaultawayid . ' AND LM.LeagueMatchAwayID = ' . (int)$defaulthomeid . '))
     ORDER BY LM.LeagueMatchDate DESC
     ');
 
@@ -1221,7 +1221,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
     MAX(LeagueMatchAwayGoals - LeagueMatchHomeGoals) AS maxhomelost,
     MAX(LeagueMatchHomeGoals + LeagueMatchAwayGoals) AS maxhomeaggregate
     FROM ' . $xoopsDB->prefix('tplls_leaguematches') . '
-    WHERE LeagueMatchHomeID = ' . intval($defaulthomeid) . " AND
+    WHERE LeagueMatchHomeID = ' . (int)$defaulthomeid . " AND
     LeagueMatchSeasonID LIKE '$defaultseasonid'
     ");
 

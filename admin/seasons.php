@@ -33,7 +33,7 @@ ralf57 http://www.madeinbanzi.it
 include_once __DIR__ . '/admin_header.php';
 include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
-$seasonid   = isset($_GET['season_id']) ? intval($_GET['season_id']) : 0;
+$seasonid   = isset($_GET['season_id']) ? (int)$_GET['season_id'] : 0;
 $seasonname = isset($_GET['season_name']) ? $_GET['season_name'] : '';
 
 $PHP_SELF     = $_SERVER['PHP_SELF'];
@@ -75,8 +75,8 @@ if ($add_submit) {
     $name      = $xoopsDB->quoteString(trim($_POST['name']));
     $drawline  = trim($_POST['drawline']);
     $publish   = $_POST['publish'];
-    $seasonid  = intval($_POST['seasonid']);
-    $defseason = intval($_POST['defseason']);
+    $seasonid  = (int)$_POST['seasonid'];
+    $defseason = (int)$_POST['defseason'];
 
     //
     //If published is checked
@@ -106,7 +106,7 @@ if ($add_submit) {
 
     header("Location: $HTTP_REFERER");
 } elseif ($delete_submit) {
-    $seasonid = intval($_POST['seasonid']);
+    $seasonid = (int)$_POST['seasonid'];
 
     //
     //Query to check if there are already matches in the season->can't delete
@@ -161,7 +161,7 @@ include __DIR__ . '/head.php';
                     </form>
                     <?php
                 } elseif ($action == 'modify') {
-                    $seasonid   = intval($_REQUEST['season']);
+                    $seasonid   = (int)$_REQUEST['season'];
                     $get_season = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonID = '$seasonid' LIMIT 1");
                     $data       = $xoopsDB->fetchArray($get_season); ?>
 

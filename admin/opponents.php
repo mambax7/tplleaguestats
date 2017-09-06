@@ -36,14 +36,14 @@ include __DIR__ . '/../../../include/cp_header.php'; //Include file, which check
 if (isset($_POST['season_select'])) {
     $season = explode('____', $_POST['season_select']);
 } elseif (isset($_POST['seasonid'])) {
-    $season = [intval($_POST['seasonid']), $_POST['seasonname']];
+    $season = [(int)$_POST['seasonid'], $_POST['seasonname']];
 } elseif (!isset($_SESSION['season_id'])) {
     $sql        = 'SELECT SeasonID, SeasonName FROM ' . $xoopsDB->prefix('tplls_seasonnames') . ' WHERE SeasonDefault=1';
     $seasonname = $xoopsDB->query($sql);
     $seasonname = $xoopsDB->fetchArray($seasonname);
     $season     = [$seasonname['SeasonID'], $seasonname['SeasonName']];
 } else {
-    $season = [intval($_SESSION['season_id']), $_SESSION['season_name']];
+    $season = [(int)$_SESSION['season_id'], $_SESSION['season_name']];
 }
 $_SESSION['season_id']   = $season[0];
 $_SESSION['season_name'] = $season[1];
@@ -91,7 +91,7 @@ if ($add_submit) {
 //
 elseif ($modify_submit) {
     $opponent   = $xoopsDB->quoteString(trim($_POST['opponent']));
-    $opponentid = intval($_POST['opponentid']);
+    $opponentid = (int)$_POST['opponentid'];
     $own        = $_POST['own'];
     //
     //Checked own
@@ -123,7 +123,7 @@ elseif ($modify_submit) {
 //Delete
 //
 elseif ($delete_submit) {
-    $opponentid = intval($_POST['opponentid']);
+    $opponentid = (int)$_POST['opponentid'];
 
     //
     //query to check, if team already exists in the leaguetables
@@ -145,9 +145,9 @@ elseif ($delete_submit) {
 //Deducted points
 //
 elseif ($d_points_add) {
-    $d_points = intval($_POST['d_points']);
-    $teamid   = intval($_POST['teamid']);
-    $seasonid = intval($_POST['seasonid']);
+    $d_points = (int)$_POST['d_points'];
+    $teamid   = (int)$_POST['teamid'];
+    $seasonid = (int)$_POST['seasonid'];
 
     if (is_numeric($d_points) && $d_points != '') {
         //
@@ -165,8 +165,8 @@ elseif ($d_points_add) {
 //Modify of deducted points
 //
 elseif ($d_points_modify) {
-    $d_points = intval($_POST['d_points']);
-    $id       = intval($_POST['id']);
+    $d_points = (int)$_POST['d_points'];
+    $id       = (int)$_POST['id'];
 
     if (is_numeric($d_points) && $d_points != '') {
         //
@@ -216,7 +216,7 @@ include __DIR__ . '/head.php';
                     </form>
                     <?php
                 } elseif ($action == 'modify') {
-                    $opponentid   = intval($_REQUEST['opponent']);
+                    $opponentid   = (int)$_REQUEST['opponent'];
                     $get_opponent = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentID = $opponentid LIMIT 1");
                     $data         = $xoopsDB->fetchArray($get_opponent); ?>
 

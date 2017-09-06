@@ -12,35 +12,35 @@ $submit5 = $_POST['submit5'];
 $submit6 = $_POST['submit6'];
 
 if ($submit) {
-    $season = intval($_POST['season']);
+    $season = (int)$_POST['season'];
 
     //New value for session variable
     $_SESSION['defaultseasonid'] = $season;
 
     header("Location: $HTTP_REFERER");
 } elseif ($submit2) {
-    $change = intval($_POST['change_show']);
+    $change = (int)$_POST['change_show'];
 
     //New value for session variable
     $_SESSION['defaultshow'] = $change;
 
     header('Location: index.php?sort=pts');
 } elseif ($submit3) {
-    $change = intval($_POST['change_table']);
+    $change = (int)$_POST['change_table'];
 
     //New value for session variable
     $_SESSION['defaulttable'] = $change;
 
     header("Location: $HTTP_REFERER");
 } elseif ($submit4) {
-    $change = intval($_POST['home_id']);
+    $change = (int)$_POST['home_id'];
 
     //New value for session variable
     $_SESSION['defaulthomeid'] = $change;
 
     header("Location: $HTTP_REFERER");
 } elseif ($submit5) {
-    $change = intval($_POST['away_id']);
+    $change = (int)$_POST['away_id'];
 
     //New value for session variable
     $_SESSION['defaultawayid'] = $change;

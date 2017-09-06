@@ -76,9 +76,9 @@ if ($xoopsDB->getRowsNum($query) < 2) {
 }
 
 if ($add_submit) {
-    $year        = intval($_POST['year']);
-    $month       = intval($_POST['month']);
-    $day         = intval($_POST['day']);
+    $year        = (int)$_POST['year'];
+    $month       = (int)$_POST['month'];
+    $day         = (int)$_POST['day'];
     $dateandtime = $year . '-' . $month . '-' . $day;
 
     //
@@ -106,10 +106,10 @@ if ($add_submit) {
         //If home and away are not the same
         //
         if ($home[$i] != $away[$i]) {
-            $home[$i]       = intval($home[$i]);
-            $away[$i]       = intval($away[$i]);
-            $home_goals[$i] = $home_goals[$i] != null ? intval($home_goals[$i]) : null;
-            $away_goals[$i] = $away_goals[$i] != null ? intval($away_goals[$i]) : null;
+            $home[$i]       = (int)$home[$i];
+            $away[$i]       = (int)$away[$i];
+            $home_goals[$i] = $home_goals[$i] != null ? (int)$home_goals[$i] : null;
+            $away_goals[$i] = $away_goals[$i] != null ? (int)$away_goals[$i] : null;
             //
             //Hometeam wins
             //
@@ -184,11 +184,11 @@ if ($add_submit) {
         ++$i;
     }
 } elseif ($modifyall_submit) {
-    $year        = intval($_POST['year']);
-    $month       = intval($_POST['month']);
-    $day         = intval($_POST['day']);
+    $year        = (int)$_POST['year'];
+    $month       = (int)$_POST['month'];
+    $day         = (int)$_POST['day'];
     $dateandtime = $year . '-' . $month . '-' . $day;
-    $qty         = intval($_POST['qty']);
+    $qty         = (int)$_POST['qty'];
 
     //
     //Delete old data from selected date
@@ -206,10 +206,10 @@ if ($add_submit) {
     $home_goals = $_POST['home_goals'];
     $away_goals = $_POST['away_goals'];
     while ($i < $qty) {
-        $home[$i]       = intval($home[$i]);
-        $away[$i]       = intval($away[$i]);
-        $home_goals[$i] = $home_goals[$i] != null ? intval($home_goals[$i]) : null;
-        $away_goals[$i] = $away_goals[$i] != null ? intval($away_goals[$i]) : null;
+        $home[$i]       = (int)$home[$i];
+        $away[$i]       = (int)$away[$i];
+        $home_goals[$i] = $home_goals[$i] != null ? (int)$home_goals[$i] : null;
+        $away_goals[$i] = $away_goals[$i] != null ? (int)$away_goals[$i] : null;
         //
         //Set default
         //
@@ -275,18 +275,18 @@ if ($add_submit) {
         ++$i;
     }
 } elseif ($modify_submit) {
-    $mid         = intval($_POST['mid']);
-    $homeid      = intval($_POST['homeid']);
-    $awayid      = intval($_POST['awayid']);
-    $year        = intval($_POST['year']);
-    $month       = intval($_POST['month']);
-    $day         = intval($_POST['day']);
+    $mid         = (int)$_POST['mid'];
+    $homeid      = (int)$_POST['homeid'];
+    $awayid      = (int)$_POST['awayid'];
+    $year        = (int)$_POST['year'];
+    $month       = (int)$_POST['month'];
+    $day         = (int)$_POST['day'];
     $dateandtime = $year . '-' . $month . '-' . $day;
 
-    $home       = intval($_POST['home']); //kotijoukkueen id
-    $away       = intval($_POST['away']); //vierasjoukkueen id
-    $home_goals = $_POST['home_goals'] != null ? intval($_POST['home_goals']) : null;
-    $away_goals = $_POST['home_goals'] != null ? intval($_POST['away_goals']) : null;
+    $home       = (int)$_POST['home']; //kotijoukkueen id
+    $away       = (int)$_POST['away']; //vierasjoukkueen id
+    $home_goals = $_POST['home_goals'] != null ? (int)$_POST['home_goals'] : null;
+    $away_goals = $_POST['home_goals'] != null ? (int)$_POST['away_goals'] : null;
 
     //
     //Set default
@@ -382,7 +382,7 @@ if ($add_submit) {
         }
     }
 } elseif ($delete_submit) {
-    $mid = intval($_POST['mid']);
+    $mid = (int)$_POST['mid'];
     $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " WHERE LeagueMatchID = '$mid' LIMIT 1");
 }
 
@@ -702,7 +702,7 @@ include __DIR__ . '/head.php';
 
                     <?php
                 } elseif ($action == 'modify') {
-                    $id = intval($_REQUEST['id']);
+                    $id = (int)$_REQUEST['id'];
 
                     $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,

@@ -75,11 +75,11 @@ if (!isset($_SESSION['defaultseasonid']) || !isset($_SESSION['defaultshow']) || 
     $_SESSION['defaultseasonid'] = $d_season_id;
     $_SESSION['defaultshow']     = $show_all_or_one;
     $_SESSION['defaulttable']    = $show_table;
-    $defaultseasonid             = intval($_SESSION['defaultseasonid']);
+    $defaultseasonid             = (int)$_SESSION['defaultseasonid'];
     $defaultshow                 = $_SESSION['defaultshow'];
     $defaulttable                = $_SESSION['defaulttable'];
 } else {
-    $defaultseasonid = intval($_SESSION['defaultseasonid']);
+    $defaultseasonid = (int)$_SESSION['defaultseasonid'];
     $defaultshow     = $_SESSION['defaultshow'];
     $defaulttable    = $_SESSION['defaulttable'];
 }

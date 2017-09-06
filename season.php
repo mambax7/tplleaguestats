@@ -61,7 +61,7 @@ $tb_width        = $xoopsModuleConfig['tablewidth'];
 if (!isset($_SESSION['defaultseasonid'])) {
     $_SESSION['defaultseasonid'] = $d_seasonid;
 }
-$defaultseasonid = intval($_SESSION['defaultseasonid']);
+$defaultseasonid = (int)$_SESSION['defaultseasonid'];
 
 //
 //If All is chosen from season, lets set default value for %
