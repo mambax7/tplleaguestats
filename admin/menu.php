@@ -5,7 +5,7 @@ $path = dirname(dirname(dirname(__DIR__)));
 include_once $path . '/mainfile.php';
 
 $dirname         = basename(dirname(__DIR__));
-$moduleHandler  = xoops_getHandler('module');
+$moduleHandler   = xoops_getHandler('module');
 $module          = $moduleHandler->getByDirname($dirname);
 $pathIcon32      = $module->getInfo('icons32');
 $pathModuleAdmin = $module->getInfo('dirmoduleadmin');
@@ -17,25 +17,25 @@ if (!file_exists($fileinc = $pathLanguage . '/language/' . $GLOBALS['xoopsConfig
 
 include_once $fileinc;
 
-$adminmenu = [];
-$i=0;
+$adminmenu              = [];
+$i                      = 0;
 $adminmenu[$i]["title"] = _AM_MODULEADMIN_HOME;
-$adminmenu[$i]['link'] = "admin/index.php";
+$adminmenu[$i]['link']  = "admin/index.php";
 $adminmenu[$i]["icon"]  = $pathIcon32 . '/home.png';
 
 ++$i;
 $adminmenu[$i]['title'] = _MI_TPLLS_ADMENU1;
-$adminmenu[$i]['link'] = "admin/seasons.php";
+$adminmenu[$i]['link']  = "admin/seasons.php";
 $adminmenu[$i]["icon"]  = $pathIcon32 . '/category.png';
 ++$i;
 $adminmenu[$i]['title'] = _MI_TPLLS_ADMENU2;
-$adminmenu[$i]['link'] = "admin/opponents.php";
+$adminmenu[$i]['link']  = "admin/opponents.php";
 $adminmenu[$i]["icon"]  = $pathIcon32 . '/users.png';
 ++$i;
 $adminmenu[$i]['title'] = _MI_TPLLS_ADMENU3;
-$adminmenu[$i]['link'] = "admin/leaguematches.php";
+$adminmenu[$i]['link']  = "admin/leaguematches.php";
 $adminmenu[$i]["icon"]  = $pathIcon32 . '/event.png';
 ++$i;
 $adminmenu[$i]['title'] = _AM_MODULEADMIN_ABOUT;
-$adminmenu[$i]['link'] = "admin/about.php";
+$adminmenu[$i]['link']  = "admin/about.php";
 $adminmenu[$i]["icon"]  = $pathIcon32 . '/about.png';

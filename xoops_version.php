@@ -27,16 +27,16 @@
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
-$modversion['name'] = "TPL League Stats";
-$modversion['version'] = 1.1;
+$modversion['name']        = "TPL League Stats";
+$modversion['version']     = 1.1;
 $modversion['description'] = 'A nice league stats software';
-$modversion['credits'] = "Mithrandir and ralf57";
+$modversion['credits']     = "Mithrandir and ralf57";
 $modversion['help']        = 'page=help';
 $modversion['license']     = 'GNU GPL 2.0 or later';
 $modversion['license_url'] = "www.gnu.org/licenses/gpl-2.0.html";
-$modversion['official'] = 0;
-$modversion['image'] = "images/tplleague_slogo.png";
-$modversion['dirname'] = "tplleaguestats";
+$modversion['official']    = 0;
+$modversion['image']       = "images/tplleague_slogo.png";
+$modversion['dirname']     = "tplleaguestats";
 
 $modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
 $modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
@@ -65,26 +65,26 @@ $modversion['tables'][2] = "tplls_opponents";
 $modversion['tables'][3] = "tplls_seasonnames";
 
 // Admin things
-$modversion['hasAdmin'] = 1;
+$modversion['hasAdmin']    = 1;
 $modversion['system_menu'] = 1;
-$modversion['adminindex'] = "admin/index.php";
-$modversion['adminmenu'] = "admin/menu.php";
+$modversion['adminindex']  = "admin/index.php";
+$modversion['adminmenu']   = "admin/menu.php";
 
 // Templates
 // No templates yet
 
 // Blocks
-$modversion['blocks'][1]['file'] = "minitable.php";
-$modversion['blocks'][1]['name'] = _MI_MINITABLE;
+$modversion['blocks'][1]['file']        = "minitable.php";
+$modversion['blocks'][1]['name']        = _MI_MINITABLE;
 $modversion['blocks'][1]['description'] = "Shows default season";
-$modversion['blocks'][1]['show_func'] = "b_minitable_show";
+$modversion['blocks'][1]['show_func']   = "b_minitable_show";
 
 // Menu
-$modversion['hasMain'] = 1;
+$modversion['hasMain']        = 1;
 $modversion['sub'][1]['name'] = _MI_MENU_HEAD2HEAD;
-$modversion['sub'][1]['url'] = "headtohead.php";
+$modversion['sub'][1]['url']  = "headtohead.php";
 $modversion['sub'][2]['name'] = _MI_MENU_SEASSTATS;
-$modversion['sub'][2]['url'] = "season.php";
+$modversion['sub'][2]['url']  = "season.php";
 
 // Search
 $modversion['hasSearch'] = 0;
@@ -103,17 +103,17 @@ $modversion['hasNotification'] = 0;
 // name of config option for accessing its specified value. i.e. $xoopsModuleConfig['storyhome']
 
 global $xoopsDB;
-$get_seasons = $xoopsDB->query("SELECT SeasonID, SeasonName FROM ".$xoopsDB->prefix("tplls_seasonnames")." WHERE SeasonPublish = '1' ORDER BY SeasonName");
+$get_seasons = $xoopsDB->query("SELECT SeasonID, SeasonName FROM " . $xoopsDB->prefix("tplls_seasonnames") . " WHERE SeasonPublish = '1' ORDER BY SeasonName");
 while ($thisseason = $xoopsDB->fetchArray($get_seasons)) {
     $allseasons[$thisseason['SeasonName']] = $thisseason['SeasonID'];
 }
-$modversion['config'][1] = ['name' => 'defaulttable', 'title' => '_MI_PREFDEFLEAGTAB', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
+$modversion['config'][1]            = ['name' => 'defaulttable', 'title' => '_MI_PREFDEFLEAGTAB', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
 $modversion['config'][1]['options'] = [_MI_PREFTABSIM => 4, _MI_PREFTABTRA => 1, _MI_PREFTABMAT => 2, _MI_PREFTABREC => 3];
 
-$modversion['config'][2] = ['name' => 'defaultshow', 'title' => '_MI_PREFCAL', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
+$modversion['config'][2]            = ['name' => 'defaultshow', 'title' => '_MI_PREFCAL', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
 $modversion['config'][2]['options'] = [_MI_PREFCALALL => 1, _MI_PREFCALOWN => 2, _MI_PREFCALNONE => 3];
 
-$modversion['config'][3]= ['name' => 'printdate', 'title' => '_MI_PREFDATE', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
+$modversion['config'][3]            = ['name' => 'printdate', 'title' => '_MI_PREFDATE', 'description' => '', 'formtype' => 'select', 'valuetype' => 'int', 'default' => 1];
 $modversion['config'][3]['options'] = [_MI_PREFDATE1 => 1, _MI_PREFDATE2 => 2, _MI_PREFDATE3 => 3];
 
 $modversion['config'][4] = ['name' => 'forwin', 'title' => '_MI_PREFPTSWIN', 'description' => '', 'formtype' => 'textbox', 'valuetype' => 'int', 'default' => 3];

@@ -35,22 +35,22 @@ if (!isset($_SESSION['season_name']) || !isset($_SESSION['season_id'])) {
     echo "<form method=\"post\" action=\"leaguematches.php\">";
     echo '<b><?php echo _AM_CHOSEASON;?></b>';
     echo '<select name="season_select">';
-    $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonnames")." ORDER BY SeasonName");
+    $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_seasonnames") . " ORDER BY SeasonName");
 
     while ($sdata = $xoopsDB->fetchArray($get_seasons)) {
         echo "<option value=\"$sdata[SeasonID]____$sdata[SeasonName]\">$sdata[SeasonName]</option>\n";
     }
-    echo "</select> <input type=\"submit\" name=\"submit\" value=" ._AM_SEASONGO. "></form>";
+    echo "</select> <input type=\"submit\" name=\"submit\" value=" . _AM_SEASONGO . "></form>";
 
     $GLOBALS['xoopsDB']->freeRecordSet($get_seasons);
 } else {
     $season_name = $_SESSION['season_name'];
     echo "<form method=\"post\" action=\"leaguematches.php\">";
-    echo "<b> "._AM_SEASELECT."  $season_name</b><br><br>";
+    echo "<b> " . _AM_SEASELECT . "  $season_name</b><br><br>";
     echo _AM_SEASELDROP;
     echo '<select name="season_select">';
 
-    $get_seasons = $xoopsDB->query("SELECT * FROM ".$xoopsDB->prefix("tplls_seasonnames")." ORDER BY SeasonName");
+    $get_seasons = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix("tplls_seasonnames") . " ORDER BY SeasonName");
 
     while ($sdata = $xoopsDB->fetchArray($get_seasons)) {
         if ($sdata['SeasonID'] == $seasonid) {
@@ -59,7 +59,7 @@ if (!isset($_SESSION['season_name']) || !isset($_SESSION['season_id'])) {
             echo "<option value=\"$sdata[SeasonID]____$sdata[SeasonName]\">$sdata[SeasonName]</option>\n";
         }
     }
-    echo "</select> <input type=\"submit\" name=\"submit\" value=" ._AM_SEASONGO. "></form>";
+    echo "</select> <input type=\"submit\" name=\"submit\" value=" . _AM_SEASONGO . "></form>";
 
     $GLOBALS['xoopsDB']->freeRecordSet($get_seasons);
 }

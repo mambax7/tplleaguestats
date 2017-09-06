@@ -14,8 +14,8 @@
  * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package
  * @since
- * @author     XOOPS Development Team
- * @version    $Id $
+ * @author       XOOPS Development Team
+ * @version      $Id $
  */
 
 require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
@@ -23,9 +23,9 @@ include_once __DIR__ . '/admin_header.php';
 
 xoops_cp_header();
 
-    $indexAdmin = \Xmf\Module\Admin::getInstance();
+$indexAdmin = \Xmf\Module\Admin::getInstance();
 
-    echo $indexAdmin->displayNavigation('index.php');
-    echo $indexAdmin->displayIndex();
+echo $indexAdmin->displayNavigation('index.php');
+echo $indexAdmin->displayIndex();
 
 include __DIR__ . '/admin_footer.php';

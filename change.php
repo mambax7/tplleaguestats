@@ -4,7 +4,7 @@ include __DIR__ . '/../../mainfile.php';
 
 $HTTP_REFERER = Request::getString('HTTP_REFERER', '', 'SERVER');
 
-$submit = $_POST['submit'];
+$submit  = $_POST['submit'];
 $submit2 = $_POST['submit2'];
 $submit3 = $_POST['submit3'];
 $submit4 = $_POST['submit4'];
