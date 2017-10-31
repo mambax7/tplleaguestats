@@ -479,7 +479,7 @@ include __DIR__ . '/head.php';
                             //query back to row 0 if not the first time in the loop
                             //
                             if ($i > 0) {
-                                mysql_data_seek($get_opponents, 0);
+                                mysqli_data_seek($get_opponents, 0);
                             }
 
                             echo '
@@ -502,7 +502,7 @@ include __DIR__ . '/head.php';
                             //
                             //Back to line 0in the query
                             //
-                            mysql_data_seek($get_opponents, 0);
+                            mysqli_data_seek($get_opponents, 0);
 
                             echo "<select name=\"away[$i]\">";
 
@@ -645,7 +645,7 @@ include __DIR__ . '/head.php';
                                 //Back to line 0 in the query if not the first loop
                                 //
                                 if ($i > 0) {
-                                    mysql_data_seek($get_opponents, 0);
+                                    mysqli_data_seek($get_opponents, 0);
                                 }
 
                                 echo '
@@ -670,7 +670,7 @@ include __DIR__ . '/head.php';
                                 //
                                 //Back to line 0 in the query
                                 //
-                                mysql_data_seek($get_opponents, 0);
+                                mysqli_data_seek($get_opponents, 0);
 
                                 echo "<select name=\"away[$i]\">";
 
@@ -816,7 +816,7 @@ include __DIR__ . '/head.php';
                                     <select name="away">
                                         <?php
 
-                                        mysql_data_seek($get_opponents, 0);
+                                        mysqli_data_seek($get_opponents, 0);
 
                                         while ($data = $xoopsDB->fetchArray($get_opponents)) {
                                             if ($matchdata['awayid'] == $data['id']) {
