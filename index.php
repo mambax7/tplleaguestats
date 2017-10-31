@@ -591,7 +591,7 @@ if (!isset($sort)) {
                                                     //Goals scored in hom
                                                     //
                                                     $mdata = $xoopsDB->fetchArray($query);
-                                                    if (is_null($mdata['homegoals'])) {
+                                                    if (null === $mdata['homegoals']) {
                                                         $homegoals[$i] = 0;
                                                     } else {
                                                         $homegoals[$i] = $mdata['homegoals'];
@@ -612,7 +612,7 @@ if (!isset($sort)) {
                                                     //Goals against in home
                                                     //
                                                     $mdata = $xoopsDB->fetchArray($query);
-                                                    if (is_null($mdata['homegoalsagainst'])) {
+                                                    if (null === $mdata['homegoalsagainst']) {
                                                         $homegoalsagainst[$i] = 0;
                                                     } else {
                                                         $homegoalsagainst[$i] = $mdata['homegoalsagainst'];
@@ -633,7 +633,7 @@ if (!isset($sort)) {
                                                     //Goals scored in away
                                                     //
                                                     $mdata = $xoopsDB->fetchArray($query);
-                                                    if (is_null($mdata['awaygoals'])) {
+                                                    if (null === $mdata['awaygoals']) {
                                                         $awaygoals[$i] = 0;
                                                     } else {
                                                         $awaygoals[$i] = $mdata['awaygoals'];
@@ -654,7 +654,7 @@ if (!isset($sort)) {
                                                     //Goals against in away
                                                     //
                                                     $mdata = $xoopsDB->fetchArray($query);
-                                                    if (is_null($mdata['awaygoalsagainst'])) {
+                                                    if (null === $mdata['awaygoalsagainst']) {
                                                         $awaygoalsagainst[$i] = 0;
                                                     } else {
                                                         $awaygoalsagainst[$i] = $mdata['awaygoalsagainst'];
@@ -715,11 +715,11 @@ if (!isset($sort)) {
                                                         //
                                                         //If goals are null
                                                         //
-                                                        if (is_null($row['homegoals'])) {
+                                                        if (null === $row['homegoals']) {
                                                             $row['homegoals'] = 0;
                                                         }
 
-                                                        if (is_null($row['awaygoals'])) {
+                                                        if (null === $row['awaygoals']) {
                                                             $row['awaygoals'] = 0;
                                                         }
 
@@ -2518,7 +2518,7 @@ if (!isset($sort)) {
                 </td>
                 <td align=\"left\" valign=\"top\">";
 
-                                                    if (!is_null($data['goals_home'])) {
+                                                    if (null !== $data['goals_home']) {
                                                         echo "$data[goals_home]-$data[goals_away]";
                                                     } else {
                                                         echo '&nbsp;';
@@ -2627,7 +2627,7 @@ if (!isset($sort)) {
                 </td>
                 <td align=\"left\" valign=\"top\">";
 
-                                                    if (!is_null($data['goals_home'])) {
+                                                    if (null !== $data['goals_home']) {
                                                         echo "$data[goals_home]-$data[goals_away]";
                                                     } else {
                                                         echo '&nbsp;';

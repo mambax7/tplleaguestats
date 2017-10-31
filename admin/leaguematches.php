@@ -903,7 +903,7 @@ include __DIR__ . '/head.php';
                 </td>
                 <td align=\"right\" valign=\"top\" width=\"50\">";
 
-                            if (!is_null($data['goals_home'])) {
+                            if (null !== $data['goals_home']) {
                                 echo "$data[goals_home]-$data[goals_away]";
                             } else {
                                 echo '&nbsp;';
