@@ -1,5 +1,7 @@
 <?php
 
+use \Xmf\Request;
+
 include __DIR__ . '/../../mainfile.php';
 
 $HTTP_REFERER = Request::getString('HTTP_REFERER', '', 'SERVER');

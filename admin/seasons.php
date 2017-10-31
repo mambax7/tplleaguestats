@@ -30,6 +30,9 @@ ralf57 http://www.madeinbanzi.it
 
 ************************************************************
 */
+
+use \Xmf\Request;
+
 include_once __DIR__ . '/admin_header.php';
 include __DIR__ . '/../../../include/cp_header.php'; //Include file, which checks for permissions and sets navigation
 
