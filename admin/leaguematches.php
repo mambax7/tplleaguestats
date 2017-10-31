@@ -398,7 +398,7 @@ include __DIR__ . '/head.php';
                 <form method="post" action="<?php echo "$PHP_SELF" ?>">
                     <?php
                     if (!isset($action)) {
-                    ?>
+                        ?>
                     <h3><?php echo _AM_ADDMATCH; ?></h3>
                     <?php echo _AM_ADDMATCHNOTE; ?><br><br>
 
@@ -529,10 +529,10 @@ include __DIR__ . '/head.php';
                     <input type="submit" name="add_submit" value="<?php echo _AM_ADDMATCHES; ?>">
                 </form>
                 <?php
-                } elseif ($action == 'modifyall') {
-                    $date = $_REQUEST['date'];
+                    } elseif ($action == 'modifyall') {
+                        $date = $_REQUEST['date'];
 
-                    $get_matches = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                        $get_matches = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
@@ -543,10 +543,10 @@ include __DIR__ . '/head.php';
         WHERE LM.LeaguematchDate = '$date'
         ");
 
-                    //
-                    //query to get date
-                    //
-                    $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                        //
+                        //query to get date
+                        //
+                        $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year
         FROM ' . $xoopsDB->prefix('tplls_leaguematches') . " LM
@@ -554,11 +554,11 @@ include __DIR__ . '/head.php';
         LIMIT 1
         ");
 
-                    $datedata = $xoopsDB->fetchArray($get_match);
+                        $datedata = $xoopsDB->fetchArray($get_match);
 
-                    //$xoopsDB->freeRecordSet($get_match);
+                        //$xoopsDB->freeRecordSet($get_match);
 
-                    $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
+                        $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
         OpponentName AS name
         FROM ' . $xoopsDB->prefix('tplls_opponents') . '
         ORDER BY OpponentName
@@ -640,47 +640,47 @@ include __DIR__ . '/head.php';
                             //Lets get all the matches from selected date to the form
                             //
                             $i = 0;
-                            while ($matchdata = $xoopsDB->fetchArray($get_matches)) {
-                                //
-                                //Back to line 0 in the query if not the first loop
-                                //
-                                if ($i > 0) {
-                                    mysql_data_seek($get_opponents, 0);
-                                }
+                        while ($matchdata = $xoopsDB->fetchArray($get_matches)) {
+                            //
+                            //Back to line 0 in the query if not the first loop
+                            //
+                            if ($i > 0) {
+                                mysql_data_seek($get_opponents, 0);
+                            }
 
-                                echo '
+                            echo '
             <tr>
             <td align="left" valign="middle">
             ';
 
-                                echo "<select name=\"home[$i]\">";
+                            echo "<select name=\"home[$i]\">";
 
-                                while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                                    if ($matchdata['homeid'] == $data['id']) {
-                                        echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-                                    }
+                            while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                                if ($matchdata['homeid'] == $data['id']) {
+                                    echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
                                 }
+                            }
 
-                                echo '
+                            echo '
             </select>
             </td>
             <td align="left" valign="middle">
             ';
 
-                                //
-                                //Back to line 0 in the query
-                                //
-                                mysql_data_seek($get_opponents, 0);
+                            //
+                            //Back to line 0 in the query
+                            //
+                            mysql_data_seek($get_opponents, 0);
 
-                                echo "<select name=\"away[$i]\">";
+                            echo "<select name=\"away[$i]\">";
 
-                                while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                                    if ($matchdata['awayid'] == $data['id']) {
-                                        echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-                                    }
+                            while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                                if ($matchdata['awayid'] == $data['id']) {
+                                    echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
                                 }
+                            }
 
-                                echo "
+                            echo "
             </select>
             </td>
             <td align=\"center\" valign=\"middle\"><input type=\"text\" name=\"home_goals[$i]\" size=\"2\" value=\"$matchdata[homegoals]\"></td>
@@ -689,8 +689,8 @@ include __DIR__ . '/head.php';
             </tr>
             ";
 
-                                ++$i;
-                            } ?>
+                            ++$i;
+                        } ?>
 
                         </table>
 
@@ -701,10 +701,10 @@ include __DIR__ . '/head.php';
                     </form>
 
                     <?php
-                } elseif ($action == 'modify') {
-                    $id = (int)$_REQUEST['id'];
+                    } elseif ($action == 'modify') {
+                        $id = (int)$_REQUEST['id'];
 
-                    $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
+                        $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
         MONTH(LM.LeagueMatchDate) AS month,
         YEAR(LM.LeagueMatchDate) AS year,
         LM.LeagueMatchHomeID AS homeid,
@@ -716,15 +716,15 @@ include __DIR__ . '/head.php';
         LIMIT 1
         ");
 
-                    $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
+                        $get_opponents = $xoopsDB->query('SELECT OpponentID AS id,
         OpponentName AS name
         FROM ' . $xoopsDB->prefix('tplls_opponents') . '
         ORDER BY OpponentName
         ');
 
-                    $matchdata = $xoopsDB->fetchArray($get_match);
+                        $matchdata = $xoopsDB->fetchArray($get_match);
 
-                    //$xoopsDB->freeRecordSet($get_match);?>
+                        //$xoopsDB->freeRecordSet($get_match);?>
                     <form method="post" action="<?php echo "$PHP_SELF" ?>">
                         <h3><?php echo _AM_MODMATCH; ?></h3>
 
@@ -818,13 +818,13 @@ include __DIR__ . '/head.php';
 
                                         mysql_data_seek($get_opponents, 0);
 
-                                        while ($data = $xoopsDB->fetchArray($get_opponents)) {
-                                            if ($matchdata['awayid'] == $data['id']) {
-                                                echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
-                                            } else {
-                                                echo "<option value=\"$data[id]\">$data[name]</option>\n";
-                                            }
-                                        } ?>
+                        while ($data = $xoopsDB->fetchArray($get_opponents)) {
+                            if ($matchdata['awayid'] == $data['id']) {
+                                echo "<option value=\"$data[id]\" SELECTED>$data[name]</option>\n";
+                            } else {
+                                echo "<option value=\"$data[id]\">$data[name]</option>\n";
+                            }
+                        } ?>
                                     </select>
                                 </td>
                                 <td align="center" valign="middle"><input type="text" name="home_goals" size="2" value="<?= $matchdata['homegoals'] ?>"></td>
@@ -845,7 +845,7 @@ include __DIR__ . '/head.php';
                     </form>
 
                     <?php
-                }
+                    }
                 ?>
             </td>
 
