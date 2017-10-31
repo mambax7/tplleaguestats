@@ -764,11 +764,11 @@ if (!isset($sort)) {
                                                         //Calculates goals and goals against
                                                         //
                                                         if ($row['homeid'] == $teamid[$i]) {
-                                                            $homegoals[$i]        = $homegoals[$i] + $row['homegoals'];
-                                                            $homegoalsagainst[$i] = $homegoalsagainst[$i] + $row['awaygoals'];
+                                                            $homegoals[$i]        += $row['homegoals'];
+                                                            $homegoalsagainst[$i] += $row['awaygoals'];
                                                         } else {
-                                                            $awaygoals[$i]        = $awaygoals[$i] + $row['awaygoals'];
-                                                            $awaygoalsagainst[$i] = $awaygoalsagainst[$i] + $row['homegoals'];
+                                                            $awaygoals[$i]        += $row['awaygoals'];
+                                                            $awaygoalsagainst[$i] += $row['homegoals'];
                                                         }
                                                     }
 
@@ -805,7 +805,7 @@ if (!isset($sort)) {
 
                                                         if ($xoopsDB->getRowsNum($get_deduct) > 0) {
                                                             while ($d_points = $xoopsDB->fetchArray($get_deduct)) {
-                                                                $temp_points = $temp_points + $d_points['points'];
+                                                                $temp_points += $d_points['points'];
                                                             }
                                                         }
 
@@ -842,7 +842,7 @@ if (!isset($sort)) {
 
                                                     if ($xoopsDB->getRowsNum($get_deduct) > 0) {
                                                         while ($d_points = $xoopsDB->fetchArray($get_deduct)) {
-                                                            $temp_points = $temp_points + $d_points['points'];
+                                                            $temp_points += $d_points['points'];
                                                         }
                                                     }
 

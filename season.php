@@ -174,24 +174,24 @@ $get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_season
                                         //
                                         if ($data['homegoals'] > $data['awaygoals']) {
                                             ++$home_wins;
-                                            $home_goals = $home_goals + $data['homegoals'];
-                                            $away_goals = $away_goals + $data['awaygoals'];
+                                            $home_goals += $data['homegoals'];
+                                            $away_goals += $data['awaygoals'];
                                         }
                                         //
                                         //Draw
                                         //
                                         elseif ($data['homegoals'] == $data['awaygoals']) {
                                             ++$draws;
-                                            $home_goals = $home_goals + $data['homegoals'];
-                                            $away_goals = $away_goals + $data['awaygoals'];
+                                            $home_goals += $data['homegoals'];
+                                            $away_goals += $data['awaygoals'];
                                         }
                                         //
                                         //Away win
                                         //
                                         elseif ($data['homegoals'] < $data['awaygoals']) {
                                             ++$away_wins;
-                                            $home_goals = $home_goals + $data['homegoals'];
-                                            $away_goals = $away_goals + $data['awaygoals'];
+                                            $home_goals += $data['homegoals'];
+                                            $away_goals += $data['awaygoals'];
                                         }
                                     }
 

@@ -86,24 +86,24 @@ function b_minitable_show()
         $hometeam = $matchdata['homeid'];
         $awayteam = $matchdata['awayid'];
 
-        $team[$hometeam]['matches'] = $team[$hometeam]['matches'] + 1;
-        $team[$awayteam]['matches'] = $team[$awayteam]['matches'] + 1;
+        $team[$hometeam]['matches'] += 1;
+        $team[$awayteam]['matches'] += 1;
 
-        $team[$hometeam]['homegoalsfor']     = $team[$hometeam]['homegoalsfor'] + $matchdata['homegoals'];
-        $team[$awayteam]['awaygoalsagainst'] = $team[$awayteam]['awaygoalsagainst'] + $matchdata['homegoals'];
-        $team[$awayteam]['awaygoalsfor']     = $team[$awayteam]['awaygoalsfor'] + $matchdata['awaygoals'];
-        $team[$hometeam]['homegoalsagainst'] = $team[$hometeam]['homegoalsagainst'] + $matchdata['awaygoals'];
+        $team[$hometeam]['homegoalsfor']     += $matchdata['homegoals'];
+        $team[$awayteam]['awaygoalsagainst'] += $matchdata['homegoals'];
+        $team[$awayteam]['awaygoalsfor']     += $matchdata['awaygoals'];
+        $team[$hometeam]['homegoalsagainst'] += $matchdata['awaygoals'];
 
         $goaldiff = $matchdata['homegoals'] - $matchdata['awaygoals'];
         if ($goaldiff > 0) {
-            $team[$hometeam]['homewins'] = $team[$hometeam]['homewins'] + 1;
-            $team[$awayteam]['awayloss'] = $team[$awayteam]['awayloss'] + 1;
+            $team[$hometeam]['homewins'] += 1;
+            $team[$awayteam]['awayloss'] += 1;
         } elseif ($goaldiff == 0) {
-            $team[$hometeam]['hometie'] = $team[$hometeam]['hometie'] + 1;
-            $team[$awayteam]['awaytie'] = $team[$awayteam]['awaytie'] + 1;
+            $team[$hometeam]['hometie'] += 1;
+            $team[$awayteam]['awaytie'] += 1;
         } elseif ($goaldiff < 0) {
-            $team[$hometeam]['homeloss'] = $team[$hometeam]['homeloss'] + 1;
-            $team[$awayteam]['awaywins'] = $team[$awayteam]['awaywins'] + 1;
+            $team[$hometeam]['homeloss'] += 1;
+            $team[$awayteam]['awaywins'] += 1;
         }
     }
     $get_deduct = $xoopsDB->query('SELECT points, teamid FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . " WHERE seasonid = '$season_id'");

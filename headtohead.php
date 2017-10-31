@@ -305,24 +305,24 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             if ($data['homegoals'] > $data['awaygoals']) {
                                                 $home_wins[0]++;
-                                                $home_goals[0]        = $home_goals[0] + $data['homegoals'];
-                                                $home_goalsagainst[0] = $home_goalsagainst[0] + $data['awaygoals'];
+                                                $home_goals[0]        += $data['homegoals'];
+                                                $home_goalsagainst[0] += $data['awaygoals'];
                                             }
                                             //
                                             //Draw
                                             //
                                             elseif ($data['homegoals'] == $data['awaygoals']) {
                                                 $home_draws[0]++;
-                                                $home_goals[0]        = $home_goals[0] + $data['homegoals'];
-                                                $home_goalsagainst[0] = $home_goalsagainst[0] + $data['awaygoals'];
+                                                $home_goals[0]        += $data['homegoals'];
+                                                $home_goalsagainst[0] += $data['awaygoals'];
                                             }
                                             //
                                             //Lost
                                             //
                                             elseif ($data['homegoals'] < $data['awaygoals']) {
                                                 $home_loses[0]++;
-                                                $home_goals[0]        = $home_goals[0] + $data['homegoals'];
-                                                $home_goalsagainst[0] = $home_goalsagainst[0] + $data['awaygoals'];
+                                                $home_goals[0]        += $data['homegoals'];
+                                                $home_goalsagainst[0] += $data['awaygoals'];
                                             }
                                         }
                                         //
@@ -334,24 +334,24 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             if ($data['awaygoals'] > $data['homegoals']) {
                                                 $away_wins[0]++;
-                                                $away_goals[0]        = $away_goals[0] + $data['awaygoals'];
-                                                $away_goalsagainst[0] = $away_goalsagainst[0] + $data['homegoals'];
+                                                $away_goals[0]        += $data['awaygoals'];
+                                                $away_goalsagainst[0] += $data['homegoals'];
                                             }
                                             //
                                             //Draw
                                             //
                                             elseif ($data['awaygoals'] == $data['homegoals']) {
                                                 $away_draws[0]++;
-                                                $away_goals[0]        = $away_goals[0] + $data['awaygoals'];
-                                                $away_goalsagainst[0] = $away_goalsagainst[0] + $data['homegoals'];
+                                                $away_goals[0]        += $data['awaygoals'];
+                                                $away_goalsagainst[0] += $data['homegoals'];
                                             }
                                             //
                                             //Lost
                                             //
                                             elseif ($data['awaygoals'] < $data['homegoals']) {
                                                 $away_loses[0]++;
-                                                $away_goals[0]        = $away_goals[0] + $data['awaygoals'];
-                                                $away_goalsagainst[0] = $away_goalsagainst[0] + $data['homegoals'];
+                                                $away_goals[0]        += $data['awaygoals'];
+                                                $away_goalsagainst[0] += $data['homegoals'];
                                             }
                                         }
                                     }
@@ -369,24 +369,24 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             if ($data['homegoals'] > $data['awaygoals']) {
                                                 $home_wins[1]++;
-                                                $home_goals[1]        = $home_goals[1] + $data['homegoals'];
-                                                $home_goalsagainst[1] = $home_goalsagainst[1] + $data['awaygoals'];
+                                                $home_goals[1]        += $data['homegoals'];
+                                                $home_goalsagainst[1] += $data['awaygoals'];
                                             }
                                             //
                                             //Draw
                                             //
                                             elseif ($data['homegoals'] == $data['awaygoals']) {
                                                 $home_draws[1]++;
-                                                $home_goals[1]        = $home_goals[1] + $data['homegoals'];
-                                                $home_goalsagainst[1] = $home_goalsagainst[1] + $data['awaygoals'];
+                                                $home_goals[1]        += $data['homegoals'];
+                                                $home_goalsagainst[1] += $data['awaygoals'];
                                             }
                                             //
                                             //Lost
                                             //
                                             elseif ($data['homegoals'] < $data['awaygoals']) {
                                                 $home_loses[1]++;
-                                                $home_goals[1]        = $home_goals[1] + $data['homegoals'];
-                                                $home_goalsagainst[1] = $home_goalsagainst[1] + $data['awaygoals'];
+                                                $home_goals[1]        += $data['homegoals'];
+                                                $home_goalsagainst[1] += $data['awaygoals'];
                                             }
                                         }
                                         //
@@ -398,24 +398,24 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             if ($data['awaygoals'] > $data['homegoals']) {
                                                 $away_wins[1]++;
-                                                $away_goals[1]        = $away_goals[1] + $data['awaygoals'];
-                                                $away_goalsagainst[1] = $away_goalsagainst[1] + $data['homegoals'];
+                                                $away_goals[1]        += $data['awaygoals'];
+                                                $away_goalsagainst[1] += $data['homegoals'];
                                             }
                                             //
                                             //Draw
                                             //
                                             elseif ($data['awaygoals'] == $data['homegoals']) {
                                                 $away_draws[1]++;
-                                                $away_goals[1]        = $away_goals[1] + $data['awaygoals'];
-                                                $away_goalsagainst[1] = $away_goalsagainst[1] + $data['homegoals'];
+                                                $away_goals[1]        += $data['awaygoals'];
+                                                $away_goalsagainst[1] += $data['homegoals'];
                                             }
                                             //
                                             //Lost
                                             //
                                             elseif ($data['awaygoals'] < $data['homegoals']) {
                                                 $away_loses[1]++;
-                                                $away_goals[1]        = $away_goals[1] + $data['awaygoals'];
-                                                $away_goalsagainst[1] = $away_goalsagainst[1] + $data['homegoals'];
+                                                $away_goals[1]        += $data['awaygoals'];
+                                                $away_goalsagainst[1] += $data['homegoals'];
                                             }
                                         }
                                     }
@@ -531,10 +531,10 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 ++$hth_away_wins;
                                             }
 
-                                            $hth_home_goals         = $hth_home_goals + $data['homegoals'];
-                                            $hth_home_goals_against = $hth_home_goals_against + $data['awaygoals'];
-                                            $hth_away_goals         = $hth_away_goals + $data['awaygoals'];
-                                            $hth_away_goals_against = $hth_away_goals_against + $data['homegoals'];
+                                            $hth_home_goals         += $data['homegoals'];
+                                            $hth_home_goals_against += $data['awaygoals'];
+                                            $hth_away_goals         += $data['awaygoals'];
+                                            $hth_away_goals_against += $data['homegoals'];
                                         } elseif ($data['homeid'] == $defaultawayid) {
                                             if ($data['homegoals'] > $data['awaygoals']) {
                                                 ++$hth_away_wins;
@@ -547,10 +547,10 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 ++$hth_home_wins;
                                             }
 
-                                            $hth_away_goals         = $hth_away_goals + $data['homegoals'];
-                                            $hth_away_goals_against = $hth_away_goals_against + $data['awaygoals'];
-                                            $hth_home_goals         = $hth_home_goals + $data['awaygoals'];
-                                            $hth_home_goals_against = $hth_home_goals_against + $data['homegoals'];
+                                            $hth_away_goals         += $data['homegoals'];
+                                            $hth_away_goals_against += $data['awaygoals'];
+                                            $hth_home_goals         += $data['awaygoals'];
+                                            $hth_home_goals_against += $data['homegoals'];
                                         }
                                     }
 
