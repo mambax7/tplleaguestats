@@ -1654,7 +1654,7 @@ if (!isset($sort)) {
                                                             //
                                                             //Tarkistetaan, piirretäänkö erotusviiva
                                                             //
-                                                            for ($k = 0; $k < count($draw_line); ++$k) {
+                                                            for ($k = 0, $kMax = count($draw_line); $k < $kMax; ++$k) {
                                                                 if ($draw_line[$k] == $i) {
                                                                     $templine_width = $tb_width - 20;
                                                                     echo "
@@ -1954,7 +1954,7 @@ if (!isset($sort)) {
                                                             //
                                                             //Tarkistetaan, piirretäänkö erotusviiva
                                                             //
-                                                            for ($k = 0; $k < count($draw_line); ++$k) {
+                                                            for ($k = 0, $kMax = count($draw_line); $k < $kMax; ++$k) {
                                                                 if ($draw_line[$k] == $i) {
                                                                     $templine_width = $tb_width - 20;
                                                                     echo "
