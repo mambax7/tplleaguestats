@@ -27,28 +27,28 @@
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
 }
-$modversion['name']        = 'TPL League Stats';
-$modversion['version']     = 1.1;
-$modversion['description'] = 'A nice league stats software';
-$modversion['credits']     = 'Mithrandir and ralf57';
-$modversion['help']        = 'page=help';
-$modversion['license']     = 'GNU GPL 2.0 or later';
-$modversion['license_url'] = 'www.gnu.org/licenses/gpl-2.0.html';
-$modversion['official']    = 0;
-$modversion['image']       = 'images/tplleague_slogo.png';
-$modversion['dirname']     = 'tplleaguestats';
+$modversion['version']       = 1.2;
+$modversion['module_status'] = 'Beta 1';
+$modversion['release_date']  = '2017/10/30';
+$modversion['name']          = 'TPL League Stats';
+$modversion['description']   = 'A nice league stats software';
+$modversion['credits']       = 'Mithrandir and ralf57';
+$modversion['help']          = 'page=help';
+$modversion['license']       = 'GNU GPL 2.0 or later';
+$modversion['license_url']   = 'www.gnu.org/licenses/gpl-2.0.html';
+$modversion['official']      = 0;
+$modversion['image']         = 'images/tplleague_slogo.png';
+$modversion['dirname']       = 'tplleaguestats';
 
 $modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
 $modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
 $modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
 //about
-$modversion['release_date']        = '2013/03/10';
 $modversion['module_website_url']  = 'www.xoops.org';
 $modversion['module_website_name'] = 'XOOPS';
-$modversion['module_status']       = 'Beta 2';
-$modversion['min_php']             = '5.2';
-$modversion['min_xoops']           = '2.5.5';
-$modversion['min_admin']           = '1.1';
+$modversion['min_php']             = '5.5';
+$modversion['min_xoops']           = '2.5.9';
+$modversion['min_admin']           = '1.2';
 $modversion['min_db']              = [
     'mysql'  => '5.0.7',
     'mysqli' => '5.0.7'
