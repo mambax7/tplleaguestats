@@ -63,8 +63,8 @@ $d_points_modify = isset($_POST['d_points_modify']) ? $_POST['d_points_modify'] 
 
 xoops_cp_header();
 
-$indexAdmin = \Xmf\Module\Admin::getInstance();
-echo $indexAdmin->displayNavigation('opponents.php');
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation('opponents.php');
 
 //
 //Add

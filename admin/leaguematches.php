@@ -60,8 +60,8 @@ $modifyall_submit = isset($_POST['modifyall_submit']) ? $_POST['modifyall_submit
 
 xoops_cp_header();
 
-$indexAdmin = \Xmf\Module\Admin::getInstance();
-echo $indexAdmin->displayNavigation('leaguematches.php');
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation('leaguematches.php');
 
 //
 //Exit check, if there are less than 2 teams in database

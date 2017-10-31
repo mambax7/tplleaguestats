@@ -24,9 +24,9 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+//defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
+$moduleDirName = basename(__DIR__);
+
 $modversion['version']       = 1.2;
 $modversion['module_status'] = 'Beta 1';
 $modversion['release_date']  = '2017/10/30';
@@ -38,11 +38,9 @@ $modversion['license']       = 'GNU GPL 2.0 or later';
 $modversion['license_url']   = 'www.gnu.org/licenses/gpl-2.0.html';
 $modversion['official']      = 0;
 $modversion['image']         = 'images/tplleague_slogo.png';
-$modversion['dirname']       = 'tplleaguestats';
-
-$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
-$modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
-$modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
+$modversion['dirname']       = $moduleDirName;
+$modversion['modicons16']    = 'assets/images/icons/16';
+$modversion['modicons32']    = 'assets/images/icons/32';
 //about
 $modversion['module_website_url']  = 'www.xoops.org';
 $modversion['module_website_name'] = 'XOOPS';

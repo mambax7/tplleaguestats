@@ -18,14 +18,13 @@
  * @version      $Id $
  */
 
-require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
-include_once __DIR__ . '/admin_header.php';
-
+require_once __DIR__ . '/admin_header.php';
+// Display Admin header
 xoops_cp_header();
 
-$indexAdmin = \Xmf\Module\Admin::getInstance();
+$adminObject = \Xmf\Module\Admin::getInstance();
 
-echo $indexAdmin->displayNavigation('index.php');
-echo $indexAdmin->displayIndex();
+$adminObject->displayNavigation('index.php');
+$adminObject->displayIndex();
 
 include __DIR__ . '/admin_footer.php';

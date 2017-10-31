@@ -50,8 +50,8 @@ $delete_submit = isset($_POST['delete_submit']) ? $_POST['delete_submit'] : fals
 
 xoops_cp_header();
 
-$indexAdmin = \Xmf\Module\Admin::getInstance();
-echo $indexAdmin->displayNavigation('seasons.php');
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation('seasons.php');
 if ($add_submit) {
     $name     = $xoopsDB->quoteString(trim($_POST['name']));
     $drawline = trim($_POST['drawline']);
