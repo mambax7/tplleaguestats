@@ -71,7 +71,7 @@ $defaultseasonid = (int)$_SESSION['defaultseasonid'];
 //
 //If All is chosen from season, lets set default value for %
 //
-if ($defaultseasonid == 0) {
+if (0 == $defaultseasonid) {
     $defaultseasonid = '%';
 }
 
@@ -210,11 +210,11 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     //
                                     //How to print date?
                                     //
-                                    if ($print_date == 1) {
+                                    if (1 == $print_date) {
                                         $print_date = '%d.%m.%Y';
-                                    } elseif ($print_date == 2) {
+                                    } elseif (2 == $print_date) {
                                         $print_date = '%m.%d.%Y';
-                                    } elseif ($print_date == 3) {
+                                    } elseif (3 == $print_date) {
                                         $print_date = '%b %D %Y';
                                     }
 
@@ -677,7 +677,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[0] == 0) {
+                                                if (0 == $total_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_wins[0] / $total_played[0]));
@@ -699,7 +699,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[1] == 0) {
+                                                if (0 == $total_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_wins[1] / $total_played[1]));
@@ -722,7 +722,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[0] == 0) {
+                                                if (0 == $total_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_draws[0] / $total_played[0]));
@@ -744,7 +744,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[1] == 0) {
+                                                if (0 == $total_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_draws[1] / $total_played[1]));
@@ -766,7 +766,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[0] == 0) {
+                                                if (0 == $total_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_loses[0] / $total_played[0]));
@@ -788,7 +788,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($total_played[1] == 0) {
+                                                if (0 == $total_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($total_loses[1] / $total_played[1]));
@@ -833,7 +833,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[0] == 0) {
+                                                if (0 == $home_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_wins[0] / $home_played[0]));
@@ -855,7 +855,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[1] == 0) {
+                                                if (0 == $home_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_wins[1] / $home_played[1]));
@@ -877,7 +877,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[0] == 0) {
+                                                if (0 == $home_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_draws[0] / $home_played[0]));
@@ -899,7 +899,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[1] == 0) {
+                                                if (0 == $home_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_draws[1] / $home_played[1]));
@@ -921,7 +921,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[0] == 0) {
+                                                if (0 == $home_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_loses[0] / $home_played[0]));
@@ -943,7 +943,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($home_played[1] == 0) {
+                                                if (0 == $home_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($home_loses[1] / $home_played[1]));
@@ -987,7 +987,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[0] == 0) {
+                                                if (0 == $away_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_wins[0] / $away_played[0]));
@@ -1009,7 +1009,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[1] == 0) {
+                                                if (0 == $away_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_wins[1] / $away_played[1]));
@@ -1031,7 +1031,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[0] == 0) {
+                                                if (0 == $away_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_draws[0] / $away_played[0]));
@@ -1053,7 +1053,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[1] == 0) {
+                                                if (0 == $away_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_draws[1] / $away_played[1]));
@@ -1075,7 +1075,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[0] == 0) {
+                                                if (0 == $away_played[0]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_loses[0] / $away_played[0]));
@@ -1097,7 +1097,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                                 //
                                                 //Avoid divide by zero
                                                 //
-                                                if ($away_played[1] == 0) {
+                                                if (0 == $away_played[1]) {
                                                     $temp = 0;
                                                 } else {
                                                     $temp = round(100 * ($away_loses[1] / $away_played[1]));
@@ -1324,7 +1324,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no home wins->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1361,7 +1361,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no home wins->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1404,7 +1404,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no home loses->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1441,7 +1441,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no home loses->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1548,7 +1548,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no away wins->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1585,7 +1585,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no away wins->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1628,7 +1628,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no away loses->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {
@@ -1665,7 +1665,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                             //
                                             //If there are no away wins->print none
                                             //
-                                            if ($xoopsDB->getRowsNum($query) == 0) {
+                                            if (0 == $xoopsDB->getRowsNum($query)) {
                                                 echo _LS_NONE;
                                             } else {
                                                 while ($data = $xoopsDB->fetchArray($query)) {

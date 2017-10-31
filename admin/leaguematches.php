@@ -108,8 +108,8 @@ if ($add_submit) {
         if ($home[$i] != $away[$i]) {
             $home[$i]       = (int)$home[$i];
             $away[$i]       = (int)$away[$i];
-            $home_goals[$i] = $home_goals[$i] != null ? (int)$home_goals[$i] : null;
-            $away_goals[$i] = $away_goals[$i] != null ? (int)$away_goals[$i] : null;
+            $home_goals[$i] = null != $home_goals[$i] ? (int)$home_goals[$i] : null;
+            $away_goals[$i] = null != $away_goals[$i] ? (int)$away_goals[$i] : null;
             //
             //Hometeam wins
             //
@@ -147,8 +147,8 @@ if ($add_submit) {
                 LM.LeagueMatchDate = '$dateandtime'
                 ");
 
-            if ($xoopsDB->getRowsNum($query) == 0) {
-                if (($home_goals[$i] !== null) && ($home_goals[$i] !== null)) {
+            if (0 == $xoopsDB->getRowsNum($query)) {
+                if ((null !== $home_goals[$i]) && (null !== $home_goals[$i])) {
                     $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                         LeagueMatchSeasonID = '$seasonid',
                         LeagueMatchDate = '$dateandtime',
@@ -208,8 +208,8 @@ if ($add_submit) {
     while ($i < $qty) {
         $home[$i]       = (int)$home[$i];
         $away[$i]       = (int)$away[$i];
-        $home_goals[$i] = $home_goals[$i] != null ? (int)$home_goals[$i] : null;
-        $away_goals[$i] = $away_goals[$i] != null ? (int)$away_goals[$i] : null;
+        $home_goals[$i] = null != $home_goals[$i] ? (int)$home_goals[$i] : null;
+        $away_goals[$i] = null != $away_goals[$i] ? (int)$away_goals[$i] : null;
         //
         //Set default
         //
@@ -241,7 +241,7 @@ if ($add_submit) {
             $home_tie = $home[$i];
             $away_tie = $away[$i];
         }
-        if (($home_goals[$i] !== null) && ($away_goals[$i] !== null)) {
+        if ((null !== $home_goals[$i]) && (null !== $away_goals[$i])) {
             $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                 LeagueMatchSeasonID = '$seasonid',
                 LeagueMatchDate = '$dateandtime',
@@ -285,8 +285,8 @@ if ($add_submit) {
 
     $home       = (int)$_POST['home']; //kotijoukkueen id
     $away       = (int)$_POST['away']; //vierasjoukkueen id
-    $home_goals = $_POST['home_goals'] != null ? (int)$_POST['home_goals'] : null;
-    $away_goals = $_POST['home_goals'] != null ? (int)$_POST['away_goals'] : null;
+    $home_goals = null != $_POST['home_goals'] ? (int)$_POST['home_goals'] : null;
+    $away_goals = null != $_POST['home_goals'] ? (int)$_POST['away_goals'] : null;
 
     //
     //Set default
@@ -344,7 +344,7 @@ if ($add_submit) {
             ");
 
         if ($xoopsDB->getRowsNum($query) < 2) {
-            if (($home_goals !== null) && ($away_goals !== null)) {
+            if ((null !== $home_goals) && (null !== $away_goals)) {
                 $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_leaguematches') . " SET
                     LeagueMatchDate = '$dateandtime',
                     LeagueMatchHomeID = '$home',
@@ -410,7 +410,7 @@ include __DIR__ . '/head.php';
                             if ($i < 10) {
                                 $i = '0' . $i;
                             }
-                            if ($i == '01') {
+                            if ('01' == $i) {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -425,7 +425,7 @@ include __DIR__ . '/head.php';
                             if ($i < 10) {
                                 $i = '0' . $i;
                             }
-                            if ($i == '01') {
+                            if ('01' == $i) {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -440,7 +440,7 @@ include __DIR__ . '/head.php';
                             if ($i < 10) {
                                 $i = '0' . $i;
                             }
-                            if ($i == '2003') {
+                            if ('2003' == $i) {
                                 echo "<option value=\"$i\" SELECTED>$i</option>\n";
                             } else {
                                 echo "<option value=\"$i\">$i</option>\n";
@@ -529,7 +529,7 @@ include __DIR__ . '/head.php';
                     <input type="submit" name="add_submit" value="<?php echo _AM_ADDMATCHES; ?>">
                 </form>
                 <?php
-                    } elseif ($action == 'modifyall') {
+                    } elseif ('modifyall' == $action) {
                         $date = $_REQUEST['date'];
 
                         $get_matches = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
@@ -701,7 +701,7 @@ include __DIR__ . '/head.php';
                     </form>
 
                     <?php
-                    } elseif ($action == 'modify') {
+                    } elseif ('modify' == $action) {
                         $id = (int)$_REQUEST['id'];
 
                         $get_match = $xoopsDB->query('SELECT DAYOFMONTH(LM.LeagueMatchDate) AS dayofmonth,
@@ -875,7 +875,7 @@ include __DIR__ . '/head.php';
                         $temp = '';
 
                         while ($data = $xoopsDB->fetchArray($get_matches)) {
-                            if ($i == 0) {
+                            if (0 == $i) {
                                 echo "
                     <tr>
                     <td align=\"left\" colspan=\"2\">
@@ -885,7 +885,7 @@ include __DIR__ . '/head.php';
                     ";
                             }
 
-                            if ($data['date'] != "$temp" && $i > 0) {
+                            if ("$temp" != $data['date'] && $i > 0) {
                                 echo "
                     <tr>
                     <td align=\"left\" colspan=\"2\">

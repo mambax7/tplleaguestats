@@ -147,15 +147,15 @@ if (!isset($sort)) {
                                 <select name="change_show">
                                     <?php
 
-                                    if ($defaultshow == 1) {
+                                    if (1 == $defaultshow) {
                                         echo '<option value="1" SELECTED>' . _LS_CALENDARALL . '</option>
     <option value="2">' . _LS_CALENDAROWN . ' </option>
     <option value="3">' . _LS_CALENDARNONE . '</option>';
-                                    } elseif ($defaultshow == 2) {
+                                    } elseif (2 == $defaultshow) {
                                         echo '<option value="1">' . _LS_CALENDARALL . '</option>
     <option value="2" SELECTED>' . _LS_CALENDAROWN . '</option>
     <option value="3">' . _LS_CALENDARNONE . '</option>';
-                                    } elseif ($defaultshow == 3) {
+                                    } elseif (3 == $defaultshow) {
                                         echo '<option value="1">' . _LS_CALENDARALL . '</option>
     <option value="2">' . _LS_CALENDAROWN . '</option>
     <option value="3" SELECTED>' . _LS_CALENDARNONE . '</option>';
@@ -164,7 +164,7 @@ if (!isset($sort)) {
                                     //
                                     //If all is chosen from season selector, set default to %
                                     //
-                                    if ($defaultseasonid == 0) {
+                                    if (0 == $defaultseasonid) {
                                         $defaultseasonid = '%';
                                     }
 
@@ -175,22 +175,22 @@ if (!isset($sort)) {
                                 <?php echo _LS_MODETABLE; ?>
                                 <select name="change_table">
                                     <?php
-                                    if ($defaulttable == 1) {
+                                    if (1 == $defaulttable) {
                                         echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
     <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
     <option value="2">' . _LS_MODETABLEMAT . '</option>
     <option value="3">' . _LS_MODETABLEREC . '</option>';
-                                    } elseif ($defaulttable == 2) {
+                                    } elseif (2 == $defaulttable) {
                                         echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
     <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
     <option value="2">' . _LS_MODETABLEMAT . '</option>
     <option value="3">' . _LS_MODETABLEREC . '</option>';
-                                    } elseif ($defaulttable == 3) {
+                                    } elseif (3 == $defaulttable) {
                                         echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
     <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
     <option value="2">' . _LS_MODETABLEMAT . '</option>
     <option value="3">' . _LS_MODETABLEREC . '</option>';
-                                    } elseif ($defaulttable == 4) {
+                                    } elseif (4 == $defaulttable) {
                                         echo '<option value="4">' . _LS_MODETABLESIMP . '</option>
     <option value="1" SELECTED>' . _LS_MODETABLETRA . '</option>
     <option value="2">' . _LS_MODETABLEMAT . '</option>
@@ -227,7 +227,7 @@ if (!isset($sort)) {
                                 //
                                 //Tarkastetaan, mikä taulukko tulostetaan
                                 //
-                                if ($defaulttable == 1 || $defaulttable == 3) {
+                                if (1 == $defaulttable || 3 == $defaulttable) {
                                     ?>
 
                                 <table width="100%" cellspacing="1" cellpadding="2" border="0">
@@ -339,7 +339,7 @@ if (!isset($sort)) {
                                         </td>
                                     </tr>
                                     <?php
-                                } elseif ($defaulttable == 2) {
+                                } elseif (2 == $defaulttable) {
                                     ?>
                                     <table width="100%" cellspacing="1" cellpadding="2" border="0">
 
@@ -392,7 +392,7 @@ if (!isset($sort)) {
                                         </tr>
 
                                         <?php
-                                } elseif ($defaulttable == 4) {
+                                } elseif (4 == $defaulttable) {
                                     ?>
                                         <table width="100%" cellspacing="1" cellpadding="2" border="0">
 
@@ -465,7 +465,7 @@ if (!isset($sort)) {
                                                 //
                                                 //Which table style is chosen
                                                 //
-                                                if ($defaulttable == 1 || $defaulttable == 2 || $defaulttable == 4) {
+                                                if (1 == $defaulttable || 2 == $defaulttable || 4 == $defaulttable) {
                                                     //
                                                     //Home data
                                                     //
@@ -665,7 +665,7 @@ if (!isset($sort)) {
                                                 //
                                                 //Recent form
                                                 //
-                                                elseif ($defaulttable == 3) {
+                                                elseif (3 == $defaulttable) {
                                                     //
                                                     //Counter are set to zero
                                                     //
@@ -778,7 +778,7 @@ if (!isset($sort)) {
                                                 //
                                                 //Check what table is used..
                                                 //
-                                                if ($defaulttable == 1 || $defaulttable == 3 || $defaulttable == 4) {
+                                                if (1 == $defaulttable || 3 == $defaulttable || 4 == $defaulttable) {
 
                                                     //
                                                     //Calculates points and matches
@@ -793,7 +793,7 @@ if (!isset($sort)) {
                                                     //
                                                     //Lets make change in points if there are data in tplls_deductedpoints-table
                                                     //
-                                                    if ($defaulttable == 1 || $defaulttable == 4) {
+                                                    if (1 == $defaulttable || 4 == $defaulttable) {
                                                         $get_deduct = $xoopsDB->query('SELECT points
                     FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
                     WHERE seasonid LIKE '$defaultseasonid' AND
@@ -821,7 +821,7 @@ if (!isset($sort)) {
                                                     //Calculates goal difference
                                                     //
                                                     $diff[$i] = ($homegoals[$i] + $awaygoals[$i]) - ($homegoalsagainst[$i] + $awaygoalsagainst[$i]);
-                                                } elseif ($defaulttable == 2) {
+                                                } elseif (2 == $defaulttable) {
                                                     $wins[$i]          = ($homewins[$i] + $awaywins[$i]);
                                                     $draws[$i]         = ($homedraws[$i] + $awaydraws[$i]);
                                                     $loses[$i]         = ($homeloses[$i] + $awayloses[$i]);
@@ -854,7 +854,7 @@ if (!isset($sort)) {
                                                     //
                                                     //To avoid divide by zero
                                                     //
-                                                    if ($pld[$i] != 0) {
+                                                    if (0 != $pld[$i]) {
                                                         $win_pros[$i]  = round(100 * ($wins[$i] / $pld[$i]), 2);
                                                         $draw_pros[$i] = round(100 * ($draws[$i] / $pld[$i]), 2);
                                                         $loss_pros[$i] = round(100 * ($loses[$i] / $pld[$i]), 2);
@@ -887,7 +887,7 @@ if (!isset($sort)) {
                                             //
                                             //Which table?
                                             //
-                                            if ($defaulttable == 1 || $defaulttable == 3 || $defaulttable == 4) {
+                                            if (1 == $defaulttable || 3 == $defaulttable || 4 == $defaulttable) {
 
                                                 //
                                                 //What sort type is chosen?
@@ -1642,7 +1642,7 @@ if (!isset($sort)) {
                                                         break;
                                                 }
 
-                                                if ($defaulttable == 1 || $defaulttable == 3) {
+                                                if (1 == $defaulttable || 3 == $defaulttable) {
 
                                                     //
                                                     //Lets print data
@@ -1680,13 +1680,13 @@ if (!isset($sort)) {
                     </td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
-                                                        if ($sort == 'pts') {
+                                                        if ('pts' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$points[$i]";
 
-                                                        if ($sort == 'pts') {
+                                                        if ('pts' == $sort) {
                                                             echo '</b>';
                                                         }
                                                         echo "</td>
@@ -1694,13 +1694,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tw') {
+                                                        if ('tw' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$wins[$i]";
 
-                                                        if ($sort == 'tw') {
+                                                        if ('tw' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1708,13 +1708,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'td') {
+                                                        if ('td' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$draws[$i]";
 
-                                                        if ($sort == 'td') {
+                                                        if ('td' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1722,13 +1722,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tl') {
+                                                        if ('tl' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$loses[$i]";
 
-                                                        if ($sort == 'tl') {
+                                                        if ('tl' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1736,13 +1736,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tf') {
+                                                        if ('tf' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$goals_for[$i]";
 
-                                                        if ($sort == 'tf') {
+                                                        if ('tf' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1750,13 +1750,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'ta') {
+                                                        if ('ta' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$goals_against[$i]";
 
-                                                        if ($sort == 'ta') {
+                                                        if ('ta' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1764,13 +1764,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'hw') {
+                                                        if ('hw' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$homewins[$i]";
 
-                                                        if ($sort == 'hw') {
+                                                        if ('hw' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1778,13 +1778,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'hd') {
+                                                        if ('hd' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$homedraws[$i]";
 
-                                                        if ($sort == 'hd') {
+                                                        if ('hd' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1792,13 +1792,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'hl') {
+                                                        if ('hl' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$homeloses[$i]";
 
-                                                        if ($sort == 'hl') {
+                                                        if ('hl' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1806,13 +1806,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'hf') {
+                                                        if ('hf' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$homegoals[$i]";
 
-                                                        if ($sort == 'hf') {
+                                                        if ('hf' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1820,13 +1820,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'ha') {
+                                                        if ('ha' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$homegoalsagainst[$i]";
 
-                                                        if ($sort == 'ha') {
+                                                        if ('ha' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1834,13 +1834,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'aw') {
+                                                        if ('aw' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$awaywins[$i]";
 
-                                                        if ($sort == 'aw') {
+                                                        if ('aw' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1848,13 +1848,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'ad') {
+                                                        if ('ad' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$awaydraws[$i]";
 
-                                                        if ($sort == 'ad') {
+                                                        if ('ad' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1862,13 +1862,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'al') {
+                                                        if ('al' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$awayloses[$i]";
 
-                                                        if ($sort == 'al') {
+                                                        if ('al' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1876,13 +1876,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'af') {
+                                                        if ('af' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$awaygoals[$i]";
 
-                                                        if ($sort == 'af') {
+                                                        if ('af' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1890,20 +1890,20 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'aa') {
+                                                        if ('aa' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$awaygoalsagainst[$i]";
 
-                                                        if ($sort == 'aa') {
+                                                        if ('aa' == $sort) {
                                                             echo '</b>';
                                                         }
 
                                                         echo "</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
-                                                        if ($sort == 'd') {
+                                                        if ('d' == $sort) {
                                                             echo '<b>';
                                                         }
 
@@ -1913,7 +1913,7 @@ if (!isset($sort)) {
 
                                                         echo "$diff[$i]";
 
-                                                        if ($sort == 'd') {
+                                                        if ('d' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1921,13 +1921,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                                                        if ($sort == 'pld') {
+                                                        if ('pld' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$pld[$i]";
 
-                                                        if ($sort == 'pld') {
+                                                        if ('pld' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -1943,7 +1943,7 @@ if (!isset($sort)) {
                                                 //
                                                 //Simple table print
                                                 //
-                                                elseif ($defaulttable == 4) {
+                                                elseif (4 == $defaulttable) {
                                                     //
                                                     //Lets print data
                                                     //
@@ -1980,26 +1980,26 @@ if (!isset($sort)) {
                     </td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
-                                                        if ($sort == 'pts') {
+                                                        if ('pts' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$points[$i]";
 
-                                                        if ($sort == 'pts') {
+                                                        if ('pts' == $sort) {
                                                             echo '</b>';
                                                         }
                                                         echo "</td>
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tw') {
+                                                        if ('tw' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$wins[$i]";
 
-                                                        if ($sort == 'tw') {
+                                                        if ('tw' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2007,13 +2007,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'td') {
+                                                        if ('td' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$draws[$i]";
 
-                                                        if ($sort == 'td') {
+                                                        if ('td' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2021,13 +2021,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tl') {
+                                                        if ('tl' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$loses[$i]";
 
-                                                        if ($sort == 'tl') {
+                                                        if ('tl' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2035,13 +2035,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'tf') {
+                                                        if ('tf' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$goals_for[$i]";
 
-                                                        if ($sort == 'tf') {
+                                                        if ('tf' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2049,13 +2049,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                        if ($sort == 'ta') {
+                                                        if ('ta' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$goals_against[$i]";
 
-                                                        if ($sort == 'ta') {
+                                                        if ('ta' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2063,13 +2063,13 @@ if (!isset($sort)) {
 
                     <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                                                        if ($sort == 'pld') {
+                                                        if ('pld' == $sort) {
                                                             echo '<b>';
                                                         }
 
                                                         echo "$pld[$i]";
 
-                                                        if ($sort == 'pld') {
+                                                        if ('pld' == $sort) {
                                                             echo '</b>';
                                                         }
 
@@ -2082,7 +2082,7 @@ if (!isset($sort)) {
                                                         ++$j;
                                                     }
                                                 }
-                                            } elseif ($defaulttable == 2) {
+                                            } elseif (2 == $defaulttable) {
 
                                                 //
                                                 //What sort type is chosen?
@@ -2259,13 +2259,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                                                    if ($sort == 'pts') {
+                                                    if ('pts' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$points[$i]";
 
-                                                    if ($sort == 'pts') {
+                                                    if ('pts' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2273,13 +2273,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'a_pts') {
+                                                    if ('a_pts' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$av_points[$i]";
 
-                                                    if ($sort == 'a_pts') {
+                                                    if ('a_pts' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2287,13 +2287,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'w') {
+                                                    if ('w' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$win_pros[$i]";
 
-                                                    if ($sort == 'w') {
+                                                    if ('w' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2301,13 +2301,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'd') {
+                                                    if ('d' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$draw_pros[$i]";
 
-                                                    if ($sort == 'd') {
+                                                    if ('d' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2315,13 +2315,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'l') {
+                                                    if ('l' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$loss_pros[$i]";
 
-                                                    if ($sort == 'l') {
+                                                    if ('l' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2329,13 +2329,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'af') {
+                                                    if ('af' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$av_for[$i]";
 
-                                                    if ($sort == 'af') {
+                                                    if ('af' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2343,13 +2343,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'aa') {
+                                                    if ('aa' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$av_against[$i]";
 
-                                                    if ($sort == 'aa') {
+                                                    if ('aa' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2357,7 +2357,7 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg1\">";
 
-                                                    if ($sort == 'agd') {
+                                                    if ('agd' == $sort) {
                                                         echo '<b>';
                                                     }
 
@@ -2367,7 +2367,7 @@ if (!isset($sort)) {
 
                                                     echo "$av_temp";
 
-                                                    if ($sort == 'agd') {
+                                                    if ('agd' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2375,13 +2375,13 @@ if (!isset($sort)) {
 
                 <td align=\"center\" valign=\"middle\" bgcolor=\"$bg2\">";
 
-                                                    if ($sort == 'pld') {
+                                                    if ('pld' == $sort) {
                                                         echo '<b>';
                                                     }
 
                                                     echo "$pld[$i]";
 
-                                                    if ($sort == 'pld') {
+                                                    if ('pld' == $sort) {
                                                         echo '</b>';
                                                     }
 
@@ -2403,7 +2403,7 @@ if (!isset($sort)) {
                                         //
                                         //Check if match calendar want to be shown
                                         //
-                                        if ($defaultshow != 3) {
+                                        if (3 != $defaultshow) {
                                             ?>
 
                                             <!-- Sitten ottelukalenteri -->
@@ -2437,11 +2437,11 @@ if (!isset($sort)) {
                                                             //
                                                             //How to print date
                                                             //
-                                                            if ($print_date == 1) {
+                                                            if (1 == $print_date) {
                                                                 $print_date = '%d.%m.%Y';
-                                                            } elseif ($print_date == 2) {
+                                                            } elseif (2 == $print_date) {
                                                                 $print_date = '%m.%d.%Y';
-                                                            } elseif ($print_date == 3) {
+                                                            } elseif (3 == $print_date) {
                                                                 $print_date = '%b %D %Y';
                                                             }
 
@@ -2450,7 +2450,7 @@ if (!isset($sort)) {
                                             //
                                             //All
                                             //
-                                            if ($defaultshow == 1) {
+                                            if (1 == $defaultshow) {
                                                 $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
@@ -2490,7 +2490,7 @@ if (!isset($sort)) {
                                                 $temp = '';
 
                                                 while ($data = $xoopsDB->fetchArray($get_matches)) {
-                                                    if ($i == 0) {
+                                                    if (0 == $i) {
                                                         echo "
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
@@ -2500,7 +2500,7 @@ if (!isset($sort)) {
                     ";
                                                     }
 
-                                                    if ($data['date'] != "$temp" && $i > 0) {
+                                                    if ("$temp" != $data['date'] && $i > 0) {
                                                         echo "
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
@@ -2546,11 +2546,11 @@ if (!isset($sort)) {
                                                             //
                                                             //How to print date
                                                             //
-                                                            if ($print_date == 1) {
+                                                            if (1 == $print_date) {
                                                                 $print_date = '%d.%m.%Y';
-                                                            } elseif ($print_date == 2) {
+                                                            } elseif (2 == $print_date) {
                                                                 $print_date = '%m.%d.%Y';
-                                                            } elseif ($print_date == 3) {
+                                                            } elseif (3 == $print_date) {
                                                                 $print_date = '%b %D %Y';
                                                             }
 
@@ -2559,7 +2559,7 @@ if (!isset($sort)) {
                                             //
                                             //All
                                             //
-                                            if ($defaultshow == 1) {
+                                            if (1 == $defaultshow) {
                                                 $get_matches = $xoopsDB->query("SELECT O.OpponentName AS hometeam,
             OP.OpponentName AS awayteam,
             LM.LeagueMatchHomeGoals AS goals_home,
@@ -2599,7 +2599,7 @@ if (!isset($sort)) {
                                                 $temp = '';
 
                                                 while ($data = $xoopsDB->fetchArray($get_matches)) {
-                                                    if ($i == 0) {
+                                                    if (0 == $i) {
                                                         echo "
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">
@@ -2609,7 +2609,7 @@ if (!isset($sort)) {
                     ";
                                                     }
 
-                                                    if ($data['date'] != "$temp" && $i > 0) {
+                                                    if ("$temp" != $data['date'] && $i > 0) {
                                                         echo "
                     <tr>
                     <td style=\"padding-left:5px;\" align=\"left\" colspan=\"2\">

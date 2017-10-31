@@ -63,7 +63,7 @@ if ($add_submit) {
 
     $GLOBALS['xoopsDB']->freeRecordSet($query);
 
-    if ($name != '') {
+    if ('' != $name) {
         $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_seasonnames') . " SET
             SeasonName = $name,
             SeasonLine = '$drawline',
@@ -88,11 +88,11 @@ if ($add_submit) {
         $defseason = 0;
     }
 
-    if ($name != '') {
+    if ('' != $name) {
         //
         //If default season->delete the default status from the previous one
         //
-        if ($defseason == 1) {
+        if (1 == $defseason) {
             $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_seasonnames') . " SET
                 SeasonDefault = '0'");
         }
@@ -115,7 +115,7 @@ if ($add_submit) {
         FROM ' . $xoopsDB->prefix('tplls_leaguematches') . ' M, ' . $xoopsDB->prefix('tplls_seasonnames') . " S
         WHERE M.LeagueMatchSeasonID = '$seasonid'");
 
-    if ($xoopsDB->getRowsNum($query) == 0) {
+    if (0 == $xoopsDB->getRowsNum($query)) {
         $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonID = '$seasonid'");
     } else {
         echo "<font color='red'><b>" . _AM_SEASONHASMATCHES . '</b></font><br><br>';
@@ -160,7 +160,7 @@ include __DIR__ . '/head.php';
                         <input type="submit" name="add_submit" value="<?php echo _AM_SEASONADD; ?>">
                     </form>
                     <?php
-                } elseif ($action == 'modify') {
+                } elseif ('modify' == $action) {
                     $seasonid   = (int)$_REQUEST['season'];
                     $get_season = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_seasonnames') . " WHERE SeasonID = '$seasonid' LIMIT 1");
                     $data       = $xoopsDB->fetchArray($get_season); ?>
@@ -184,7 +184,7 @@ include __DIR__ . '/head.php';
                                 <td align="left" valign="top">
                                     <?php
 
-                                    if ($data['SeasonDefault'] == 1) {
+                                    if (1 == $data['SeasonDefault']) {
                                         echo "<input type=\"checkbox\" name=\"defseason\" value=\"1\" CHECKED>\n";
                                     } else {
                                         echo "<input type=\"checkbox\" name=\"defseason\" value=\"1\">\n";
@@ -210,7 +210,7 @@ include __DIR__ . '/head.php';
                                     //
                                     //If season is published
                                     //
-                                    if ($data['SeasonPublish'] == 1) {
+                                    if (1 == $data['SeasonPublish']) {
                                         echo '<input type="checkbox" name="publish" value="1" CHECKED>';
                                     } else {
                                         echo '<input type="checkbox" name="publish" value="1">';
@@ -245,7 +245,7 @@ include __DIR__ . '/head.php';
                         //
                         //Season published?
                         //
-                        if ($data['SeasonPublish'] == 0) {
+                        if (0 == $data['SeasonPublish']) {
                             echo '&nbsp;' . _AM_SEASONNP . "<br>\n";
                         } else {
                             echo "<br>\n";

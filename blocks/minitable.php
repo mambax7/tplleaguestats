@@ -98,7 +98,7 @@ function b_minitable_show()
         if ($goaldiff > 0) {
             $team[$hometeam]['homewins'] += 1;
             $team[$awayteam]['awayloss'] += 1;
-        } elseif ($goaldiff == 0) {
+        } elseif (0 == $goaldiff) {
             $team[$hometeam]['hometie'] += 1;
             $team[$awayteam]['awaytie'] += 1;
         } elseif ($goaldiff < 0) {

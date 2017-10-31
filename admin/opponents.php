@@ -80,7 +80,7 @@ if ($add_submit) {
         exit();
     }
 
-    if ($opponent != '') {
+    if ('' != $opponent) {
         $xoopsDB->query('INSERT INTO ' . $xoopsDB->prefix('tplls_opponents') . " SET OpponentName = $opponent");
 
         header("Location: $PHP_SELF");
@@ -100,11 +100,11 @@ elseif ($modify_submit) {
         $own = 0;
     }
 
-    if ($opponent != '') {
+    if ('' != $opponent) {
         //
         //If own team->delete the own status from the previous one
         //
-        if ($own == 1) {
+        if (1 == $own) {
             $xoopsDB->query('UPDATE ' . $xoopsDB->prefix('tplls_opponents') . " SET
                 OpponentOwn = '0'
                 WHERE OpponentOwn = '1'
@@ -132,7 +132,7 @@ elseif ($delete_submit) {
         FROM ' . $xoopsDB->prefix('tplls_leaguematches') . "
         WHERE LeagueMatchHomeID = $opponentid OR LeagueMatchAwayID = $opponentid");
 
-    if ($xoopsDB->getRowsNum($query) == 0) {
+    if (0 == $xoopsDB->getRowsNum($query)) {
         $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentID = $opponentid");
 
         header("Location: $PHP_SELF");
@@ -149,7 +149,7 @@ elseif ($d_points_add) {
     $teamid   = (int)$_POST['teamid'];
     $seasonid = (int)$_POST['seasonid'];
 
-    if (is_numeric($d_points) && $d_points != '') {
+    if (is_numeric($d_points) && '' != $d_points) {
         //
         //Adds
         //
@@ -168,11 +168,11 @@ elseif ($d_points_modify) {
     $d_points = (int)$_POST['d_points'];
     $id       = (int)$_POST['id'];
 
-    if (is_numeric($d_points) && $d_points != '') {
+    if (is_numeric($d_points) && '' != $d_points) {
         //
         //Delete deducted points if zero is written
         //
-        if ($d_points == 0) {
+        if (0 == $d_points) {
             $xoopsDB->query('DELETE FROM ' . $xoopsDB->prefix('tplls_deductedpoints') . "
                 WHERE id = $id");
         }
@@ -215,7 +215,7 @@ include __DIR__ . '/head.php';
                         <input type="submit" name="add_submit" value="<?php echo _AM_ADDTEAM; ?>">
                     </form>
                     <?php
-                } elseif ($action == 'modify') {
+                } elseif ('modify' == $action) {
                     $opponentid   = (int)$_REQUEST['opponent'];
                     $get_opponent = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_opponents') . " WHERE OpponentID = $opponentid LIMIT 1");
                     $data         = $xoopsDB->fetchArray($get_opponent); ?>
@@ -240,7 +240,7 @@ include __DIR__ . '/head.php';
                                 <td align="left" valign="top">
                                     <?php
 
-                                    if ($data['OpponentOwn'] == 1) {
+                                    if (1 == $data['OpponentOwn']) {
                                         echo "<input type=\"checkbox\" name=\"own\" value=\"1\" CHECKED>\n";
                                     } else {
                                         echo "<input type=\"checkbox\" name=\"own\" value=\"1\">\n";
@@ -270,7 +270,7 @@ include __DIR__ . '/head.php';
         LIMIT 1
         ");
 
-                    if ($xoopsDB->getRowsNum($get_deduct) == 0) {
+                    if (0 == $xoopsDB->getRowsNum($get_deduct)) {
                         echo "
             <form method=\"POST\" action=\"$PHP_SELF\">" . _AM_ADDDEDPTS . "<input type=\"text\" size=\"2\" name=\"d_points\">
             <input type=\"hidden\" value=\"$opponentid\" name=\"teamid\">
@@ -309,7 +309,7 @@ include __DIR__ . '/head.php';
                     while ($data = $xoopsDB->fetchArray($get_opponents)) {
                         echo "<a href=\"$PHP_SELF?action=modify&amp;opponent=$data[OpponentID]\">$data[OpponentName]</a>";
 
-                        if ($data['OpponentOwn'] == 1) {
+                        if (1 == $data['OpponentOwn']) {
                             echo '&nbsp;' . _AM_YT . "<br>\n";
                         } else {
                             echo "<br>\n";

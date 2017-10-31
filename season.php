@@ -66,7 +66,7 @@ $defaultseasonid = (int)$_SESSION['defaultseasonid'];
 //
 //If All is chosen from season, lets set default value for %
 //
-if ($defaultseasonid == 0) {
+if (0 == $defaultseasonid) {
     $defaultseasonid = '%';
 }
 
@@ -342,11 +342,11 @@ $get_seasons = $xoopsDB->query('SELECT * FROM ' . $xoopsDB->prefix('tplls_season
                                     //
                                     //How to print date?
                                     //
-                                    if ($print_date == 1) {
+                                    if (1 == $print_date) {
                                         $print_date = '%d.%m.%Y';
-                                    } elseif ($print_date == 2) {
+                                    } elseif (2 == $print_date) {
                                         $print_date = '%m.%d.%Y';
-                                    } elseif ($print_date == 3) {
+                                    } elseif (3 == $print_date) {
                                         $print_date = '%b %D %Y';
                                     }
 
