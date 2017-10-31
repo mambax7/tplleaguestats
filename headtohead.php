@@ -174,7 +174,7 @@ $namedata = $xoopsDB->fetchArray($get_names);
                                     <?php
 
                                     if ($GLOBALS['xoopsDB']->getRowsNum($get_teams) >= 1) {
-                                        mysql_data_seek($get_teams, 0);
+                                        mysqli_data_seek($get_teams, 0);
 
                                         //mysql_data_seek($get_teams, 0);
                                         while ($data = $xoopsDB->fetchArray($get_teams)) {
