@@ -264,4 +264,4 @@ include __DIR__ . '/head.php';
     </table>
 
 <?php
-xoops_cp_footer();
+require_once __DIR__ . '/admin_footer.php';
